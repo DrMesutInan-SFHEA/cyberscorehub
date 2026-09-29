@@ -10,8 +10,8 @@ import type { CCRAssessmentAnswer } from "./types";
 
 const testAnswers: CCRAssessmentAnswer[] = [
   {
-    questionId: "CCR-IOT-001",
-    answerOptionId: "PARTIAL",
+    questionId: "CCR-AWR-001",
+    answerOptionId: "OCCASIONAL",
     evidenceStatus: "EVIDENCE_PROVIDED",
   },
 ];

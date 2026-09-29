@@ -1,7 +1,6 @@
 import { CCR_QUESTIONS } from "./questions";
 
 import {
-  calculateEvidenceConfidence,
   calculateReadinessScore,
   classifyExposure,
 } from "./scoring";
@@ -25,7 +24,27 @@ interface TestCase {
 
 const tests: TestCase[] = [
   {
-    name: "MFA fully implemented",
+    name: "GOV - formal responsibility",
+    questionId: "CCR-GOV-001",
+    answerOptionId: "FORMAL",
+    evidenceStatus: "EVIDENCE_PROVIDED",
+    expectedReadiness: 100,
+    expectedExposure: "LOW",
+    expectedFindings: 0,
+  },
+
+  {
+    name: "AST - partial inventory",
+    questionId: "CCR-AST-001",
+    answerOptionId: "PARTIAL",
+    evidenceStatus: "EVIDENCE_PROVIDED",
+    expectedReadiness: 50,
+    expectedExposure: "ELEVATED",
+    expectedFindings: 1,
+  },
+
+  {
+    name: "IAM - MFA implemented",
     questionId: "CCR-IAM-001",
     answerOptionId: "ALL",
     evidenceStatus: "EVIDENCE_PROVIDED",
@@ -35,27 +54,37 @@ const tests: TestCase[] = [
   },
 
   {
-    name: "MFA not implemented",
-    questionId: "CCR-IAM-001",
-    answerOptionId: "NO",
+    name: "END - manual updates",
+    questionId: "CCR-END-001",
+    answerOptionId: "MANUAL",
     evidenceStatus: "EVIDENCE_PROVIDED",
-    expectedReadiness: 0,
-    expectedExposure: "HIGH",
+    expectedReadiness: 50,
+    expectedExposure: "ELEVATED",
     expectedFindings: 1,
   },
 
   {
-    name: "MFA status unknown",
-    questionId: "CCR-IAM-001",
-    answerOptionId: "UNKNOWN",
+    name: "NET - limited segmentation",
+    questionId: "CCR-NET-001",
+    answerOptionId: "PROTECTED_NOT_SEGMENTED",
     evidenceStatus: "EVIDENCE_PROVIDED",
-    expectedReadiness: 0,
-    expectedExposure: "HIGH",
+    expectedReadiness: 60,
+    expectedExposure: "ELEVATED",
     expectedFindings: 1,
   },
 
   {
-    name: "Backup regular and recovery tested",
+    name: "DAT - partial protection",
+    questionId: "CCR-DAT-001",
+    answerOptionId: "PARTIAL",
+    evidenceStatus: "EVIDENCE_PROVIDED",
+    expectedReadiness: 50,
+    expectedExposure: "ELEVATED",
+    expectedFindings: 1,
+  },
+
+  {
+    name: "BCK - recovery tested",
     questionId: "CCR-BCK-001",
     answerOptionId: "REGULAR_TESTED",
     evidenceStatus: "EVIDENCE_PROVIDED",
@@ -65,17 +94,27 @@ const tests: TestCase[] = [
   },
 
   {
-    name: "Backup regular but recovery not tested",
-    questionId: "CCR-BCK-001",
-    answerOptionId: "REGULAR_NOT_TESTED",
+    name: "IR - informal process",
+    questionId: "CCR-IR-001",
+    answerOptionId: "INFORMAL",
     evidenceStatus: "EVIDENCE_PROVIDED",
-    expectedReadiness: 70,
-    expectedExposure: "MODERATE",
+    expectedReadiness: 40,
+    expectedExposure: "HIGH",
     expectedFindings: 1,
   },
 
   {
-    name: "IoT inventory complete",
+    name: "AWR - occasional training",
+    questionId: "CCR-AWR-001",
+    answerOptionId: "OCCASIONAL",
+    evidenceStatus: "EVIDENCE_PROVIDED",
+    expectedReadiness: 60,
+    expectedExposure: "ELEVATED",
+    expectedFindings: 1,
+  },
+
+  {
+    name: "IOT - complete inventory",
     questionId: "CCR-IOT-001",
     answerOptionId: "COMPLETE",
     evidenceStatus: "EVIDENCE_PROVIDED",
@@ -83,24 +122,14 @@ const tests: TestCase[] = [
     expectedExposure: "LOW",
     expectedFindings: 0,
   },
-
-  {
-    name: "IoT inventory partial",
-    questionId: "CCR-IOT-001",
-    answerOptionId: "PARTIAL",
-    evidenceStatus: "EVIDENCE_PROVIDED",
-    expectedReadiness: 50,
-    expectedExposure: "ELEVATED",
-    expectedFindings: 1,
-  },
 ];
 
 let passed = 0;
 let failed = 0;
 
 console.log("");
-console.log("CCR VALIDATION SUITE");
-console.log("====================");
+console.log("CCR CORE VALIDATION");
+console.log("===================");
 
 for (const test of tests) {
   const answers: CCRAssessmentAnswer[] = [
@@ -116,8 +145,6 @@ for (const test of tests) {
     answers,
   );
 
-  const evidence = calculateEvidenceConfidence(answers);
-
   const exposure = classifyExposure(readiness);
 
   const findings = generateFindings(
@@ -131,21 +158,19 @@ for (const test of tests) {
     findings.length === test.expectedFindings;
 
   if (success) {
-    passed += 1;
+    passed++;
     console.log(`PASS - ${test.name}`);
   } else {
-    failed += 1;
-
+    failed++;
     console.log(`FAIL - ${test.name}`);
     console.log(`  Readiness: ${readiness}`);
-    console.log(`  Evidence: ${evidence}`);
     console.log(`  Exposure: ${exposure}`);
     console.log(`  Findings: ${findings.length}`);
   }
 }
 
 console.log("");
-console.log("====================");
+console.log("===================");
 console.log(`Tests: ${tests.length}`);
 console.log(`Passed: ${passed}`);
 console.log(`Failed: ${failed}`);
@@ -153,4 +178,3 @@ console.log(`Failed: ${failed}`);
 if (failed > 0) {
   process.exitCode = 1;
 }
-``
