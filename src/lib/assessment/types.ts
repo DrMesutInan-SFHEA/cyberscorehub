@@ -112,4 +112,30 @@ export interface CCRAssessmentResult {
     | "HIGH";
 
   domainResults: CCRDomainResult[];
+}export type CCRFindingStatus =
+  | "CONTROL_ATTAINED"
+  | "CONTROL_GAP"
+  | "ASSESSMENT_UNCERTAINTY";
+
+export interface CCRFinding {
+  questionId: string;
+
+  domainId: CCRDomainId;
+
+  status: CCRFindingStatus;
+
+  priority: CCRRiskPriority;
+
+  titleEn: string;
+  titleTr: string;
+
+  descriptionEn: string;
+  descriptionTr: string;
+
+  recommendationEn: string;
+  recommendationTr: string;
+
+  actionTimeframe: CCRActionTimeframe;
+
+  frameworkMappings: CCRFrameworkMapping[];
 }

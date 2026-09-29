@@ -1,5 +1,5 @@
 import { CCR_QUESTIONS } from "./questions";
-
+import { generateFindings } from "./findings";
 import {
   calculateEvidenceConfidence,
   calculateReadinessScore,
@@ -10,12 +10,11 @@ import type { CCRAssessmentAnswer } from "./types";
 
 const testAnswers: CCRAssessmentAnswer[] = [
   {
-    questionId: "CCR-IAM-001",
-    answerOptionId: "ALL",
+    questionId: "CCR-IOT-001",
+    answerOptionId: "PARTIAL",
     evidenceStatus: "EVIDENCE_PROVIDED",
   },
 ];
-
 const readinessScore = calculateReadinessScore(
   CCR_QUESTIONS,
   testAnswers,
@@ -32,3 +31,24 @@ console.log("----------------");
 console.log("Readiness Score:", readinessScore);
 console.log("Evidence Confidence:", evidenceConfidence);
 console.log("Exposure:", exposure);
+const findings = generateFindings(
+  CCR_QUESTIONS,
+  testAnswers,
+);
+
+console.log("----------------");
+console.log("Findings:", findings.length);
+
+for (const finding of findings) {
+  console.log("Finding Status:", finding.status);
+  console.log("Priority:", finding.priority);
+  console.log("Title:", finding.titleEn);
+  console.log(
+    "Recommendation:",
+    finding.recommendationEn,
+  );
+  console.log(
+    "Action Timeframe:",
+    finding.actionTimeframe,
+  );
+}
