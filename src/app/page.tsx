@@ -1,3 +1,5 @@
+"use client";
+
 const domains = [
   { name: "Identity & Access", score: 74 },
   { name: "Backup & Recovery", score: 81 },
@@ -116,10 +118,14 @@ export default function Home() {
             <button className="hidden px-3 py-2 text-sm font-medium text-white transition hover:text-cyan-300 sm:block">
               Sign In
             </button>
-
-            <button className="rounded-xl bg-cyan-400 px-4 py-2.5 text-sm font-bold text-[#07111f] transition hover:bg-cyan-300">
-              Start Free Check
-            </button>
+            <button
+  onClick={() => {
+    window.location.href = "/assessment";
+  }}
+  className="rounded-xl bg-cyan-400 px-4 py-2.5 text-sm font-bold text-[#07111f] transition hover:bg-cyan-300"
+>
+  Start Free Check
+</button>
           </div>
         </div>
       </header>
