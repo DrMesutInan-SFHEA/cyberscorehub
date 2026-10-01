@@ -1,5 +1,5 @@
 "use client";
-
+import StartAssessmentButton from "@/components/StartAssessmentButton";
 const domains = [
   { name: "Identity & Access", score: 74 },
   { name: "Backup & Recovery", score: 81 },
@@ -152,9 +152,11 @@ export default function Home() {
             </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <button className="rounded-xl bg-cyan-400 px-6 py-4 font-bold text-[#07111f] transition hover:bg-cyan-300">
-                Start Your Free Cyber Check
-              </button>
+              <StartAssessmentButton
+  label="Start Your Free Cyber Check"
+  className="rounded-xl bg-cyan-400 px-6 py-4 font-bold text-[#07111f] transition hover:bg-cyan-300"
+/>
+``
 
               <button className="rounded-xl border border-white/15 bg-white/5 px-6 py-4 font-semibold text-white transition hover:bg-white/10">
                 See How CCR Works
@@ -454,9 +456,10 @@ export default function Home() {
               your organisation's security posture.
             </p>
 
-            <button className="mt-8 rounded-xl bg-cyan-400 px-7 py-4 font-bold text-[#07111f] transition hover:bg-cyan-300">
-              Start Free Cyber Check
-            </button>
+            <StartAssessmentButton
+  label="Start Free Cyber Check"
+  className="mt-8 rounded-xl bg-cyan-400 px-7 py-4 font-bold text-[#07111f] transition hover:bg-cyan-300"
+/>
           </div>
         </div>
       </section>
