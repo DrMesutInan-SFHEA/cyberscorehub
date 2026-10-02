@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CCR_QUESTIONS } from "@/lib/assessment/questions";
 import {
+  calculateDomainScores,
   calculateEvidenceConfidence,
   calculateReadinessScore,
   classifyExposure,
@@ -10,8 +11,10 @@ import {
 import { generateFindings } from "@/lib/assessment/findings";
 import type {
   CCRAssessmentAnswer,
+  CCRDomainResult,
   CCRFinding,
 } from "@/lib/assessment/types";
+``
 export default function AssessmentPage() {
   const [step, setStep] = useState(1);
 
@@ -24,10 +27,11 @@ export default function AssessmentPage() {
   const [answers, setAnswers] = useState<Map<string, string>>(
     () => new Map()
   );
-  const [result, setResult] = useState<{
+const [result, setResult] = useState<{
   readinessScore: number;
   evidenceConfidence: number;
   exposure: "LOW" | "MODERATE" | "ELEVATED" | "HIGH";
+  domainScores: CCRDomainResult[];
   findings: CCRFinding[];
 } | null>(null);
   const canContinue =
@@ -62,19 +66,25 @@ export default function AssessmentPage() {
     assessmentAnswers
   );
 
-  const exposure = classifyExposure(readinessScore);
+const exposure = classifyExposure(readinessScore);
 
-  const findings = generateFindings(
-    CCR_QUESTIONS,
-    assessmentAnswers
-  );
+const domainScores = calculateDomainScores(
+  CCR_QUESTIONS,
+  assessmentAnswers
+);
 
-  setResult({
-    readinessScore,
-    evidenceConfidence,
-    exposure,
-    findings,
-  });
+const findings = generateFindings(
+  CCR_QUESTIONS,
+  assessmentAnswers
+);
+
+setResult({
+  readinessScore,
+  evidenceConfidence,
+  exposure,
+  domainScores,
+  findings,
+});
 
   setStep(3);
 }
