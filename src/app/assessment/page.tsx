@@ -8,7 +8,10 @@ import {
   calculateReadinessScore,
   classifyExposure,
 } from "@/lib/assessment/scoring";
-import { generateFindings } from "@/lib/assessment/findings";
+import {
+  generateFindings,
+  rankFindings,
+} from "@/lib/assessment/findings";
 import type {
   CCRAssessmentAnswer,
   CCRDomainResult,
@@ -444,7 +447,7 @@ if (step === 5 && result) {
       finding.priority === "CRITICAL"
   );
 
-  const priorityActions = result.findings.slice(0, 3);
+  const priorityActions = rankFindings(result.findings).slice(0, 3);
 
   return (
     <main className="min-h-screen bg-[#07111f] text-white">

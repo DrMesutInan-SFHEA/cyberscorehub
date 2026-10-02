@@ -120,3 +120,35 @@ export function generateFindings(
 
   return findings;
 }
+
+export function rankFindings(
+  findings: CCRFinding[],
+): CCRFinding[] {
+  const priorityWeight = {
+    CRITICAL: 4,
+    HIGH: 3,
+    MEDIUM: 2,
+    LOW: 1,
+  };
+
+  const timeframeWeight = {
+    DO_NOW: 4,
+    NEXT_30_DAYS: 3,
+    NEXT_90_DAYS: 2,
+    PLAN: 1,
+  };
+
+  return [...findings].sort((a, b) => {
+    const priorityDifference =
+      priorityWeight[b.priority] - priorityWeight[a.priority];
+
+    if (priorityDifference !== 0) {
+      return priorityDifference;
+    }
+
+    return (
+      timeframeWeight[b.actionTimeframe] -
+      timeframeWeight[a.actionTimeframe]
+    );
+  });
+}
