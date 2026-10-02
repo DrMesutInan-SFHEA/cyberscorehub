@@ -163,7 +163,80 @@ if (step === 3 && result) {
             Priority findings identified
           </div>
         </div>
+<div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-7">
+  <div className="text-sm font-bold uppercase tracking-[0.15em] text-cyan-400">
+    Security Domain Scores
+  </div>
 
+  <h2 className="mt-2 text-2xl font-bold">
+    Your cyber-security posture by domain
+  </h2>
+
+  <p className="mt-3 text-sm leading-6 text-slate-400">
+    These scores are calculated from your Quick Check responses and show
+    assessed control readiness across the ten CCR security domains.
+  </p>
+
+  <div className="mt-8 grid gap-4 md:grid-cols-2">
+    {result.domainScores.map((domainResult) => {
+      const question = CCR_QUESTIONS.find(
+        (item) => item.domainId === domainResult.domainId,
+      );
+
+      const domainName =
+        question?.domainId === "GOV"
+          ? "Governance & Risk"
+          : question?.domainId === "AST"
+            ? "Asset Management"
+            : question?.domainId === "IAM"
+              ? "Identity & Access"
+              : question?.domainId === "END"
+                ? "Endpoint & Configuration"
+                : question?.domainId === "NET"
+                  ? "Network Security"
+                  : question?.domainId === "DAT"
+                    ? "Data Protection"
+                    : question?.domainId === "BCK"
+                      ? "Backup & Recovery"
+                      : question?.domainId === "IR"
+                        ? "Detection & Incident Response"
+                        : question?.domainId === "AWR"
+                          ? "People & Security Awareness"
+                          : question?.domainId === "IOT"
+                            ? "IoT & Connected Devices"
+                            : domainResult.domainId;
+
+      return (
+        <div
+          key={domainResult.domainId}
+          className="rounded-2xl border border-white/10 bg-[#0b192a] p-5"
+        >
+          <div className="flex items-center justify-between gap-4">
+            <div className="font-semibold text-slate-200">
+              {domainName}
+            </div>
+
+            <div className="text-lg font-black text-cyan-300">
+              {domainResult.score}
+              <span className="text-sm text-slate-500">/100</span>
+            </div>
+          </div>
+
+          <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/10">
+            <div
+              className="h-full rounded-full bg-cyan-400"
+              style={{ width: `${domainResult.score}%` }}
+            />
+          </div>
+
+          <div className="mt-3 text-xs text-slate-500">
+            {domainResult.answeredQuestions} question answered
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
         <div className="mt-10">
           <h2 className="text-2xl font-bold">
             Priority Findings
