@@ -259,14 +259,20 @@ if (step === 3 && result) {
                       {finding.priority}
                     </span>
 
-                    <span className="text-xs font-bold text-cyan-400">
-                      {finding.actionTimeframe}
-                    </span>
-                  </div>
+<span className="text-xs font-bold text-cyan-400">
+  {finding.actionTimeframe === "DO_NOW"
+    ? "DO NOW"
+    : finding.actionTimeframe === "NEXT_30_DAYS"
+      ? "NEXT 30 DAYS"
+      : finding.actionTimeframe === "NEXT_90_DAYS"
+        ? "NEXT 90 DAYS"
+        : finding.actionTimeframe}
+</span>
+</div>
 
-                  <h3 className="mt-4 text-xl font-bold">
-                    {finding.titleEn}
-                  </h3>
+<h3 className="mt-4 text-xl font-bold">
+  {finding.titleEn}
+</h3>
 
                   <p className="mt-3 leading-7 text-slate-400">
                     {finding.descriptionEn}
@@ -588,11 +594,16 @@ if (step === 5 && result) {
                       {finding.priority}
                     </span>
 
-                    <span className="text-xs font-bold text-cyan-400">
-                      {finding.actionTimeframe}
-                    </span>
-                  </div>
-
+<span className="text-xs font-bold text-cyan-400">
+  {finding.actionTimeframe === "DO_NOW"
+    ? "DO NOW"
+    : finding.actionTimeframe === "NEXT_30_DAYS"
+      ? "NEXT 30 DAYS"
+      : finding.actionTimeframe === "NEXT_90_DAYS"
+        ? "NEXT 90 DAYS"
+        : finding.actionTimeframe}
+</span>
+</div>
                   <h3 className="mt-4 text-lg font-bold">
                     {finding.titleEn}
                   </h3>
