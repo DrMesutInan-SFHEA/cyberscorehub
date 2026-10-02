@@ -1,8 +1,11 @@
 import type {
   CCRAssessmentAnswer,
+  CCRDomainResult,
   CCREvidenceStatus,
   CCRQuestion,
 } from "./types";
+
+import { CCR_DOMAINS } from "./domains";
 
 function getEvidenceScore(status: CCREvidenceStatus): number {
   switch (status) {
@@ -106,4 +109,48 @@ export function classifyExposure(
   }
 
   return "HIGH";
+}
+export function calculateDomainScores(
+  questions: CCRQuestion[],
+  answers: CCRAssessmentAnswer[],
+): CCRDomainResult[] {
+  return CCR_DOMAINS.map((domain) => {
+    const domainQuestions = questions.filter(
+      (question) => question.domainId === domain.id,
+    );
+
+    let weightedScore = 0;
+    let totalWeight = 0;
+    let answeredQuestions = 0;
+
+    for (const question of domainQuestions) {
+      const answer = answers.find(
+        (item) => item.questionId === question.id,
+      );
+
+      if (!answer) {
+        continue;
+      }
+
+      const questionScore = calculateQuestionScore(
+        question,
+        answer,
+      );
+
+      weightedScore += questionScore * question.weight;
+      totalWeight += question.weight;
+      answeredQuestions += 1;
+    }
+
+    const score =
+      totalWeight === 0
+        ? 0
+        : Math.round((weightedScore / totalWeight) * 100);
+
+    return {
+      domainId: domain.id,
+      score,
+      answeredQuestions,
+    };
+  });
 }
