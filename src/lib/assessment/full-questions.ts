@@ -917,4 +917,480 @@ recommendationTr:
 
     actionTimeframe: "NEXT_30_DAYS",
   },
+  {
+    id: "CCR-FULL-IAM-001",
+    domainId: "IAM",
+
+    controlNameEn: "Multi-Factor Authentication",
+    controlNameTr: "Çok Faktörlü Kimlik Doğrulama",
+
+    questionEn:
+      "Is multi-factor authentication required for applicable business cloud accounts and externally accessible services?",
+    questionTr:
+      "Uygulanabilir işletme bulut hesapları ve dışarıdan erişilebilen hizmetler için çok faktörlü kimlik doğrulama zorunlu mu?",
+
+    explanationEn:
+      "Multi-factor authentication adds an additional verification step beyond a password and can reduce exposure when account credentials are compromised.",
+    explanationTr:
+      "Çok faktörlü kimlik doğrulama, parolanın ötesinde ek bir doğrulama adımı sağlayarak hesap bilgilerinin ele geçirilmesi durumunda riski azaltmaya yardımcı olabilir.",
+
+    weight: 1.4,
+    riskPriority: "HIGH",
+
+    answerOptions: [
+      {
+        id: "ALL",
+        labelEn: "Yes, across applicable accounts and services",
+        labelTr: "Evet, uygulanabilir hesapların ve hizmetlerin tamamında",
+        score: 1,
+      },
+      {
+        id: "MOST",
+        labelEn: "Yes, but some applicable accounts are not covered",
+        labelTr: "Evet, ancak bazı uygulanabilir hesaplar kapsam dışındadır",
+        score: 0.7,
+      },
+      {
+        id: "ADMIN_ONLY",
+        labelEn: "Only privileged or administrator accounts",
+        labelTr: "Yalnızca ayrıcalıklı veya yönetici hesaplarında",
+        score: 0.5,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined MFA requirement",
+        labelTr: "Tanımlanmış bir MFA gereksinimi yoktur",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.AA-03",
+      },
+    ],
+
+    findingTitleEn:
+      "Multi-factor authentication is not consistently implemented",
+    findingTitleTr:
+      "Çok faktörlü kimlik doğrulama tutarlı şekilde uygulanmıyor",
+
+    recommendationEn:
+      "Extend multi-factor authentication to applicable business accounts and externally accessible services, prioritising privileged access.",
+    recommendationTr:
+      "Çok faktörlü kimlik doğrulamayı uygulanabilir işletme hesaplarına ve dışarıdan erişilebilen hizmetlere genişletin ve ayrıcalıklı erişime öncelik verin.",
+
+    actionTimeframe: "DO_NOW",
+  },
+
+  {
+    id: "CCR-FULL-IAM-002",
+    domainId: "IAM",
+
+    controlNameEn: "Privileged and Administrator Accounts",
+    controlNameTr: "Ayrıcalıklı ve Yönetici Hesapları",
+
+    questionEn:
+      "Are administrator and privileged accounts limited to people who require elevated access for their responsibilities?",
+    questionTr:
+      "Yönetici ve ayrıcalıklı hesaplar yalnızca görevleri için yüksek erişime ihtiyaç duyan kişilerle sınırlandırılmış mı?",
+
+    explanationEn:
+      "Privileged accounts can make significant changes to systems and information, so elevated access should be restricted to authorised users with a genuine business need.",
+    explanationTr:
+      "Ayrıcalıklı hesaplar sistemlerde ve bilgilerde önemli değişiklikler yapabildiğinden yüksek erişim yalnızca gerçek iş ihtiyacı bulunan yetkili kullanıcılarla sınırlandırılmalıdır.",
+
+    weight: 1.3,
+    riskPriority: "HIGH",
+
+    answerOptions: [
+      {
+        id: "RESTRICTED",
+        labelEn:
+          "Yes, privileged access is restricted and separately managed",
+        labelTr:
+          "Evet, ayrıcalıklı erişim sınırlandırılmış ve ayrı olarak yönetilmektedir",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_RESTRICTED",
+        labelEn:
+          "Privileged access is generally restricted but some exceptions exist",
+        labelTr:
+          "Ayrıcalıklı erişim genel olarak sınırlandırılmıştır ancak bazı istisnalar bulunmaktadır",
+        score: 0.6,
+      },
+      {
+        id: "WIDESPREAD",
+        labelEn:
+          "Several users have administrator access without a clear requirement",
+        labelTr:
+          "Bazı kullanıcıların açık bir gereksinim olmadan yönetici erişimi vardır",
+        score: 0.3,
+      },
+      {
+        id: "UNMANAGED",
+        labelEn: "Privileged access is not formally managed",
+        labelTr: "Ayrıcalıklı erişim resmi olarak yönetilmemektedir",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.AA-05",
+      },
+    ],
+
+    findingTitleEn:
+      "Privileged account management requires improvement",
+    findingTitleTr:
+      "Ayrıcalıklı hesap yönetiminin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Restrict administrator and privileged access to authorised personnel with a defined business need and review elevated privileges periodically.",
+    recommendationTr:
+      "Yönetici ve ayrıcalıklı erişimi tanımlanmış iş ihtiyacı bulunan yetkili personelle sınırlandırın ve yüksek yetkileri düzenli olarak gözden geçirin.",
+
+    actionTimeframe: "DO_NOW",
+  },
+
+  {
+    id: "CCR-FULL-IAM-003",
+    domainId: "IAM",
+
+    controlNameEn: "Joiner, Mover and Leaver Access",
+    controlNameTr: "İşe Giriş, Görev Değişikliği ve İşten Ayrılma Erişimi",
+
+    questionEn:
+      "Does your organisation have a defined process for creating, changing and removing user access when people join, change responsibilities or leave?",
+    questionTr:
+      "Kuruluşunuzda kişiler işe başladığında, görev değiştirdiğinde veya ayrıldığında kullanıcı erişiminin oluşturulması, değiştirilmesi ve kaldırılması için tanımlanmış bir süreç var mı?",
+
+    explanationEn:
+      "Timely account changes help prevent former personnel or users with changed responsibilities from retaining unnecessary access.",
+    explanationTr:
+      "Hesap erişimlerinin zamanında değiştirilmesi, ayrılan veya görevleri değişen kişilerin gereksiz erişimleri korumasını önlemeye yardımcı olur.",
+
+    weight: 1.2,
+    riskPriority: "HIGH",
+
+    answerOptions: [
+      {
+        id: "DEFINED",
+        labelEn:
+          "Yes, access changes are consistently managed through a defined process",
+        labelTr:
+          "Evet, erişim değişiklikleri tanımlanmış bir süreçle tutarlı şekilde yönetilir",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_DEFINED",
+        labelEn:
+          "A process exists but is not always followed consistently",
+        labelTr:
+          "Bir süreç vardır ancak her zaman tutarlı şekilde uygulanmaz",
+        score: 0.6,
+      },
+      {
+        id: "INFORMAL",
+        labelEn: "Access changes are handled informally",
+        labelTr: "Erişim değişiklikleri gayriresmi olarak yönetilir",
+        score: 0.3,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined process exists",
+        labelTr: "Tanımlanmış bir süreç bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.AA-01",
+      },
+    ],
+
+    findingTitleEn:
+      "User access lifecycle management requires improvement",
+    findingTitleTr:
+      "Kullanıcı erişim yaşam döngüsü yönetiminin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Establish a consistent joiner, mover and leaver process so that access is granted, changed and removed promptly when responsibilities change.",
+    recommendationTr:
+      "Sorumluluklar değiştiğinde erişimin zamanında verilmesi, değiştirilmesi ve kaldırılması için tutarlı bir işe giriş, görev değişikliği ve işten ayrılma süreci oluşturun.",
+
+    actionTimeframe: "NEXT_30_DAYS",
+  },
+
+  {
+    id: "CCR-FULL-IAM-004",
+    domainId: "IAM",
+
+    controlNameEn: "Least Privilege",
+    controlNameTr: "En Az Yetki Prensibi",
+
+    questionEn:
+      "Are users generally given only the access needed to perform their business responsibilities?",
+    questionTr:
+      "Kullanıcılara genel olarak yalnızca iş sorumluluklarını yerine getirmek için gereken erişim mi veriliyor?",
+
+    explanationEn:
+      "Limiting permissions to what users genuinely require can reduce the impact of account compromise, mistakes and inappropriate access.",
+    explanationTr:
+      "Yetkilerin kullanıcıların gerçekten ihtiyaç duyduğu seviyede sınırlandırılması hesap ele geçirilmesi, hatalar ve uygunsuz erişimin etkisini azaltabilir.",
+
+    weight: 1.2,
+    riskPriority: "HIGH",
+
+    answerOptions: [
+      {
+        id: "ENFORCED",
+        labelEn:
+          "Yes, access is based on responsibilities and unnecessary permissions are restricted",
+        labelTr:
+          "Evet, erişim sorumluluklara dayanır ve gereksiz yetkiler sınırlandırılır",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_ENFORCED",
+        labelEn:
+          "Least privilege is generally followed but exceptions exist",
+        labelTr:
+          "En az yetki prensibi genel olarak uygulanır ancak bazı istisnalar vardır",
+        score: 0.6,
+      },
+      {
+        id: "INCONSISTENT",
+        labelEn:
+          "Permission levels are not consistently based on business need",
+        labelTr:
+          "Yetki seviyeleri iş ihtiyacına göre tutarlı şekilde belirlenmemektedir",
+        score: 0.3,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined least-privilege approach exists",
+        labelTr: "Tanımlanmış bir en az yetki yaklaşımı yoktur",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: false,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.AA-05",
+      },
+    ],
+
+    findingTitleEn:
+      "Access permissions are not consistently based on least privilege",
+    findingTitleTr:
+      "Erişim yetkileri en az yetki prensibine göre tutarlı şekilde yönetilmiyor",
+
+    recommendationEn:
+      "Review user permissions and align access with current business responsibilities, removing unnecessary privileges.",
+    recommendationTr:
+      "Kullanıcı yetkilerini gözden geçirin, erişimi mevcut iş sorumluluklarıyla uyumlu hale getirin ve gereksiz yetkileri kaldırın.",
+
+    actionTimeframe: "NEXT_30_DAYS",
+  },
+
+  {
+    id: "CCR-FULL-IAM-005",
+    domainId: "IAM",
+
+    controlNameEn: "Shared User Accounts",
+    controlNameTr: "Paylaşılan Kullanıcı Hesapları",
+
+    questionEn:
+      "Are individual user accounts used instead of shared accounts wherever practical?",
+    questionTr:
+      "Uygulanabilir durumlarda paylaşılan hesaplar yerine bireysel kullanıcı hesapları mı kullanılıyor?",
+
+    explanationEn:
+      "Individual accounts improve accountability and make it easier to grant, review and remove access for specific users.",
+    explanationTr:
+      "Bireysel hesaplar hesap verebilirliği artırır ve belirli kullanıcılar için erişimin verilmesini, gözden geçirilmesini ve kaldırılmasını kolaylaştırır.",
+
+    weight: 1,
+    riskPriority: "MEDIUM",
+
+    answerOptions: [
+      {
+        id: "INDIVIDUAL",
+        labelEn:
+          "Yes, individual accounts are used wherever practical",
+        labelTr:
+          "Evet, uygulanabilir durumlarda bireysel hesaplar kullanılmaktadır",
+        score: 1,
+      },
+      {
+        id: "LIMITED_SHARED",
+        labelEn:
+          "A small number of shared accounts exist for defined reasons",
+        labelTr:
+          "Tanımlanmış nedenlerle az sayıda paylaşılan hesap bulunmaktadır",
+        score: 0.7,
+      },
+      {
+        id: "MULTIPLE_SHARED",
+        labelEn:
+          "Shared accounts are used in several areas",
+        labelTr:
+          "Birden fazla alanda paylaşılan hesaplar kullanılmaktadır",
+        score: 0.3,
+      },
+      {
+        id: "WIDESPREAD",
+        labelEn: "Shared accounts are commonly used",
+        labelTr: "Paylaşılan hesaplar yaygın olarak kullanılmaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: false,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.AA-01",
+      },
+    ],
+
+    findingTitleEn:
+      "Shared account usage requires improvement",
+    findingTitleTr:
+      "Paylaşılan hesap kullanımının iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Replace unnecessary shared accounts with individually assigned accounts and document justified exceptions where shared access cannot be avoided.",
+    recommendationTr:
+      "Gereksiz paylaşılan hesapları bireysel hesaplarla değiştirin ve paylaşılan erişimin kaçınılmaz olduğu istisnaları belgeleyin.",
+
+    actionTimeframe: "NEXT_90_DAYS",
+  },
+
+  {
+    id: "CCR-FULL-IAM-006",
+    domainId: "IAM",
+
+    controlNameEn: "Periodic Access Review",
+    controlNameTr: "Periyodik Erişim Gözden Geçirmesi",
+
+    questionEn:
+      "Are user accounts and access permissions reviewed periodically to identify unnecessary or inappropriate access?",
+    questionTr:
+      "Gereksiz veya uygunsuz erişimleri belirlemek için kullanıcı hesapları ve erişim yetkileri düzenli olarak gözden geçiriliyor mu?",
+
+    explanationEn:
+      "Periodic access reviews help identify dormant accounts, excessive permissions and access that is no longer justified by current responsibilities.",
+    explanationTr:
+      "Düzenli erişim gözden geçirmeleri kullanılmayan hesapları, aşırı yetkileri ve artık mevcut sorumluluklarla gerekçelendirilemeyen erişimleri belirlemeye yardımcı olur.",
+
+    weight: 1,
+    riskPriority: "MEDIUM",
+
+    answerOptions: [
+      {
+        id: "REGULAR",
+        labelEn:
+          "Yes, accounts and permissions are reviewed periodically",
+        labelTr:
+          "Evet, hesaplar ve yetkiler düzenli olarak gözden geçirilir",
+        score: 1,
+      },
+      {
+        id: "OCCASIONAL",
+        labelEn: "Access reviews take place occasionally",
+        labelTr: "Erişim gözden geçirmeleri zaman zaman yapılır",
+        score: 0.6,
+      },
+      {
+        id: "REACTIVE",
+        labelEn:
+          "Access is mainly reviewed when a specific issue occurs",
+        labelTr:
+          "Erişim çoğunlukla belirli bir sorun ortaya çıktığında gözden geçirilir",
+        score: 0.3,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined access-review process exists",
+        labelTr:
+          "Tanımlanmış bir erişim gözden geçirme süreci bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.AA-05",
+      },
+    ],
+
+    findingTitleEn:
+      "Periodic access reviews require improvement",
+    findingTitleTr:
+      "Periyodik erişim gözden geçirmelerinin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Introduce periodic reviews of user accounts and permissions, prioritising privileged access, dormant accounts and access to sensitive business information.",
+    recommendationTr:
+      "Özellikle ayrıcalıklı erişim, kullanılmayan hesaplar ve hassas işletme bilgilerine erişimi önceliklendirerek kullanıcı hesapları ve yetkileri için düzenli gözden geçirmeler oluşturun.",
+
+    actionTimeframe: "NEXT_90_DAYS",
+  },
 ];
