@@ -468,4 +468,453 @@ recommendationTr:
 
     actionTimeframe: "NEXT_90_DAYS",
   },
+    {
+    id: "CCR-FULL-AST-001",
+    domainId: "AST",
+
+    controlNameEn: "Business IT Asset Inventory",
+    controlNameTr: "İşletme BT Varlık Envanteri",
+
+    questionEn:
+      "Does your organisation maintain an up-to-date inventory of business IT assets?",
+    questionTr:
+      "Kuruluşunuz işletme BT varlıklarının güncel bir envanterini tutuyor mu?",
+
+    explanationEn:
+      "A current asset inventory helps an organisation understand which devices and systems require protection, maintenance and security oversight.",
+    explanationTr:
+      "Güncel bir varlık envanteri, hangi cihaz ve sistemlerin korunması, bakımı ve güvenlik gözetimi gerektirdiğinin anlaşılmasına yardımcı olur.",
+
+    weight: 1.2,
+    riskPriority: "HIGH",
+
+    answerOptions: [
+      {
+        id: "COMPLETE",
+        labelEn: "Yes, a complete and current inventory is maintained",
+        labelTr: "Evet, eksiksiz ve güncel bir envanter tutulmaktadır",
+        score: 1,
+      },
+      {
+        id: "PARTIAL",
+        labelEn: "An inventory exists but is incomplete or outdated",
+        labelTr: "Bir envanter vardır ancak eksik veya güncel değildir",
+        score: 0.6,
+      },
+      {
+        id: "INFORMAL",
+        labelEn: "Assets are generally known but no formal inventory exists",
+        labelTr: "Varlıklar genel olarak bilinmektedir ancak resmi bir envanter yoktur",
+        score: 0.3,
+      },
+      {
+        id: "NONE",
+        labelEn: "No asset inventory is maintained",
+        labelTr: "Herhangi bir varlık envanteri tutulmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "ID.AM",
+      },
+    ],
+
+    findingTitleEn:
+      "Business IT asset inventory requires improvement",
+    findingTitleTr:
+      "İşletme BT varlık envanterinin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Create and maintain an up-to-date inventory of business devices, systems and other important technology assets.",
+    recommendationTr:
+      "İşletme cihazları, sistemleri ve diğer önemli teknoloji varlıklarının güncel bir envanterini oluşturun ve sürdürün.",
+
+    actionTimeframe: "NEXT_30_DAYS",
+  },
+
+  {
+    id: "CCR-FULL-AST-002",
+    domainId: "AST",
+
+    controlNameEn: "Software and Service Inventory",
+    controlNameTr: "Yazılım ve Hizmet Envanteri",
+
+    questionEn:
+      "Does your organisation maintain visibility of important software, cloud services and business applications in use?",
+    questionTr:
+      "Kuruluşunuz kullanılan önemli yazılımlar, bulut hizmetleri ve iş uygulamaları hakkında güncel görünürlüğe sahip mi?",
+
+    explanationEn:
+      "Understanding which software and cloud services are in use supports security maintenance, access management and risk assessment.",
+    explanationTr:
+      "Kullanılan yazılım ve bulut hizmetlerinin bilinmesi güvenlik bakımını, erişim yönetimini ve risk değerlendirmesini destekler.",
+
+    weight: 1,
+    riskPriority: "MEDIUM",
+
+    answerOptions: [
+      {
+        id: "COMPLETE",
+        labelEn: "Yes, important software and services are documented",
+        labelTr: "Evet, önemli yazılım ve hizmetler belgelenmiştir",
+        score: 1,
+      },
+      {
+        id: "PARTIAL",
+        labelEn: "Most important software and services are documented",
+        labelTr: "Önemli yazılım ve hizmetlerin çoğu belgelenmiştir",
+        score: 0.6,
+      },
+      {
+        id: "INFORMAL",
+        labelEn: "Software and services are generally known but not formally recorded",
+        labelTr: "Yazılım ve hizmetler genel olarak bilinmektedir ancak resmi olarak kaydedilmemiştir",
+        score: 0.3,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined software or service inventory exists",
+        labelTr: "Tanımlanmış bir yazılım veya hizmet envanteri bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "ID.AM",
+      },
+    ],
+
+    findingTitleEn:
+      "Software and cloud-service inventory requires improvement",
+    findingTitleTr:
+      "Yazılım ve bulut hizmeti envanterinin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Maintain a proportionate inventory of important business applications, software and cloud services, including responsible owners where appropriate.",
+    recommendationTr:
+      "Önemli iş uygulamaları, yazılımlar ve bulut hizmetleri için uygun durumlarda sorumluları da içeren orantılı bir envanter tutun.",
+
+    actionTimeframe: "NEXT_90_DAYS",
+  },
+
+  {
+    id: "CCR-FULL-AST-003",
+    domainId: "AST",
+
+    controlNameEn: "Asset Ownership",
+    controlNameTr: "Varlık Sorumluluğu",
+
+    questionEn:
+      "Are important business technology assets assigned to responsible owners or administrators?",
+    questionTr:
+      "Önemli işletme teknoloji varlıkları sorumlu kişilere veya yöneticilere atanmış mı?",
+
+    explanationEn:
+      "Assigned ownership helps ensure that security maintenance, access decisions and lifecycle responsibilities are not overlooked.",
+    explanationTr:
+      "Atanmış sorumluluk, güvenlik bakımının, erişim kararlarının ve yaşam döngüsü sorumluluklarının gözden kaçmamasına yardımcı olur.",
+
+    weight: 0.9,
+    riskPriority: "MEDIUM",
+
+    answerOptions: [
+      {
+        id: "ASSIGNED",
+        labelEn: "Yes, important assets have clear owners",
+        labelTr: "Evet, önemli varlıkların açıkça belirlenmiş sorumluları vardır",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_ASSIGNED",
+        labelEn: "Most important assets have identifiable owners",
+        labelTr: "Önemli varlıkların çoğunun belirlenebilir sorumluları vardır",
+        score: 0.6,
+      },
+      {
+        id: "INFORMAL",
+        labelEn: "Ownership is mainly informal",
+        labelTr: "Sorumluluk çoğunlukla gayriresmidir",
+        score: 0.3,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined ownership exists",
+        labelTr: "Tanımlanmış bir varlık sorumluluğu yoktur",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: false,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "ID.AM",
+      },
+    ],
+
+    findingTitleEn:
+      "Technology asset ownership requires clarification",
+    findingTitleTr:
+      "Teknoloji varlık sorumluluğunun netleştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Assign proportionate ownership or administrative responsibility for important business technology assets.",
+    recommendationTr:
+      "Önemli işletme teknoloji varlıkları için uygun seviyede sahiplik veya yönetim sorumluluğu atayın.",
+
+    actionTimeframe: "NEXT_90_DAYS",
+  },
+
+  {
+    id: "CCR-FULL-AST-004",
+    domainId: "AST",
+
+    controlNameEn: "Unsupported and Obsolete Technology",
+    controlNameTr: "Desteklenmeyen ve Eski Teknoloji",
+
+    questionEn:
+      "Does your organisation identify technology that is obsolete, unsupported or approaching end of support?",
+    questionTr:
+      "Kuruluşunuz eski, desteklenmeyen veya destek süresi sona yaklaşan teknolojileri belirliyor mu?",
+
+    explanationEn:
+      "Unsupported technology may no longer receive security updates and can create avoidable exposure if it remains in business use.",
+    explanationTr:
+      "Desteklenmeyen teknoloji artık güvenlik güncellemeleri almayabilir ve kullanımda kalması önlenebilir güvenlik riskleri oluşturabilir.",
+
+    weight: 1.2,
+    riskPriority: "HIGH",
+
+    answerOptions: [
+      {
+        id: "MANAGED",
+        labelEn: "Yes, unsupported technology is identified and managed",
+        labelTr: "Evet, desteklenmeyen teknoloji belirlenir ve yönetilir",
+        score: 1,
+      },
+      {
+        id: "PARTIAL",
+        labelEn: "Some unsupported technology is identified",
+        labelTr: "Bazı desteklenmeyen teknolojiler belirlenmektedir",
+        score: 0.6,
+      },
+      {
+        id: "REACTIVE",
+        labelEn: "Unsupported technology is addressed mainly when problems occur",
+        labelTr: "Desteklenmeyen teknoloji çoğunlukla sorun ortaya çıktığında ele alınmaktadır",
+        score: 0.3,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined process exists",
+        labelTr: "Tanımlanmış bir süreç bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "ID.AM",
+      },
+    ],
+
+    findingTitleEn:
+      "Unsupported or obsolete technology requires attention",
+    findingTitleTr:
+      "Desteklenmeyen veya eski teknoloji dikkat gerektiriyor",
+
+    recommendationEn:
+      "Identify unsupported or obsolete technology and establish a proportionate replacement, upgrade or risk-treatment plan.",
+    recommendationTr:
+      "Desteklenmeyen veya eski teknolojiyi belirleyin ve uygun bir değiştirme, yükseltme veya risk yönetimi planı oluşturun.",
+
+    actionTimeframe: "DO_NOW",
+  },
+
+  {
+    id: "CCR-FULL-AST-005",
+    domainId: "AST",
+
+    controlNameEn: "Asset Lifecycle Management",
+    controlNameTr: "Varlık Yaşam Döngüsü Yönetimi",
+
+    questionEn:
+      "Does your organisation manage technology assets when they are introduced, reassigned and retired?",
+    questionTr:
+      "Kuruluşunuz teknoloji varlıklarını kullanıma alındığında, yeniden atandığında ve kullanım dışı bırakıldığında yönetiyor mu?",
+
+    explanationEn:
+      "Lifecycle management helps maintain accurate inventories and supports secure handling of devices and information throughout their business use.",
+    explanationTr:
+      "Yaşam döngüsü yönetimi doğru envanterlerin korunmasına ve cihazlarla bilgilerin kullanım süresince güvenli şekilde yönetilmesine yardımcı olur.",
+
+    weight: 0.9,
+    riskPriority: "MEDIUM",
+
+    answerOptions: [
+      {
+        id: "MANAGED",
+        labelEn: "Yes, asset lifecycle changes are consistently managed",
+        labelTr: "Evet, varlık yaşam döngüsü değişiklikleri tutarlı şekilde yönetilir",
+        score: 1,
+      },
+      {
+        id: "PARTIAL",
+        labelEn: "Lifecycle controls exist but are not always followed",
+        labelTr: "Yaşam döngüsü kontrolleri vardır ancak her zaman uygulanmaz",
+        score: 0.6,
+      },
+      {
+        id: "INFORMAL",
+        labelEn: "Lifecycle management is informal",
+        labelTr: "Yaşam döngüsü yönetimi gayriresmidir",
+        score: 0.3,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined lifecycle process exists",
+        labelTr: "Tanımlanmış bir yaşam döngüsü süreci bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: false,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "ID.AM",
+      },
+    ],
+
+    findingTitleEn:
+      "Technology asset lifecycle management requires improvement",
+    findingTitleTr:
+      "Teknoloji varlık yaşam döngüsü yönetiminin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Establish simple procedures for recording technology when it is introduced, reassigned and securely retired.",
+    recommendationTr:
+      "Teknolojinin kullanıma alınması, yeniden atanması ve güvenli şekilde kullanım dışı bırakılması için basit prosedürler oluşturun.",
+
+    actionTimeframe: "NEXT_90_DAYS",
+  },
+
+  {
+    id: "CCR-FULL-AST-006",
+    domainId: "AST",
+
+    controlNameEn: "Critical Asset Identification",
+    controlNameTr: "Kritik Varlıkların Belirlenmesi",
+
+    questionEn:
+      "Has your organisation identified which systems, services and technology assets are most important to continued business operations?",
+    questionTr:
+      "Kuruluşunuz iş faaliyetlerinin devamı için en önemli sistemleri, hizmetleri ve teknoloji varlıklarını belirledi mi?",
+
+    explanationEn:
+      "Identifying critical assets helps an organisation prioritise protection, recovery planning and improvement resources.",
+    explanationTr:
+      "Kritik varlıkların belirlenmesi koruma, kurtarma planlaması ve iyileştirme kaynaklarının önceliklendirilmesine yardımcı olur.",
+
+    weight: 1.1,
+    riskPriority: "HIGH",
+
+    answerOptions: [
+      {
+        id: "IDENTIFIED",
+        labelEn: "Yes, critical assets and services are clearly identified",
+        labelTr: "Evet, kritik varlıklar ve hizmetler açıkça belirlenmiştir",
+        score: 1,
+      },
+      {
+        id: "PARTIAL",
+        labelEn: "Some critical assets have been identified",
+        labelTr: "Bazı kritik varlıklar belirlenmiştir",
+        score: 0.6,
+      },
+      {
+        id: "INFORMAL",
+        labelEn: "Critical assets are generally understood but not documented",
+        labelTr: "Kritik varlıklar genel olarak bilinmektedir ancak belgelenmemiştir",
+        score: 0.3,
+      },
+      {
+        id: "NONE",
+        labelEn: "Critical assets have not been identified",
+        labelTr: "Kritik varlıklar belirlenmemiştir",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "ID.AM",
+      },
+    ],
+
+    findingTitleEn:
+      "Critical business technology assets are not clearly identified",
+    findingTitleTr:
+      "Kritik işletme teknoloji varlıkları açıkça belirlenmemiş",
+
+    recommendationEn:
+      "Identify and record the systems, services and technology assets whose loss or unavailability would materially affect business operations.",
+    recommendationTr:
+      "Kaybı veya kullanılamaması iş faaliyetlerini önemli ölçüde etkileyebilecek sistemleri, hizmetleri ve teknoloji varlıklarını belirleyin ve kaydedin.",
+
+    actionTimeframe: "NEXT_30_DAYS",
+  },
 ];
