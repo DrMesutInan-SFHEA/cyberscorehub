@@ -1393,4 +1393,307 @@ recommendationTr:
 
     actionTimeframe: "NEXT_90_DAYS",
   },
+        {
+    id: "CCR-FULL-END-001",
+    domainId: "END",
+
+    controlNameEn: "Security Update Management",
+  controlNameTr: "Güvenlik Güncelleme Yönetimi",
+
+    questionEn:
+      "Are operating systems, applications and business devices kept up to date with relevant security updates?",
+   questionTr:
+  "İşletim sistemleri, uygulamalar ve işletme cihazları ilgili güvenlik güncellemeleriyle güncel tutuluyor mu?",
+
+    explanationEn:
+      "Timely security updates help reduce exposure to known vulnerabilities in operating systems, applications and supported business devices.",
+    explanationTr:
+      "Güvenlik güncellemelerinin zamanında uygulanması işletim sistemleri, uygulamalar ve desteklenen işletme cihazlarındaki bilinen açıklıklara karşı riski azaltmaya yardımcı olur.",
+
+    weight: 1.4,
+    riskPriority: "HIGH",
+
+    answerOptions: [
+      {
+        id: "MANAGED",
+        labelEn:
+          "Yes, security updates are managed and applied within defined timeframes",
+labelTr: "Evet, güvenlik güncellemeleri tanımlanmış zaman dilimlerinde yönetilir ve uygulanır",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_AUTOMATIC",
+        labelEn:
+          "Updates are generally applied automatically but oversight is limited",
+labelTr: "Güncellemeler genel olarak otomatik uygulanır ancak gözetim sınırlıdır",
+        score: 0.7,
+      },
+      {
+        id: "INCONSISTENT",
+        labelEn:
+          "Updates are applied but not consistently or within defined timeframes",
+labelTr: "Güncellemeler uygulanır ancak tutarlı veya tanımlanmış sürelerde değildir",
+        score: 0.4,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined security-update process exists",
+        labelTr:
+"Tanımlanmış bir güvenlik güncelleme süreci bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.PS-02",
+      },
+    ],
+
+    findingTitleEn:
+      "Security update management requires improvement",
+findingTitleTr:
+  "Güvenlik güncelleme yönetiminin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Establish a consistent security-update process for supported operating systems, applications and business devices, with defined update timeframes based on risk.",
+     recommendationTr:
+      "Desteklenen işletim sistemleri, uygulamalar ve işletme cihazları için riske dayalı tanımlanmış süreleri içeren tutarlı bir güvenlik güncelleme süreci oluşturun.",
+
+    actionTimeframe: "DO_NOW",
+  },
+
+  {
+    id: "CCR-FULL-END-002",
+    domainId: "END",
+
+    controlNameEn: "Secure Configuration",
+controlNameTr: "Güvenli Yapılandırma",
+
+    questionEn:
+      "Are business computers and devices configured using defined security settings or an approved baseline?",
+    questionTr:
+      "İşletme bilgisayarları ve cihazları tanımlanmış güvenlik ayarları veya onaylanmış bir temel yapılandırma kullanılarak yapılandırılıyor mu?",
+
+    explanationEn:
+      "Consistent secure configuration can reduce unnecessary functionality, insecure defaults and avoidable differences between business devices.",
+        explanationTr:
+      "Tutarlı güvenli yapılandırma gereksiz işlevleri, güvensiz varsayılan ayarları ve işletme cihazları arasındaki önlenebilir farklılıkları azaltabilir.",
+
+    weight: 1.2,
+    riskPriority: "HIGH",
+
+    answerOptions: [
+      {
+        id: "BASELINE",
+        labelEn:
+          "Yes, defined secure configurations or approved baselines are used",
+labelTr: "Evet, tanımlanmış güvenli yapılandırmalar veya onaylanmış temel ayarlar kullanılmaktadır",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_STANDARD",
+        labelEn:
+          "Most devices use consistent security settings",
+labelTr: "Cihazların çoğu tutarlı güvenlik ayarları kullanmaktadır",
+        score: 0.7,
+      },
+      {
+        id: "INFORMAL",
+        labelEn:
+          "Security settings are applied but there is no defined baseline",
+labelTr: "Güvenlik ayarları uygulanmaktadır ancak tanımlı bir temel yapılandırma yoktur",
+        score: 0.4,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined secure-configuration approach exists",
+labelTr: "Tanımlanmış bir güvenli yapılandırma yaklaşımı bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.PS-01",
+      },
+    ],
+
+    findingTitleEn:
+      "Secure configuration practices require improvement",
+    findingTitleTr:
+      "Güvenli yapılandırma uygulamalarının iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Define proportionate secure-configuration standards for business devices and systems, including review of security-relevant default settings and unnecessary functionality.",
+    recommendationTr:
+      "İşletme cihazları ve sistemleri için güvenlikle ilgili varsayılan ayarların ve gereksiz işlevlerin gözden geçirilmesini içeren orantılı güvenli yapılandırma standartları tanımlayın.",
+
+    actionTimeframe: "NEXT_30_DAYS",
+  },
+
+  {
+    id: "CCR-FULL-END-003",
+    domainId: "END",
+
+    controlNameEn: "Endpoint Protection",
+   controlNameTr: "Uç Nokta Koruması",
+
+    questionEn:
+      "Are business endpoints protected using appropriate built-in or managed security capabilities?",
+    questionTr:
+      "İşletme uç noktaları uygun yerleşik veya yönetilen güvenlik özellikleri kullanılarak korunuyor mu?",
+
+    explanationEn:
+      "Endpoint protection can help identify, block or reduce the impact of malicious software and other common threats affecting business devices.",
+    explanationTr:
+      "Uç nokta koruması, işletme cihazlarını etkileyen zararlı yazılımların ve diğer yaygın tehditlerin belirlenmesine, engellenmesine veya etkisinin azaltılmasına yardımcı olabilir.",
+
+    weight: 1.3,
+    riskPriority: "HIGH",
+
+    answerOptions: [
+      {
+        id: "MANAGED",
+        labelEn:
+          "Yes, appropriate endpoint protection is enabled and managed",
+labelTr: "Evet, uygun uç nokta koruması etkin ve yönetilmektedir",
+        score: 1,
+      },
+      {
+        id: "BUILT_IN",
+        labelEn:
+          "Built-in protection is enabled but central oversight is limited",
+labelTr: "Yerleşik koruma etkindir ancak merkezi gözetim sınırlıdır",
+        score: 0.7,
+      },
+      {
+        id: "PARTIAL",
+        labelEn:
+          "Protection exists on some devices but coverage is incomplete",
+labelTr: "Bazı cihazlarda koruma vardır ancak kapsam eksiktir",
+        score: 0.4,
+      },
+      {
+        id: "NONE",
+        labelEn:
+          "No defined endpoint-protection approach exists",
+labelTr: "Tanımlanmış bir uç nokta koruma yaklaşımı bulunmamaktadır",
+
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.PS",
+      },
+    ],
+
+    findingTitleEn:
+      "Endpoint protection coverage requires improvement",
+findingTitleTr:
+  "Uç nokta koruma kapsamının iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Ensure appropriate endpoint-protection capabilities are enabled across applicable business devices and that protection status can be monitored.",
+recommendationTr:
+  "Uygulanabilir işletme cihazlarının tamamında uygun uç nokta koruma özelliklerinin etkinleştirildiğinden ve koruma durumunun izlenebildiğinden emin olun.",
+
+    actionTimeframe: "DO_NOW",
+  },
+
+  {
+    id: "CCR-FULL-END-004",
+    domainId: "END",
+
+    controlNameEn: "Unauthorised Software Control",
+    controlNameTr: "Yetkisiz Yazılım Kontrolü",
+
+    questionEn:
+      "Does your organisation control or restrict the installation of unauthorised software on business devices?",
+    questionTr: "Kuruluşunuz işletme cihazlarında yetkisiz yazılımların yüklenmesini kontrol ediyor veya kısıtlıyor mu?",
+    
+    explanationEn:
+      "Restricting unauthorised software can reduce exposure to malicious, unsupported or unapproved applications on business devices.",
+    explanationTr:
+      "Yetkisiz yazılımların kısıtlanması, işletme cihazlarında kötü amaçlı, desteklenmeyen veya onaylanmamış uygulamalara maruz kalma riskini azaltmaya yardımcı olabilir.",
+          weight: 1.1,
+    riskPriority: "MEDIUM",
+    
+    answerOptions: [
+      {
+        id: "CONTROLLED",
+        labelEn: "Yes, software installation is controlled",
+        labelTr: "Evet, yazılım yükleme işlemleri kontrol edilmektedir",
+        score: 1,
+      },
+      {
+        id: "PARTIAL",
+        labelEn: "Partially controlled",
+        labelTr: "Kısmen kontrol edilmektedir",
+        score: 0.5,
+      },
+      {
+        id: "UNCONTROLLED",
+        labelEn: "No, users can install software without restriction",
+        labelTr: "Hayır, kullanıcılar herhangi bir kısıtlama olmadan yazılım yükleyebilir",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+    
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.PS",
+      },
+    ],
+    
+    findingTitleEn:
+      "Unauthorised software installation is not adequately controlled",
+    findingTitleTr:
+      "Yetkisiz yazılım yüklemeleri yeterli şekilde kontrol edilmiyor",
+
+    recommendationEn:
+      "Restrict software installation on business devices to authorised applications and approved users, and periodically review installed software.",
+    recommendationTr:
+      "İşletme cihazlarında yazılım yüklemelerini yetkili uygulamalar ve onaylı kullanıcılarla sınırlandırın ve yüklü yazılımları düzenli olarak gözden geçirin.",
+
+    actionTimeframe: "NEXT_30_DAYS",
+  },
 ];
