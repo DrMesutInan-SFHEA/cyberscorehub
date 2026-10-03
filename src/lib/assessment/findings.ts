@@ -152,3 +152,26 @@ export function rankFindings(
     );
   });
 }
+export function generateImprovementRoadmap(
+  findings: CCRFinding[],
+) {
+  const rankedFindings = rankFindings(findings);
+
+  return {
+    doNow: rankedFindings.filter(
+      (finding) => finding.actionTimeframe === "DO_NOW",
+    ),
+
+    next30Days: rankedFindings.filter(
+      (finding) => finding.actionTimeframe === "NEXT_30_DAYS",
+    ),
+
+    next90Days: rankedFindings.filter(
+      (finding) => finding.actionTimeframe === "NEXT_90_DAYS",
+    ),
+
+    plan: rankedFindings.filter(
+      (finding) => finding.actionTimeframe === "PLAN",
+    ),
+  };
+}

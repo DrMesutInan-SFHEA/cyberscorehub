@@ -10,6 +10,7 @@ import {
 } from "@/lib/assessment/scoring";
 import {
   generateFindings,
+  generateImprovementRoadmap,
   rankFindings,
 } from "@/lib/assessment/findings";
 import type {
@@ -448,7 +449,7 @@ if (step === 5 && result) {
   );
 
   const priorityActions = rankFindings(result.findings).slice(0, 3);
-
+  const roadmap = generateImprovementRoadmap(result.findings);
   return (
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
@@ -619,7 +620,103 @@ if (step === 5 && result) {
             )}
           </div>
         </div>
+        <div className="mt-10">
+          <div className="text-sm font-bold uppercase tracking-[0.15em] text-cyan-400">
+            CCR Improvement Roadmap
+          </div>
 
+          <h2 className="mt-2 text-3xl font-black">
+            What to improve first
+          </h2>
+
+          <p className="mt-3 max-w-3xl leading-7 text-slate-400">
+            Your roadmap is generated from the findings identified in this
+            Quick Check and groups recommended actions by suggested timeframe.
+          </p>
+
+          <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            {[
+              {
+                title: "Do Now",
+                description:
+                  "Prioritise these actions first based on the current assessment.",
+                findings: roadmap.doNow,
+                colour: "border-red-400/20 bg-red-400/[0.05]",
+                labelColour: "text-red-300",
+              },
+              {
+                title: "Next 30 Days",
+                description:
+                  "Address these actions as part of your near-term improvement plan.",
+                findings: roadmap.next30Days,
+                colour: "border-amber-400/20 bg-amber-400/[0.05]",
+                labelColour: "text-amber-300",
+              },
+              {
+                title: "Next 90 Days",
+                description:
+                  "Plan these improvements after immediate and near-term priorities.",
+                findings: roadmap.next90Days,
+                colour: "border-cyan-400/20 bg-cyan-400/[0.05]",
+                labelColour: "text-cyan-300",
+              },
+              {
+                title: "Plan",
+                description:
+                  "Keep these longer-term improvements visible in your security plan.",
+                findings: roadmap.plan,
+                colour: "border-blue-400/20 bg-blue-400/[0.05]",
+                labelColour: "text-blue-300",
+              },
+            ].map((roadmapGroup) => (
+              <div
+                key={roadmapGroup.title}
+                className={`rounded-3xl border p-6 ${roadmapGroup.colour}`}
+              >
+                <div
+                  className={`text-sm font-bold uppercase tracking-[0.15em] ${roadmapGroup.labelColour}`}
+                >
+                  {roadmapGroup.title}
+                </div>
+
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  {roadmapGroup.description}
+                </p>
+
+                <div className="mt-5 space-y-3">
+                  {roadmapGroup.findings.length === 0 ? (
+                    <div className="rounded-xl border border-white/10 bg-[#0b192a] p-4 text-sm text-slate-500">
+                      No actions currently identified for this timeframe.
+                    </div>
+                  ) : (
+                    roadmapGroup.findings.map((finding, index) => (
+                      <div
+                        key={`${roadmapGroup.title}-${finding.questionId}-${index}`}
+                        className="rounded-xl border border-white/10 bg-[#0b192a] p-4"
+                      >
+                        <div className="flex items-start gap-3">
+                          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10 text-xs font-bold text-slate-300">
+                            {index + 1}
+                          </span>
+
+                          <div>
+                            <div className="text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                              {finding.priority}
+                            </div>
+
+                            <div className="mt-1 font-semibold leading-6 text-slate-200">
+                              {finding.titleEn}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="mt-10 rounded-3xl border border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 to-blue-500/5 p-8 text-center">
           <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
             Go Deeper With CCR
