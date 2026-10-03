@@ -100,9 +100,12 @@ export default function Home() {
               How It Works
             </button>
 
-            <button className="transition hover:text-cyan-300">
-              Frameworks
-            </button>
+<a
+  href="/methodology"
+  className="transition hover:text-cyan-300"
+>
+  Methodology
+</a>
 
             <button className="transition hover:text-cyan-300">
               Pricing
