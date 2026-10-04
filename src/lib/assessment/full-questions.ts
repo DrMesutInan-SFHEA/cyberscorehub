@@ -1761,5 +1761,76 @@ recommendationTr:
       "İşletme sistemlerinde çıkarılabilir medya kullanımı için orantılı kontroller tanımlayın, gereksiz kullanımı sınırlandırın ve uygun durumlarda yalnızca yetkilendirilmiş cihazlara izin verin.",
     actionTimeframe: "NEXT_30_DAYS",
   },
-];
 
+   {
+    id: "CCR-FULL-END-006",
+    domainId: "END",
+
+    controlNameEn: "Device Encryption",
+    controlNameTr: "Cihaz Şifreleme",
+
+    questionEn:
+      "Are applicable business laptops and portable devices protected using device or disk encryption?",
+    questionTr:
+      "Uygulanabilir işletme dizüstü bilgisayarları ve taşınabilir cihazları, cihaz veya disk şifrelemesi kullanılarak korunuyor mu?",
+          explanationEn:
+      "Device encryption can help protect business information if a laptop or portable device is lost, stolen or accessed without authorisation.",
+    explanationTr:
+      "Cihaz şifrelemesi, bir dizüstü bilgisayar veya taşınabilir cihazın kaybolması, çalınması ya da yetkisiz erişime maruz kalması durumunda işletme bilgilerinin korunmasına yardımcı olabilir.",
+          weight: 1.2,
+    riskPriority: "HIGH",
+        answerOptions: [
+      {
+        id: "ENCRYPTED",
+        labelEn: "Yes, applicable portable devices are encrypted",
+        labelTr: "Evet, uygulanabilir taşınabilir cihazlar şifrelenmektedir",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_ENCRYPTED",
+        labelEn: "Most applicable portable devices are encrypted",
+        labelTr: "Uygulanabilir taşınabilir cihazların çoğu şifrelenmektedir",
+        score: 0.7,
+      },
+      {
+        id: "PARTIAL",
+        labelEn: "Encryption is used on some devices only",
+        labelTr: "Şifreleme yalnızca bazı cihazlarda kullanılmaktadır",
+        score: 0.4,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined device-encryption approach exists",
+        labelTr: "Tanımlanmış bir cihaz şifreleme yaklaşımı bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.DS",
+      },
+    ],
+
+    findingTitleEn:
+      "Portable device encryption requires improvement",
+    findingTitleTr:
+      "Taşınabilir cihaz şifrelemesinin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Enable device or disk encryption on applicable business laptops and portable devices, prioritising devices that store or access sensitive business information.",
+    recommendationTr:
+      "Uygulanabilir işletme dizüstü bilgisayarlarında ve taşınabilir cihazlarda cihaz veya disk şifrelemesini etkinleştirin ve hassas işletme bilgilerini saklayan veya bu bilgilere erişen cihazlara öncelik verin.",
+
+    actionTimeframe: "DO_NOW",
+  },
+];
