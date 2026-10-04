@@ -2120,4 +2120,74 @@ recommendationTr:
 
     actionTimeframe: "DO_NOW",
   },
+
+   {
+    id: "CCR-FULL-NET-005",
+    domainId: "NET",
+
+    controlNameEn: "Network Segmentation",
+    controlNameTr: "Ağ Bölümlendirmesi",
+
+    questionEn:
+      "Are important business systems or sensitive network areas separated from general user and device networks where appropriate?",
+    questionTr:
+      "Önemli işletme sistemleri veya hassas ağ alanları, uygun durumlarda genel kullanıcı ve cihaz ağlarından ayrıştırılıyor mu?",
+          explanationEn:
+      "Network segmentation can help limit unauthorised access and reduce the spread of security incidents between general user networks and important business systems.",
+    explanationTr:
+      "Ağ bölümlendirmesi, genel kullanıcı ağları ile önemli işletme sistemleri arasındaki yetkisiz erişimi sınırlandırmaya ve güvenlik olaylarının yayılmasını azaltmaya yardımcı olabilir.",
+          weight: 1.2,
+    riskPriority: "HIGH",
+        answerOptions: [
+      {
+        id: "SEGMENTED",
+        labelEn: "Yes, important systems and sensitive network areas are appropriately separated",
+        labelTr: "Evet, önemli sistemler ve hassas ağ alanları uygun şekilde ayrıştırılmıştır",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_SEGMENTED",
+        labelEn: "Most important systems are separated but some exceptions exist",
+        labelTr: "Önemli sistemlerin çoğu ayrıştırılmıştır ancak bazı istisnalar bulunmaktadır",
+        score: 0.7,
+      },
+      {
+        id: "LIMITED",
+        labelEn: "Some network separation exists but coverage is limited",
+        labelTr: "Bazı ağ ayrıştırmaları vardır ancak kapsam sınırlıdır",
+        score: 0.4,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined network-segmentation approach exists",
+        labelTr: "Tanımlanmış bir ağ bölümlendirme yaklaşımı bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+        evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.IR",
+      },
+    ],
+    findingTitleEn:
+      "Network segmentation requires improvement",
+    findingTitleTr:
+      "Ağ bölümlendirmesinin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Separate important business systems and sensitive network areas from general user and device networks where appropriate, using proportionate network-segmentation controls.",
+    recommendationTr:
+      "Önemli işletme sistemlerini ve hassas ağ alanlarını uygun durumlarda genel kullanıcı ve cihaz ağlarından ayırın ve orantılı ağ bölümlendirme kontrolleri uygulayın.",
+
+    actionTimeframe: "NEXT_30_DAYS",
+  },
 ];
