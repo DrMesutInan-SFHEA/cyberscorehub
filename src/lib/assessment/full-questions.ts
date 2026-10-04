@@ -2050,4 +2050,74 @@ recommendationTr:
 
     actionTimeframe: "NEXT_30_DAYS",
   },
+  {
+    id: "CCR-FULL-NET-004",
+    domainId: "NET",
+
+    controlNameEn: "Remote Access Security",
+    controlNameTr: "Uzaktan Erişim Güvenliği",
+
+    questionEn:
+      "Is remote access to business systems protected using secure methods and restricted to authorised users?",
+    questionTr:
+      "İşletme sistemlerine uzaktan erişim güvenli yöntemlerle korunuyor ve yalnızca yetkili kullanıcılarla sınırlandırılıyor mu?",
+          explanationEn:
+      "Secure remote access helps reduce the risk of unauthorised users reaching business systems from external networks or locations.",
+    explanationTr:
+      "Güvenli uzaktan erişim, yetkisiz kullanıcıların dış ağlardan veya konumlardan işletme sistemlerine erişme riskini azaltmaya yardımcı olabilir.",
+          weight: 1.3,
+    riskPriority: "HIGH",
+        answerOptions: [
+      {
+        id: "SECURE",
+        labelEn: "Yes, remote access is securely configured and restricted to authorised users",
+        labelTr: "Evet, uzaktan erişim güvenli şekilde yapılandırılmış ve yetkili kullanıcılarla sınırlandırılmıştır",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_SECURE",
+        labelEn: "Remote access is generally secure but some limitations exist",
+        labelTr: "Uzaktan erişim genel olarak güvenlidir ancak bazı sınırlamalar bulunmaktadır",
+        score: 0.7,
+      },
+      {
+        id: "INCONSISTENT",
+        labelEn: "Remote access controls exist but are not consistently applied",
+        labelTr: "Uzaktan erişim kontrolleri vardır ancak tutarlı şekilde uygulanmamaktadır",
+        score: 0.4,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined secure remote-access approach exists",
+        labelTr: "Tanımlanmış güvenli bir uzaktan erişim yaklaşımı bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+        evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.AA",
+      },
+    ],
+
+    findingTitleEn:
+      "Remote access security requires improvement",
+    findingTitleTr:
+      "Uzaktan erişim güvenliğinin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Protect remote access to business systems using secure access methods, restrict access to authorised users and periodically review remote-access permissions and configuration.",
+    recommendationTr:
+      "İşletme sistemlerine uzaktan erişimi güvenli erişim yöntemleriyle koruyun, erişimi yetkili kullanıcılarla sınırlandırın ve uzaktan erişim yetkilerini ve yapılandırmasını düzenli olarak gözden geçirin.",
+
+    actionTimeframe: "DO_NOW",
+  },
 ];
