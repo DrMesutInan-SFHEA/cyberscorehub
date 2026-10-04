@@ -1696,4 +1696,70 @@ recommendationTr:
 
     actionTimeframe: "NEXT_30_DAYS",
   },
+
+  {
+    id: "CCR-FULL-END-005",
+    domainId: "END",
+
+    controlNameEn: "Removable Media Control",
+    controlNameTr: "Çıkarılabilir Medya Kontrolü",
+
+    questionEn:
+      "Does your organisation control the use of removable media such as USB storage devices on business systems?",
+     questionTr:
+      "Kuruluşunuz işletme sistemlerinde USB depolama cihazları gibi çıkarılabilir medyaların kullanımını kontrol ediyor mu?",
+
+    explanationEn:
+      "Controlling removable media can reduce exposure to malicious software, unauthorised data transfer and unmanaged storage devices.",
+    explanationTr:
+      "Çıkarılabilir medyanın kontrol edilmesi, kötü amaçlı yazılımlara, yetkisiz veri aktarımına ve yönetilmeyen depolama cihazlarına maruz kalma riskini azaltmaya yardımcı olabilir.",
+
+    weight: 1.1,
+    riskPriority: "MEDIUM",
+        answerOptions: [
+      {
+        id: "CONTROLLED",
+        labelEn: "Yes, removable media use is controlled",
+        labelTr: "Evet, çıkarılabilir medya kullanımı kontrol edilmektedir",
+        score: 1,
+      },
+      {
+        id: "PARTIAL",
+        labelEn: "Some controls are in place",
+        labelTr: "Bazı kontroller uygulanmaktadır",
+        score: 0.5,
+      },
+      {
+        id: "UNCONTROLLED",
+        labelEn: "No defined controls are in place",
+        labelTr: "Tanımlanmış bir kontrol bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+        evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.PS",
+      },
+    ],
+        findingTitleEn:
+      "Removable media use is not adequately controlled",
+    findingTitleTr:
+      "Çıkarılabilir medya kullanımı yeterli şekilde kontrol edilmiyor",
+
+    recommendationEn:
+      "Define proportionate controls for removable media use on business systems, restricting unnecessary use and allowing only authorised devices where appropriate.",
+    recommendationTr:
+      "İşletme sistemlerinde çıkarılabilir medya kullanımı için orantılı kontroller tanımlayın, gereksiz kullanımı sınırlandırın ve uygun durumlarda yalnızca yetkilendirilmiş cihazlara izin verin.",
+    actionTimeframe: "NEXT_30_DAYS",
+  },
 ];
+
