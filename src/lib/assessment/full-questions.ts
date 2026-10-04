@@ -439,7 +439,7 @@ recommendationTr:
           "Tanımlanmış bir yönetim gözden geçirmesi yapılmamaktadır",
         score: 0,
       },
-      {
+          {
         id: "UNKNOWN",
         labelEn: "Don't know",
         labelTr: "Bilmiyorum",
@@ -513,7 +513,7 @@ recommendationTr:
         labelTr: "Herhangi bir varlık envanteri tutulmamaktadır",
         score: 0,
       },
-      {
+       {
         id: "UNKNOWN",
         labelEn: "Don't know",
         labelTr: "Bilmiyorum",
@@ -738,7 +738,7 @@ recommendationTr:
         labelTr: "Tanımlanmış bir süreç bulunmamaktadır",
         score: 0,
       },
-      {
+        {
         id: "UNKNOWN",
         labelEn: "Don't know",
         labelTr: "Bilmiyorum",
@@ -888,7 +888,7 @@ recommendationTr:
         labelTr: "Kritik varlıklar belirlenmemiştir",
         score: 0,
       },
-      {
+       {
         id: "UNKNOWN",
         labelEn: "Don't know",
         labelTr: "Bilmiyorum",
@@ -1043,7 +1043,7 @@ recommendationTr:
         labelTr: "Ayrıcalıklı erişim resmi olarak yönetilmemektedir",
         score: 0,
       },
-      {
+       {
         id: "UNKNOWN",
         labelEn: "Don't know",
         labelTr: "Bilmiyorum",
@@ -1364,7 +1364,7 @@ recommendationTr:
           "Tanımlanmış bir erişim gözden geçirme süreci bulunmamaktadır",
         score: 0,
       },
-      {
+       {
         id: "UNKNOWN",
         labelEn: "Don't know",
         labelTr: "Bilmiyorum",
@@ -1442,7 +1442,7 @@ labelTr: "Güncellemeler uygulanır ancak tutarlı veya tanımlanmış sürelerd
 "Tanımlanmış bir güvenlik güncelleme süreci bulunmamaktadır",
         score: 0,
       },
-      {
+         {
         id: "UNKNOWN",
         labelEn: "Don't know",
         labelTr: "Bilmiyorum",
@@ -1667,14 +1667,14 @@ recommendationTr:
         labelTr: "Hayır, kullanıcılar herhangi bir kısıtlama olmadan yazılım yükleyebilir",
         score: 0,
       },
-      {
+        {
         id: "UNKNOWN",
         labelEn: "Don't know",
         labelTr: "Bilmiyorum",
         score: 0,
       },
     ],
-    
+
     evidenceRequested: true,
 
     frameworkMappings: [
@@ -1742,7 +1742,8 @@ recommendationTr:
         score: 0,
       },
     ],
-        evidenceRequested: true,
+
+    evidenceRequested: true,
 
     frameworkMappings: [
       {
@@ -1804,7 +1805,7 @@ recommendationTr:
         labelTr: "Tanımlanmış bir cihaz şifreleme yaklaşımı bulunmamaktadır",
         score: 0,
       },
-      {
+        {
         id: "UNKNOWN",
         labelEn: "Don't know",
         labelTr: "Bilmiyorum",
@@ -1876,7 +1877,7 @@ recommendationTr:
         labelTr: "Tanımlanmış bir ağ sınırı koruması bulunmamaktadır",
         score: 0,
       },
-      {
+           {
         id: "UNKNOWN",
         labelEn: "Don't know",
         labelTr: "Bilmiyorum",
@@ -1904,5 +1905,77 @@ recommendationTr:
       "İşletme ağlarının uygun şekilde yapılandırılmış ve yönetilen bir güvenlik duvarı veya eşdeğer sınır güvenliği kontrolüyle korunduğundan emin olun ve ilgili kuralları ve ayarları düzenli olarak gözden geçirin.",
 
     actionTimeframe: "DO_NOW",
-     },
+  },
+
+  {
+    id: "CCR-FULL-NET-002",
+    domainId: "NET",
+
+    controlNameEn: "Secure Wireless Networks",
+    controlNameTr: "Güvenli Kablosuz Ağlar",
+
+    questionEn:
+      "Are business wireless networks protected using appropriate security settings and strong authentication?",
+    questionTr:
+      "İşletmenizin kablosuz ağları uygun güvenlik ayarları ve güçlü kimlik doğrulama kullanılarak korunuyor mu?",
+          explanationEn:
+      "Secure wireless configuration and strong authentication can reduce the risk of unauthorised users connecting to business networks.",
+    explanationTr:
+      "Güvenli kablosuz ağ yapılandırması ve güçlü kimlik doğrulama, yetkisiz kullanıcıların işletme ağlarına bağlanma riskini azaltmaya yardımcı olabilir.",
+          weight: 1.2,
+    riskPriority: "HIGH",
+        answerOptions: [
+      {
+        id: "SECURE",
+        labelEn: "Yes, wireless networks use appropriate security and strong authentication",
+        labelTr: "Evet, kablosuz ağlarda uygun güvenlik ve güçlü kimlik doğrulama kullanılmaktadır",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_SECURE",
+        labelEn: "Most wireless networks use appropriate security settings",
+        labelTr: "Kablosuz ağların çoğunda uygun güvenlik ayarları kullanılmaktadır",
+        score: 0.7,
+      },
+      {
+        id: "INCONSISTENT",
+        labelEn: "Wireless security exists but settings are inconsistent",
+        labelTr: "Kablosuz ağ güvenliği vardır ancak ayarlar tutarlı değildir",
+        score: 0.4,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined wireless security approach exists",
+        labelTr: "Tanımlanmış bir kablosuz ağ güvenliği yaklaşımı bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+        frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.AA",
+      },
+    ],
+
+    findingTitleEn:
+      "Wireless network security requires improvement",
+    findingTitleTr:
+      "Kablosuz ağ güvenliğinin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Configure business wireless networks using appropriate security settings and strong authentication, and periodically review wireless access and configuration.",
+    recommendationTr:
+      "İşletme kablosuz ağlarını uygun güvenlik ayarları ve güçlü kimlik doğrulama kullanarak yapılandırın ve kablosuz erişimi ve yapılandırmayı düzenli olarak gözden geçirin.",
+
+    actionTimeframe: "NEXT_30_DAYS",
+  },
 ];
