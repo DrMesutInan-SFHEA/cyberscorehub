@@ -1978,4 +1978,76 @@ recommendationTr:
 
     actionTimeframe: "NEXT_30_DAYS",
   },
+
+  {
+    id: "CCR-FULL-NET-003",
+    domainId: "NET",
+
+    controlNameEn: "Guest Network Separation",
+    controlNameTr: "Misafir Ağ Ayrıştırması",
+
+    questionEn:
+      "Are guest or visitor devices separated from internal business systems and networks?",
+    questionTr:
+      "Misafir veya ziyaretçi cihazları, işletmenin iç sistemlerinden ve ağlarından ayrıştırılıyor mu?",
+          explanationEn:
+      "Separating guest access from internal business networks can reduce the risk that unmanaged or untrusted devices can reach business systems and information.",
+    explanationTr:
+      "Misafir erişiminin işletmenin iç ağlarından ayrıştırılması, yönetilmeyen veya güvenilmeyen cihazların işletme sistemlerine ve bilgilerine erişme riskini azaltmaya yardımcı olabilir.",
+          weight: 1.0,
+    riskPriority: "MEDIUM",
+        answerOptions: [
+      {
+        id: "SEPARATED",
+        labelEn: "Yes, guest access is separated from internal business networks",
+        labelTr: "Evet, misafir erişimi işletmenin iç ağlarından ayrıştırılmıştır",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_SEPARATED",
+        labelEn: "Guest access is generally separated but some exceptions exist",
+        labelTr: "Misafir erişimi genel olarak ayrıştırılmıştır ancak bazı istisnalar bulunmaktadır",
+        score: 0.7,
+      },
+      {
+        id: "LIMITED",
+        labelEn: "Some separation exists but guest devices may reach parts of the business network",
+        labelTr: "Bazı ayrıştırmalar vardır ancak misafir cihazları işletme ağının bazı bölümlerine erişebilir",
+        score: 0.4,
+      },
+      {
+        id: "NONE",
+        labelEn: "Guest access is not separated from internal business networks",
+        labelTr: "Misafir erişimi işletmenin iç ağlarından ayrıştırılmamıştır",
+        score: 0,
+      },
+        {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.IR",
+      },
+    ],
+
+    findingTitleEn:
+      "Guest network separation requires improvement",
+    findingTitleTr:
+      "Misafir ağ ayrıştırmasının iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Separate guest and visitor network access from internal business systems and networks, using appropriately configured guest networks or equivalent network controls.",
+    recommendationTr:
+      "Misafir ve ziyaretçi ağ erişimini işletmenin iç sistemlerinden ve ağlarından ayırın ve uygun şekilde yapılandırılmış misafir ağları veya eşdeğer ağ kontrolleri kullanın.",
+
+    actionTimeframe: "NEXT_30_DAYS",
+  },
 ];
