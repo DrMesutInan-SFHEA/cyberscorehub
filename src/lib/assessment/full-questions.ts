@@ -1833,4 +1833,76 @@ recommendationTr:
 
     actionTimeframe: "DO_NOW",
   },
+
+  {
+    id: "CCR-FULL-NET-001",
+    domainId: "NET",
+
+    controlNameEn: "Network Boundary Protection",
+    controlNameTr: "Ağ Sınırı Koruması",
+
+    questionEn:
+      "Does your organisation use a firewall or equivalent security control to protect business networks from unauthorised external access?",
+    questionTr:
+      "Kuruluşunuz işletme ağlarını yetkisiz dış erişime karşı korumak için güvenlik duvarı veya eşdeğer bir güvenlik kontrolü kullanıyor mu?",
+          explanationEn:
+      "Network boundary controls can help restrict unauthorised connections between business networks and external networks such as the internet.",
+    explanationTr:
+      "Ağ sınırı kontrolleri, işletme ağları ile internet gibi dış ağlar arasındaki yetkisiz bağlantıların sınırlandırılmasına yardımcı olabilir.",
+          weight: 1.4,
+    riskPriority: "HIGH",
+        answerOptions: [
+      {
+        id: "MANAGED",
+        labelEn: "Yes, network boundary protection is implemented and managed",
+        labelTr: "Evet, ağ sınırı koruması uygulanmakta ve yönetilmektedir",
+        score: 1,
+      },
+      {
+        id: "BASIC",
+        labelEn: "Basic firewall protection is in place but management is limited",
+        labelTr: "Temel güvenlik duvarı koruması vardır ancak yönetimi sınırlıdır",
+        score: 0.7,
+      },
+      {
+        id: "INCONSISTENT",
+        labelEn: "Some network protection exists but coverage or configuration is inconsistent",
+        labelTr: "Bazı ağ korumaları vardır ancak kapsam veya yapılandırma tutarlı değildir",
+        score: 0.4,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined network boundary protection is in place",
+        labelTr: "Tanımlanmış bir ağ sınırı koruması bulunmamaktadır",
+        score: 0,
+      },
+      {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.IR",
+      },
+    ],
+
+    findingTitleEn:
+      "Network boundary protection requires improvement",
+    findingTitleTr:
+      "Ağ sınırı korumasının iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Ensure business networks are protected by an appropriately configured and managed firewall or equivalent boundary security control, and periodically review relevant rules and settings.",
+    recommendationTr:
+      "İşletme ağlarının uygun şekilde yapılandırılmış ve yönetilen bir güvenlik duvarı veya eşdeğer sınır güvenliği kontrolüyle korunduğundan emin olun ve ilgili kuralları ve ayarları düzenli olarak gözden geçirin.",
+
+    actionTimeframe: "DO_NOW",
+     },
 ];
