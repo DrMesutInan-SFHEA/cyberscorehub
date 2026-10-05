@@ -2190,4 +2190,76 @@ recommendationTr:
 
     actionTimeframe: "NEXT_30_DAYS",
   },
+
+   {
+    id: "CCR-FULL-NET-006",
+    domainId: "NET",
+
+    controlNameEn: "Network Device Management",
+    controlNameTr: "Ağ Cihazı Yönetimi",
+
+    questionEn:
+      "Are business network devices such as routers, firewalls and wireless access points securely configured and managed?",
+    questionTr:
+      "Yönlendiriciler, güvenlik duvarları ve kablosuz erişim noktaları gibi işletme ağ cihazları güvenli şekilde yapılandırılıyor ve yönetiliyor mu?",
+          explanationEn:
+      "Secure configuration and management of network devices can reduce exposure to unauthorised access, insecure defaults and avoidable network weaknesses.",
+    explanationTr:
+      "Ağ cihazlarının güvenli şekilde yapılandırılması ve yönetilmesi, yetkisiz erişime, güvensiz varsayılan ayarlara ve önlenebilir ağ zayıflıklarına maruz kalma riskini azaltmaya yardımcı olabilir.",
+          weight: 1.2,
+    riskPriority: "HIGH",
+        answerOptions: [
+      {
+        id: "MANAGED",
+        labelEn: "Yes, network devices are securely configured and managed",
+        labelTr: "Evet, ağ cihazları güvenli şekilde yapılandırılmakta ve yönetilmektedir",
+        score: 1,
+      },
+      {
+        id: "MOSTLY_MANAGED",
+        labelEn: "Most network devices are securely configured and managed",
+        labelTr: "Ağ cihazlarının çoğu güvenli şekilde yapılandırılmakta ve yönetilmektedir",
+        score: 0.7,
+      },
+      {
+        id: "INCONSISTENT",
+        labelEn: "Network-device security exists but management is inconsistent",
+        labelTr: "Ağ cihazı güvenliği vardır ancak yönetim tutarlı değildir",
+        score: 0.4,
+      },
+      {
+        id: "NONE",
+        labelEn: "No defined network-device management approach exists",
+        labelTr: "Tanımlanmış bir ağ cihazı yönetimi yaklaşımı bulunmamaktadır",
+        score: 0,
+      },
+          {
+        id: "UNKNOWN",
+        labelEn: "Don't know",
+        labelTr: "Bilmiyorum",
+        score: 0,
+      },
+    ],
+
+    evidenceRequested: true,
+
+    frameworkMappings: [
+      {
+        framework: "NIST_CSF_2_0",
+        reference: "PR.PS",
+      },
+    ],
+
+    findingTitleEn:
+      "Network device management requires improvement",
+    findingTitleTr:
+      "Ağ cihazı yönetiminin iyileştirilmesi gerekiyor",
+
+    recommendationEn:
+      "Securely configure and manage business network devices, review security-relevant settings and administrative access, and keep device software or firmware appropriately updated.",
+    recommendationTr:
+      "İşletme ağ cihazlarını güvenli şekilde yapılandırın ve yönetin, güvenlikle ilgili ayarları ve yönetici erişimini gözden geçirin ve cihaz yazılımını veya ürün yazılımını uygun şekilde güncel tutun.",
+
+    actionTimeframe: "NEXT_30_DAYS",
+  },
 ];
