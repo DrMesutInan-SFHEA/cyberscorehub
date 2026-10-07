@@ -9,7 +9,7 @@ const currentQuestion = CCR_FULL_QUESTIONS[currentQuestionIndex];
 const isLastQuestion = currentQuestionIndex === CCR_FULL_QUESTIONS.length - 1;
   const [selectedAnswerId, setSelectedAnswerId] = useState<string | null>(null);
   const [completedQuestions, setCompletedQuestions] = useState(0);
-
+const [answers, setAnswers] = useState<Record<string, string>>({});
   return (
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
@@ -89,16 +89,30 @@ const isLastQuestion = currentQuestionIndex === CCR_FULL_QUESTIONS.length - 1;
   {currentQuestion.questionEn}
 </p>
 
-<p className="mt-4 max-w-3xl leading-7 text-slate-400">
-  {currentQuestion.explanationEn}
-</p>
+
 
 <div className="mt-8 space-y-3">
   {currentQuestion.answerOptions.map((option) => (
 <button
   key={option.id}
   type="button"
-  onClick={() => setSelectedAnswerId(option.id)}
+onClick={() => {
+  setSelectedAnswerId(option.id);
+
+  setAnswers((currentAnswers) => {
+    const updatedAnswers = {
+      ...currentAnswers,
+  [currentQuestion.id]: option.id,
+    };
+
+    localStorage.setItem(
+      "ccr-full-assessment-answers",
+      JSON.stringify(updatedAnswers)
+    );
+
+    return updatedAnswers;
+  });
+}}
   className={`w-full rounded-xl border px-5 py-4 text-left font-medium transition ${
 selectedAnswerId === option.id
   ? "border-cyan-300 bg-cyan-400/20 text-white ring-2 ring-cyan-400/30"
@@ -110,6 +124,7 @@ selectedAnswerId === option.id
 
   ))}
 </div>
+
 
 <div className="mt-8 flex justify-end border-t border-white/10 pt-6">
 <button
