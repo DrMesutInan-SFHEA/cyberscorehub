@@ -84,6 +84,7 @@ const weakestDomain = domainScores.reduce((weakest, current) =>
 const strongestDomain = domainScores.reduce((strongest, current) =>
   current.score > strongest.score ? current : strongest
 );
+
 const keyFindings = CCR_FULL_QUESTIONS.flatMap((question) => {
   const selectedAnswerId = answers[question.id];
 
@@ -108,6 +109,22 @@ const keyFindings = CCR_FULL_QUESTIONS.flatMap((question) => {
       frameworkMappings: question.frameworkMappings,
     },
   ];
+});
+const domainInsights = domainScores.map((domainScore) => {
+  const findings = keyFindings.filter(
+    (finding) => finding.domainId === domainScore.domain
+  );
+
+  const highPriorityFindings = findings.filter(
+    (finding) =>
+      finding.priority === "HIGH" || finding.priority === "CRITICAL"
+  );
+
+  return {
+    ...domainScore,
+    findingsCount: findings.length,
+    highPriorityFindingsCount: highPriorityFindings.length,
+  };
 });
 const priorityOrder = {
   CRITICAL: 4,
@@ -216,24 +233,23 @@ return (
 </p>
     <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
     <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-      <div className="text-3xl font-black text-cyan-400">
-        {cyberResilienceScore}
-      </div>
-      <div className="mt-1 text-sm text-slate-400">
-        Cyber Resilience Score
-      </div>
-      <div className="mt-1 text-xs text-slate-500">
-        out of 100
-      </div>
-    </div>
+<div className="text-3xl font-black text-cyan-400">
+  {cyberResilienceScore}
+</div>
 
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-      <div className="text-3xl font-black text-white">
-        {exposure}
-      </div>
-      <div className="mt-1 text-sm text-slate-400">
-        Exposure
-      </div>
+<div className="mt-1 text-sm text-slate-400">
+  Cyber Resilience Score
+</div>
+
+<div className="mt-1 text-xs text-slate-500">
+  out of 100
+</div>
+</div>
+
+<div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+  <div className="text-3xl font-black text-white">
+    {exposure}
+  </div>
     </div>
 
     <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
@@ -291,13 +307,13 @@ return (
   </div>
 </div>
 <div className="mt-8 grid gap-4 border-t border-white/10 pt-6 sm:grid-cols-5">
-  {["GOV", "AST", "IAM", "END", "NET"].map((domain) => (
+  {domainInsights.map((domain) => (
     <div
-      key={domain}
+      key={domain.domain}
       className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-5 text-center"
     >
       <div className="text-lg font-bold text-white">
-        {domain}
+        {domain.domain}
       </div>
 
       <div className="mt-2 text-sm font-semibold text-cyan-400">
@@ -384,27 +400,41 @@ return (
     Domain Performance
   </div>
 
-  <div className="mt-6 grid gap-4 sm:grid-cols-5">
-    {["GOV", "AST", "IAM", "END", "NET"].map((domain) => (
-      <div
-        key={domain}
-        className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center"
-      >
-        <div className="text-lg font-bold text-white">
-          {domain}
-        </div>
-
-        <div className="mt-3 text-3xl font-black text-cyan-400">
-          {getDomainScore(domain)}
-        </div>
-
-        <div className="mt-1 text-sm text-slate-500">
-          / 100
-        </div>
+<div className="mt-6 grid gap-4 sm:grid-cols-5">
+  {domainInsights.map((domain) => (
+    <div
+      key={domain.domain}
+      className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center"
+    >
+      <div className="text-lg font-bold text-white">
+        {domain.domain}
       </div>
-    ))}
+
+<div className="mt-4 flex items-baseline justify-center gap-1">
+  <span className="text-3xl font-black text-cyan-400">
+    {domain.score}
+  </span>
+
+  <span className="text-sm font-semibold text-slate-500">
+    / 100
+  </span>
+</div>
+
+<div className="mt-4 border-t border-white/10 pt-4">
+  <div className="text-sm font-semibold text-white">
+    {domain.findingsCount} Security Gaps
   </div>
+
+  <div className="mt-2 text-xs font-semibold uppercase tracking-wider text-red-300">
+    {domain.highPriorityFindingsCount} High-Priority
+  </div>
+</div>
+
+    </div>
+  ))}
+</div>
 </section>
+
 <section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
     Priority Security Gaps
