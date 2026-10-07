@@ -117,14 +117,25 @@ const prioritizedFindings = [...keyFindings].sort((a, b) => {
 
   return a.score - b.score;
 });
-
+const highPriorityFindings = keyFindings.filter(
+  (finding) => finding.priority === "HIGH" || finding.priority === "CRITICAL"
+);
 const actionTimeframeLabels = {
   DO_NOW: "Do Now",
   NEXT_30_DAYS: "Next 30 Days",
   NEXT_90_DAYS: "Next 90 Days",
   PLAN: "Plan",
 };
-
+const priorityFrameworkMappings = prioritizedFindings
+  .slice(0, 5)
+  .flatMap((finding) =>
+    finding.frameworkMappings.map((mapping) => ({
+      questionId: finding.questionId,
+      domainId: finding.domainId,
+      framework: mapping.framework,
+      reference: mapping.reference,
+    }))
+  );
 return (
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
@@ -315,7 +326,87 @@ return (
     ))}
   </div>
 </section>
+<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+    Key Findings
+  </div>
 
+  <p className="mt-3 max-w-3xl leading-7 text-slate-400">
+    A summary of the most important outcomes identified from your cyber
+    resilience assessment.
+  </p>
+
+  <div className="mt-6 grid gap-4 sm:grid-cols-4">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+      <div className="text-3xl font-black text-white">
+        {keyFindings.length}
+      </div>
+      <div className="mt-2 text-sm text-slate-400">
+        Security gaps identified
+      </div>
+    </div>
+
+    <div className="rounded-2xl border border-red-400/20 bg-red-400/[0.06] p-5">
+      <div className="text-3xl font-black text-red-300">
+        {highPriorityFindings.length}
+      </div>
+      <div className="mt-2 text-sm text-slate-400">
+        High-priority gaps
+      </div>
+    </div>
+
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+      <div className="text-3xl font-black text-cyan-400">
+        {cyberResilienceScore}
+      </div>
+      <div className="mt-2 text-sm text-slate-400">
+        Cyber Resilience Score
+      </div>
+    </div>
+
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+      <div className="text-3xl font-black text-white">
+        {exposure}
+      </div>
+      <div className="mt-2 text-sm text-slate-400">
+        Exposure
+      </div>
+    </div>
+  </div>
+</section>
+<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+    Framework Alignment
+  </div>
+
+  <p className="mt-3 max-w-3xl leading-7 text-slate-400">
+    Priority security gaps are mapped to recognised cyber security
+    frameworks to support remediation planning and governance review.
+  </p>
+
+  <div className="mt-6 space-y-3">
+    {priorityFrameworkMappings.map((mapping) => (
+      <div
+        key={`${mapping.questionId}-${mapping.framework}-${mapping.reference}`}
+        className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4"
+      >
+        <div>
+          <div className="text-sm font-bold text-white">
+            {mapping.framework}
+          </div>
+
+          <div className="mt-1 text-xs text-slate-500">
+            {mapping.domainId} • {mapping.questionId}
+          </div>
+        </div>
+
+        <div className="rounded-lg border border-cyan-400/20 bg-cyan-400/10 px-3 py-2 text-sm font-semibold text-cyan-300">
+          {mapping.reference}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
       </div>
     </main>
   );
