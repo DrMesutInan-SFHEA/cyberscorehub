@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CCR_FULL_QUESTIONS } from "@/lib/assessment/full-questions";
 
 export default function FullAssessmentQuestionsPage() {
@@ -10,6 +10,49 @@ const isLastQuestion = currentQuestionIndex === CCR_FULL_QUESTIONS.length - 1;
   const [selectedAnswerId, setSelectedAnswerId] = useState<string | null>(null);
   const [completedQuestions, setCompletedQuestions] = useState(0);
 const [answers, setAnswers] = useState<Record<string, string>>({});
+
+useEffect(() => {
+  const storedAnswers = localStorage.getItem("ccr-full-assessment-answers");
+
+  if (!storedAnswers) {
+    return;
+  }
+
+  const savedAnswers = JSON.parse(storedAnswers) as Record<string, string>;
+  const savedAnswerCount = Object.keys(savedAnswers).length;
+
+  setAnswers(savedAnswers);
+  setCompletedQuestions(savedAnswerCount);
+
+  setCurrentQuestionIndex(
+    Math.min(savedAnswerCount, CCR_FULL_QUESTIONS.length - 1)
+  );
+}, []);
+useEffect(() => {
+  const storedAnswers = localStorage.getItem("ccr-full-assessment-answers");
+
+  if (!storedAnswers) {
+    return;
+  }
+
+const savedAnswers = JSON.parse(storedAnswers) as Record<string, string>;
+const savedAnswerCount = Object.keys(savedAnswers).length;
+
+const restoredQuestionIndex = Math.min(
+  savedAnswerCount,
+  CCR_FULL_QUESTIONS.length - 1
+);
+
+setAnswers(savedAnswers);
+setCompletedQuestions(savedAnswerCount);
+setCurrentQuestionIndex(restoredQuestionIndex);
+
+const restoredQuestion = CCR_FULL_QUESTIONS[restoredQuestionIndex];
+
+setSelectedAnswerId(
+  savedAnswers[restoredQuestion.id] ?? null
+);
+}, []);
   return (
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">

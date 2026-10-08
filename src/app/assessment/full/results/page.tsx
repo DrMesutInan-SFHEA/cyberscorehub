@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { CCR_FULL_QUESTIONS } from "@/lib/assessment/full-questions";
 import { classifyExposure } from "@/lib/assessment/scoring";
+
 export default function FullAssessmentResultsPage() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
@@ -13,6 +14,7 @@ export default function FullAssessmentResultsPage() {
       setAnswers(JSON.parse(storedAnswers));
     }
   }, []);
+
   const totalWeight = CCR_FULL_QUESTIONS.reduce(
     (total, question) => total + question.weight,
     0
@@ -126,6 +128,7 @@ const domainInsights = domainScores.map((domainScore) => {
     highPriorityFindingsCount: highPriorityFindings.length,
   };
 });
+
 const priorityOrder = {
   CRITICAL: 4,
   HIGH: 3,
@@ -430,6 +433,48 @@ return (
   </div>
 </div>
 
+    </div>
+  ))}
+</div>
+</section>
+<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+<div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+  Domain Risk Profile
+</div>
+
+<p className="mt-3 max-w-3xl leading-7 text-slate-400">
+  Domain scores and security-gap concentrations provide complementary views of
+  control performance and remediation needs across the assessment.
+</p>
+
+  <div className="mt-6 space-y-3">
+{domainInsights.map((domain) => (
+  <div
+    key={domain.domain}
+    className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4"
+  >
+    <div className="flex items-center gap-4">
+      <div>
+        <div className="font-bold text-white">
+          {domain.domain}
+        </div>
+
+        <div className="mt-1 text-sm text-slate-400">
+          {domain.findingsCount} security gaps ·{" "}
+          {domain.highPriorityFindingsCount} high-priority
+        </div>
+      </div>
+    </div>
+
+      <div className="text-right">
+        <div className="text-xl font-black text-cyan-300">
+          {domain.score} / 100
+        </div>
+
+        <div className="mt-1 text-xs uppercase tracking-wider text-slate-500">
+          Domain Score
+        </div>
+      </div>
     </div>
   ))}
 </div>
