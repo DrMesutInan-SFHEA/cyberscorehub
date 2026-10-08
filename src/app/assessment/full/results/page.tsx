@@ -241,7 +241,15 @@ return (
 <h1 className="mt-3 text-4xl font-black">
   Cyber Resilience Report
 </h1>
-
+<div className="mt-6 print:hidden">
+  <button
+    type="button"
+    onClick={() => window.print()}
+    className="rounded-xl bg-cyan-400 px-5 py-3 font-bold text-[#07111f] transition hover:bg-cyan-300"
+  >
+    Print / Save as PDF
+  </button>
+</div>
 <p className="mt-5 max-w-3xl leading-7 text-slate-400">
   Your full cyber security assessment is complete. Review your overall
   assessment status, domain performance, key findings and recommended
