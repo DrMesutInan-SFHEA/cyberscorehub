@@ -1,6 +1,46 @@
-﻿import Link from "next/link";
+﻿"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function FullAssessmentBusinessProfilePage() {
+  const [organisationName, setOrganisationName] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [organisationSize, setOrganisationSize] = useState("");
+  const [country, setCountry] = useState("");
+useEffect(() => {
+  const storedBusinessProfile = localStorage.getItem(
+    "ccr-full-business-profile"
+  );
+
+  if (!storedBusinessProfile) {
+    return;
+  }
+
+  const savedBusinessProfile = JSON.parse(storedBusinessProfile) as {
+    organisationName: string;
+    industry: string;
+    organisationSize: string;
+    country: string;
+  };
+
+  setOrganisationName(savedBusinessProfile.organisationName);
+  setIndustry(savedBusinessProfile.industry);
+  setOrganisationSize(savedBusinessProfile.organisationSize);
+  setCountry(savedBusinessProfile.country);
+}, []);
+  const saveBusinessProfile = () => {
+    localStorage.setItem(
+      "ccr-full-business-profile",
+      JSON.stringify({
+        organisationName,
+        industry,
+        organisationSize,
+        country,
+      })
+    );
+  };
+
   return (
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
@@ -36,13 +76,15 @@ export default function FullAssessmentBusinessProfilePage() {
                 Organisation Name
               </label>
 
-              <input
-                id="organisationName"
-                name="organisationName"
-                type="text"
-                placeholder="Enter organisation name"
-                className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-white outline-none placeholder:text-slate-500 focus:border-cyan-400"
-              />
+           <input
+  id="organisationName"
+  name="organisationName"
+  type="text"
+  placeholder="Enter organisation name"
+  value={organisationName}
+  onChange={(event) => setOrganisationName(event.target.value)}
+  className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-white outline-none placeholder:text-slate-500 focus:border-cyan-400"
+/>
             </div>
 
             <div>
@@ -53,12 +95,13 @@ export default function FullAssessmentBusinessProfilePage() {
                 Industry
               </label>
 
-              <select
-                id="industry"
-                name="industry"
-                defaultValue=""
-                className="w-full rounded-xl border border-white/10 bg-[#0d1929] px-4 py-3 text-white outline-none focus:border-cyan-400"
-              >
+<select
+  id="industry"
+  name="industry"
+  value={industry}
+  onChange={(event) => setIndustry(event.target.value)}
+  className="w-full rounded-xl border border-white/10 bg-[#0d1929] px-4 py-3 text-white outline-none focus:border-cyan-400"
+>
                 <option value="" disabled>
                   Select industry
                 </option>
@@ -83,12 +126,13 @@ export default function FullAssessmentBusinessProfilePage() {
                 Organisation Size
               </label>
 
-              <select
-                id="organisationSize"
-                name="organisationSize"
-                defaultValue=""
-                className="w-full rounded-xl border border-white/10 bg-[#0d1929] px-4 py-3 text-white outline-none focus:border-cyan-400"
-              >
+<select
+  id="organisationSize"
+  name="organisationSize"
+  value={organisationSize}
+  onChange={(event) => setOrganisationSize(event.target.value)}
+  className="w-full rounded-xl border border-white/10 bg-[#0d1929] px-4 py-3 text-white outline-none focus:border-cyan-400"
+>
                 <option value="" disabled>
                   Select organisation size
                 </option>
@@ -108,13 +152,15 @@ export default function FullAssessmentBusinessProfilePage() {
                 Country / Region
               </label>
 
-              <input
-                id="country"
-                name="country"
-                type="text"
-                placeholder="Enter country or region"
-                className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-white outline-none placeholder:text-slate-500 focus:border-cyan-400"
-              />
+<input
+  id="country"
+  name="country"
+  type="text"
+  placeholder="Enter country or region"
+  value={country}
+  onChange={(event) => setCountry(event.target.value)}
+  className="w-full rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-white outline-none placeholder:text-slate-500 focus:border-cyan-400"
+/>
             </div>
 
           </div>
@@ -122,7 +168,8 @@ export default function FullAssessmentBusinessProfilePage() {
           <div className="mt-8 border-t border-white/10 pt-6">
 <Link
   href="/assessment/full/questions"
-  className="inline-block rounded-xl bg-cyan-400 px-6 py-3 font-bold text-[#07111f] transition hover:bg-cyan-300"
+  onClick={saveBusinessProfile}
+  className="inline-block rounded-xl bg-cyan-400 px-6 py-3 font-bold hover:bg-cyan-300"
 >
   Start Full Assessment
               </Link>

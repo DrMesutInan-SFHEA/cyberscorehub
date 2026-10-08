@@ -5,17 +5,60 @@ import { CCR_FULL_QUESTIONS } from "@/lib/assessment/full-questions";
 import { classifyExposure } from "@/lib/assessment/scoring";
 
 export default function FullAssessmentResultsPage() {
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+const [answers, setAnswers] = useState<Record<string, string>>({});
 
-  useEffect(() => {
-    const storedAnswers = localStorage.getItem("ccr-full-assessment-answers");
+const [businessProfile, setBusinessProfile] = useState<{
+  organisationName: string;
+  industry: string;
+  organisationSize: string;
+  country: string;
+} | null>(null);
+  const formatIndustry = (value: string) => {
+    const labels: Record<string, string> = {
+      technology: "Technology",
+      "financial-services": "Financial Services",
+      healthcare: "Healthcare",
+      education: "Education",
+      retail: "Retail",
+      manufacturing: "Manufacturing",
+      "professional-services": "Professional Services",
+      other: "Other",
+    };
 
-    if (storedAnswers) {
-      setAnswers(JSON.parse(storedAnswers));
-    }
-  }, []);
+    return labels[value] ?? value;
+  };
+  const formatOrganisationSize = (value: string) => {
+  const labels: Record<string, string> = {
+    "1-10": "1–10 employees",
+    "11-50": "11–50 employees",
+    "51-250": "51–250 employees",
+    "251-1000": "251–1,000 employees",
+    "1000+": "1,000+ employees",
+  };
 
-  const totalWeight = CCR_FULL_QUESTIONS.reduce(
+  return labels[value] ?? value;
+};
+useEffect(() => {
+  const storedAnswers = localStorage.getItem("ccr-full-assessment-answers");
+  const storedBusinessProfile = localStorage.getItem(
+    "ccr-full-business-profile"
+  );
+
+  if (storedAnswers) {
+    setAnswers(JSON.parse(storedAnswers));
+  }
+
+  if (storedBusinessProfile) {
+    setBusinessProfile(JSON.parse(storedBusinessProfile));
+  }
+}, []);
+
+const startNewAssessment = () => {
+  localStorage.removeItem("ccr-full-assessment-answers");
+  window.location.href = "/assessment/full/business-profile";
+};
+
+const totalWeight = CCR_FULL_QUESTIONS.reduce(
     (total, question) => total + question.weight,
     0
   );
@@ -204,6 +247,58 @@ return (
   assessment status, domain performance, key findings and recommended
   improvement priorities.
 </p>
+<section className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+    Organisation Profile
+  </div>
+
+  <p className="mt-3 max-w-3xl leading-7 text-slate-400">
+    Business context associated with this cyber resilience assessment.
+  </p>
+  {businessProfile && (
+  <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+      <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+        Organisation
+      </div>
+
+<div className="mt-2 font-bold text-white">
+  {businessProfile.organisationName}
+</div>
+    </div>
+
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+      <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+        Industry
+      </div>
+
+      <div className="mt-2 font-bold text-white">
+        {formatIndustry(businessProfile.industry)}
+      </div>
+    </div>
+
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+      <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+        Organisation Size
+      </div>
+
+<div className="mt-2 font-bold text-white">
+  {formatOrganisationSize(businessProfile.organisationSize)}
+</div>
+    </div>
+
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+      <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+        Country / Region
+      </div>
+
+      <div className="mt-2 font-bold text-white">
+        {businessProfile.country}
+      </div>
+    </div>
+  </div>
+)}
+</section>
 <section className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
     Executive Summary
@@ -663,6 +758,26 @@ return (
     ))}
   </div>
 </section>
+
+<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+    Assessment Actions
+  </div>
+
+  <p className="mt-3 max-w-3xl leading-7 text-slate-400">
+    Start a new full assessment when you are ready to reassess your cyber
+    resilience position.
+  </p>
+
+  <button
+    type="button"
+    onClick={startNewAssessment}
+    className="mt-6 rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-6 py-3 font-bold text-cyan-300 transition hover:bg-cyan-400/20"
+  >
+    Start New Assessment
+  </button>
+</section>
+
       </div>
     </main>
   );
