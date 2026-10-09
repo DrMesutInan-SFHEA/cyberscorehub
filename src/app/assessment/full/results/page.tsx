@@ -44,6 +44,7 @@ useEffect(() => {
     "ccr-full-business-profile"
   );
 
+try {
   if (storedAnswers) {
     setAnswers(JSON.parse(storedAnswers));
   }
@@ -51,7 +52,16 @@ useEffect(() => {
   if (storedBusinessProfile) {
     setBusinessProfile(JSON.parse(storedBusinessProfile));
   }
+} catch (error) {
+  console.error("Failed to load assessment data", error);
+}
+
 }, []);
+useEffect(() => {
+  if (Object.keys(answers).length === 0) {
+    return;
+  }
+}, [answers]);
 
 const startNewAssessment = () => {
   localStorage.removeItem("ccr-full-assessment-answers");
