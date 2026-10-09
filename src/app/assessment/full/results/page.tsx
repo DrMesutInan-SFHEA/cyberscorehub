@@ -782,7 +782,7 @@ return (
   <button
     type="button"
     onClick={startNewAssessment}
-    className="mt-6 rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-6 py-3 font-bold text-cyan-300 transition hover:bg-cyan-400/20"
+className="mt-6 rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-6 py-3 font-bold text-cyan-300 transition hover:bg-cyan-400/20 print:hidden"
   >
     Start New Assessment
   </button>
