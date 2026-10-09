@@ -14,6 +14,7 @@ const [businessProfile, setBusinessProfile] = useState<{
   country: string;
 } | null>(null);
 const [isLoaded, setIsLoaded] = useState(false);
+const [hasLoadError, setHasLoadError] = useState(false);
   const formatIndustry = (value: string) => {
     const labels: Record<string, string> = {
       technology: "Technology",
@@ -55,11 +56,22 @@ try {
   }
 } catch (error) {
   console.error("Failed to load assessment data", error);
+
+  localStorage.removeItem("ccr-full-assessment-answers");
+  localStorage.removeItem("ccr-full-business-profile");
+
+setHasLoadError(true);
+  return;
 }
 setIsLoaded(true);
 }, []);
 useEffect(() => {
   if (!isLoaded) {
+    return;
+  }
+
+  if (hasLoadError) {
+    window.location.href = "/assessment/full/business-profile";
     return;
   }
 
@@ -73,7 +85,7 @@ useEffect(() => {
   if (answeredQuestions < CCR_FULL_QUESTIONS.length) {
     window.location.href = "/assessment/full/questions";
   }
-}, [answers, isLoaded]);
+}, [answers, isLoaded, hasLoadError]);
 ``
 
 const startNewAssessment = () => {
