@@ -284,11 +284,11 @@ const end = scale(radarScores.END);
 const net = scale(radarScores.NET);
 
 const radarPoints = [
-  `${50},${50 - gov * 40}`,
-  `${50 + ast * 38},${50 - ast * 12}`,
-  `${50 + iam * 24},${50 + iam * 32}`,
-  `${50 - end * 24},${50 + end * 32}`,
-  `${50 - net * 38},${50 - net * 12}`,
+  `${50},${50 - gov * 60}`,
+  `${50 + ast * 58},${50 - ast * 18}`,
+  `${50 + iam * 38},${50 + iam * 50}`,
+  `${50 - end * 38},${50 + end * 50}`,
+  `${50 - net * 58},${50 - net * 18}`,
 ].join(" ");
 
 return (
@@ -808,10 +808,10 @@ Cyber Resilience Scorecards
 <div
   className="absolute h-px w-64 bg-cyan-400/10 -rotate-45"
  />
-      <div className="h-64 w-64 rounded-full border border-cyan-400/25" />
-      <div className="absolute h-48 w-48 rounded-full border border-cyan-400/20" />
-      <div className="absolute h-32 w-32 rounded-full border border-cyan-400/20" />
-      <div className="absolute h-16 w-16 rounded-full border border-cyan-400/20" />
+    <div className="h-80 w-80 rounded-full border border-cyan-400/25" />
+ <div className="absolute h-60 w-60 rounded-full border border-cyan-400/20" />
+<div className="absolute h-40 w-40 rounded-full border border-cyan-400/20" />
+   <div className="absolute h-20 w-20 rounded-full border border-cyan-400/20" />
     </div>
   </div>
 
@@ -997,11 +997,11 @@ Cyber Resilience Scorecards
   <div className="absolute left-2 top-5 h-4 w-4 rounded-full bg-cyan-400 ring-4 ring-cyan-400/20" /
       >
 <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
-  <div className="text-sm font-bold uppercase tracking-wider text-cyan-300">
-    {stage.label}
-  </div>
+<div className="text-sm font-bold uppercase tracking-wider text-cyan-300">
+  {stage.label}
+</div>
 
-  <div className="flex items-baseline gap-2">
+<div className="flex items-baseline gap-2">
     <span className="text-2xl font-black text-white">
       {stage.findings.length}
     </span>
@@ -1048,7 +1048,7 @@ Cyber Resilience Scorecards
   </div>
 </section>
 
-<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8 break-inside-avoid">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
     Framework Alignment
   </div>
@@ -1101,7 +1101,7 @@ className="mt-6 rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-6 py-3 fo
   </button>
 </section>
 
-<div className="mt-12 text-center text-xs text-slate-500 print:text-slate-700">
+<div className="mt-12 border-t border-slate-300 pt-4 text-center text-xs text-slate-500 print:text-slate-700">
   CCR Platform Cyber Resilience Assessment Report
 </div>
 
