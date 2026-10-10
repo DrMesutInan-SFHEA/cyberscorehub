@@ -266,6 +266,31 @@ const priorityFrameworkMappings = prioritizedFindings
       reference: mapping.reference,
     }))
   );
+
+const radarScores = {
+  GOV: domainInsights.find((d) => d.domain === "GOV")?.score ?? 0,
+  AST: domainInsights.find((d) => d.domain === "AST")?.score ?? 0,
+  IAM: domainInsights.find((d) => d.domain === "IAM")?.score ?? 0,
+  END: domainInsights.find((d) => d.domain === "END")?.score ?? 0,
+  NET: domainInsights.find((d) => d.domain === "NET")?.score ?? 0,
+};
+
+const scale = (score: number) => score / 100;
+
+const gov = scale(radarScores.GOV);
+const ast = scale(radarScores.AST);
+const iam = scale(radarScores.IAM);
+const end = scale(radarScores.END);
+const net = scale(radarScores.NET);
+
+const radarPoints = [
+  `${50},${50 - gov * 40}`,
+  `${50 + ast * 38},${50 - ast * 12}`,
+  `${50 + iam * 24},${50 + iam * 32}`,
+  `${50 - end * 24},${50 + end * 32}`,
+  `${50 - net * 38},${50 - net * 12}`,
+].join(" ");
+
 return (
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
@@ -773,12 +798,12 @@ Cyber Resilience Scorecards
   className="absolute inset-0 h-full w-full"
   viewBox="0 0 100 100"
 >
-  <polygon
-    points="50,25 72,40 63,70 37,70 28,40"
-    fill="rgba(34,211,238,0.25)"
-    stroke="rgb(34,211,238)"
-    strokeWidth="1.5"
-  />
+<polygon
+  points={radarPoints}
+  fill="rgba(34,211,238,0.25)"
+  stroke="rgb(34,211,238)"
+  strokeWidth="1.5"
+/>
 </svg>
 <div
   className="absolute h-px w-64 bg-cyan-400/10 -rotate-45"
@@ -992,15 +1017,11 @@ Cyber Resilience Scorecards
       key={finding.questionId}
       className="rounded-xl border border-white/10 bg-[#07111f]/60 p-4"
     >
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="rounded-full border border-red-400/20 bg-red-400/10 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-red-300">
-          {finding.priority}
-        </span>
-
-        <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-cyan-300">
-          {finding.domainId}
-        </span>
-      </div>
+<div>
+  <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-300">
+    {finding.priority} • {finding.domainId}
+  </span>
+</div>
 
       <div className="mt-3 text-sm font-semibold leading-6 text-white">
         {finding.controlName}
