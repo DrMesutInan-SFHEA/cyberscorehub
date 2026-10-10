@@ -270,11 +270,12 @@ return (
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
         <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-          CCR Full Assessment
+       CCR Platform
         </div>
 
 <h1 className="mt-3 text-4xl font-black">
-  Cyber Resilience Report
+Cyber Resilience Assessment Report
+
 </h1>
 <div className="mt-6 print:hidden">
   <button
@@ -290,6 +291,118 @@ return (
   assessment status, domain performance, key findings and recommended
   improvement priorities.
 </p>
+<div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+  <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-5">
+    <div className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
+      Overall Score
+    </div>
+    <div className="mt-2 text-3xl font-black text-white">
+   {cyberResilienceScore}
+    </div>
+  </div>
+
+  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+    <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+      Exposure
+    </div>
+    <div className="mt-2 text-3xl font-black text-white">
+  {exposure}
+    </div>
+  </div>
+
+  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+    <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+      Security Gaps
+    </div>
+    <div className="mt-2 text-3xl font-black text-white">
+   {keyFindings.length}
+    </div>
+  </div>
+
+  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+<div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+  High Priority Gaps
+</div>
+
+<div className="mt-2 text-3xl font-black text-white">
+  {highPriorityFindings.length}
+</div>
+  </div>
+</div>
+<section className="mt-8 break-inside-avoid rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/30 p-8">
+  <div className="grid gap-6 lg:grid-cols-2">
+    <div>
+      <div className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">
+        Executive Summary
+      </div>
+
+      <h2 className="mt-4 text-3xl font-black text-white">
+        Cyber Resilience Assessment
+      </h2>
+
+      <p className="mt-3 text-slate-400">
+        Executive cyber resilience assessment and remediation roadmap for
+        organisational security improvement.
+      </p>
+
+      {businessProfile && (
+        <div className="mt-6">
+          <div className="text-xl font-bold text-white">
+            {businessProfile.organisationName}
+          </div>
+
+          <div className="mt-1 text-slate-400">
+            {formatIndustry(businessProfile.industry)}
+          </div>
+        </div>
+      )}
+    </div>
+
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+      <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+        Cyber Resilience Score
+      </div>
+
+      <div className="mt-2 text-5xl font-black text-white">
+        {cyberResilienceScore}
+      </div>
+
+      <div className="text-slate-400">
+        out of 100
+      </div>
+
+      <div
+        className={`mt-4 inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-wider ${exposureClassName}`}
+      >
+        {exposure} Exposure
+      </div>
+      <div className="mt-6">
+  <div className="mb-2 flex justify-between text-xs font-semibold uppercase text-slate-500">
+    <span>Low</span>
+    <span>Moderate</span>
+    <span>Elevated</span>
+    <span>High</span>
+  </div>
+
+  <div className="relative h-3 rounded-full bg-slate-800">
+    <div
+      className="h-3 rounded-full bg-gradient-to-r from-emerald-500 via-amber-400 to-red-500"
+      style={{ width: "100%" }}
+    />
+
+    <div
+      className="absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full border-2 border-white bg-cyan-300 shadow-lg"
+      style={{ left: `${cyberResilienceScore}%` }}
+    />
+  </div>
+
+  <div className="mt-2 text-center text-sm font-bold text-cyan-300">
+    Score: {cyberResilienceScore}/100
+  </div>
+</div>
+    </div>
+  </div>
+</section>
 <section className="mt-10 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
     Organisation Profile
@@ -538,10 +651,45 @@ return (
 </section>
 <section className="mt-8 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-    Domain Performance
+    Cyber Resilience by Domain
   </div>
 
-<div className="mt-6 grid gap-4 sm:grid-cols-5">
+  <p className="mt-3 text-slate-400">
+    Comparative view of cyber resilience scores across all assessment domains.
+  </p>
+
+  <div className="mt-8 space-y-5">
+    {[...domainInsights]
+      .sort((a, b) => b.score - a.score)
+      .map((domain) => (
+        <div key={`chart-${domain.domain}`}>
+<div className="mb-2 flex items-center justify-between">
+  <span className="font-bold text-white">
+    {domain.domain}
+  </span>
+
+  <span className="font-bold text-cyan-300">
+    {domain.score}
+  </span>
+</div>
+
+<div className="h-4 overflow-hidden rounded-full bg-slate-800">
+  <div
+    className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-cyan-300"
+    style={{ width: `${domain.score}%` }}
+  />
+</div>
+
+        </div>
+      ))}
+  </div>
+</section>
+<section className="mt-8 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+Cyber Resilience Scorecards
+  </div>
+
+<div className="mt-6 grid gap-4 md:grid-cols-5">
   {domainInsights.map((domain) => (
     <div
       key={domain.domain}
@@ -560,7 +708,14 @@ return (
     / 100
   </span>
 </div>
-
+<div className="mt-4">
+  <div className="h-2 overflow-hidden rounded-full bg-slate-800">
+    <div
+      className="h-full rounded-full bg-cyan-400 transition-all"
+      style={{ width: `${domain.score}%` }}
+    />
+  </div>
+</div>
 <div className="mt-4 border-t border-white/10 pt-4">
   <div className="text-sm font-semibold text-white">
     {domain.findingsCount} Security Gaps
@@ -575,10 +730,108 @@ return (
   ))}
 </div>
 </section>
-<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
-<div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-  Domain Risk Profile
+<section className="mt-8 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+    Cyber Resilience Radar
+  </div>
+
+  <p className="mt-3 text-slate-400">
+    Visual overview of domain resilience across all assessment domains.
+  </p>
+  <div className="mt-8 flex justify-center">
+  <div className="relative h-80 w-80">
+
+    <div className="absolute left-1/2 top-0 -translate-x-1/2 text-sm font-bold text-cyan-300">
+      GOV
+    </div>
+
+    <div className="absolute right-0 top-1/4 text-sm font-bold text-cyan-300">
+      AST
+    </div>
+
+    <div className="absolute right-10 bottom-12 text-sm font-bold text-cyan-300">
+      IAM
+    </div>
+
+    <div className="absolute left-10 bottom-12 text-sm font-bold text-cyan-300">
+      END
+    </div>
+
+    <div className="absolute left-0 top-1/4 text-sm font-bold text-cyan-300">
+      NET
+    </div>
+
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute h-px w-64 bg-cyan-400/20" />
+
+<div className="absolute h-64 w-px bg-cyan-400/20" />
+
+<div
+  className="absolute h-px w-64 bg-cyan-400/10 rotate-45"
+ />
+  <svg
+  className="absolute inset-0 h-full w-full"
+  viewBox="0 0 100 100"
+>
+  <polygon
+    points="50,25 72,40 63,70 37,70 28,40"
+    fill="rgba(34,211,238,0.25)"
+    stroke="rgb(34,211,238)"
+    strokeWidth="1.5"
+  />
+</svg>
+<div
+  className="absolute h-px w-64 bg-cyan-400/10 -rotate-45"
+ />
+      <div className="h-64 w-64 rounded-full border border-cyan-400/25" />
+      <div className="absolute h-48 w-48 rounded-full border border-cyan-400/20" />
+      <div className="absolute h-32 w-32 rounded-full border border-cyan-400/20" />
+      <div className="absolute h-16 w-16 rounded-full border border-cyan-400/20" />
+    </div>
+  </div>
+
 </div>
+</section>
+
+  <section className="mt-8 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+    Risk Heatmap
+  </div>
+
+  <p className="mt-3 text-slate-400">
+    Visual representation of relative domain risk based on current assessment scores.
+  </p>
+
+  <div className="mt-6 space-y-4">
+    {domainInsights.map((domain) => (
+      <div key={`heatmap-${domain.domain}`}>
+        <div className="mb-2 flex items-center justify-between">
+          <span className="font-bold text-white">
+            {domain.domain}
+          </span>
+
+          <span className="text-sm font-semibold text-slate-400">
+            {domain.score}/100
+          </span>
+        </div>
+
+        <div className="h-5 overflow-hidden rounded-lg bg-slate-800">
+          <div
+            className="h-full rounded-lg bg-gradient-to-r from-emerald-500 via-amber-400 to-red-500"
+            style={{ width: `${100 - domain.score}%` }}
+          />
+        </div>
+        <div className="mt-1 text-xs text-slate-500">
+          Higher fill indicates higher risk exposure
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+    Domain Risk Profile
+  </div>
 
 <p className="mt-3 max-w-3xl leading-7 text-slate-400">
   Domain scores and security-gap concentrations provide complementary views of
@@ -710,9 +963,13 @@ return (
 
 <div className="mt-6 space-y-6">
     {remediationRoadmap.map((stage) => (
-      <div
-        key={stage.timeframe}
-        className="rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+<div
+  key={stage.timeframe}
+  className="relative pl-10 rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+>
+  <div className="absolute left-4 top-5 h-full w-px bg-cyan-500/30" />
+
+  <div className="absolute left-2 top-5 h-4 w-4 rounded-full bg-cyan-400 ring-4 ring-cyan-400/20" /
       >
 <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
   <div className="text-sm font-bold uppercase tracking-wider text-cyan-300">
@@ -822,6 +1079,10 @@ className="mt-6 rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-6 py-3 fo
     Start New Assessment
   </button>
 </section>
+
+<div className="mt-12 text-center text-xs text-slate-500 print:text-slate-700">
+  CCR Platform Cyber Resilience Assessment Report
+</div>
 
       </div>
     </main>
