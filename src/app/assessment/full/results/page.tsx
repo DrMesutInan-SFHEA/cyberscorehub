@@ -711,53 +711,7 @@ Cyber Resilience Assessment Report
 </section>
 <section className="mt-8 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-Cyber Resilience Scorecards
-  </div>
 
-<div className="mt-6 grid gap-4 md:grid-cols-5">
-  {domainInsights.map((domain) => (
-    <div
-      key={domain.domain}
-      className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 text-center"
-    >
-      <div className="text-lg font-bold text-white">
-        {domain.domain}
-      </div>
-
-<div className="mt-4 flex items-baseline justify-center gap-1">
-  <span className="text-3xl font-black text-cyan-400">
-    {domain.score}
-  </span>
-
-  <span className="text-sm font-semibold text-slate-500">
-    / 100
-  </span>
-</div>
-<div className="mt-4">
-  <div className="h-2 overflow-hidden rounded-full bg-slate-800">
-    <div
-      className="h-full rounded-full bg-cyan-400 transition-all"
-      style={{ width: `${domain.score}%` }}
-    />
-  </div>
-</div>
-<div className="mt-4 border-t border-white/10 pt-4">
-  <div className="text-sm font-semibold text-white">
-    {domain.findingsCount} Security Gaps
-  </div>
-
-  <div className="mt-2 text-xs font-semibold uppercase tracking-wider text-red-300">
-    {domain.highPriorityFindingsCount} High-Priority
-  </div>
-</div>
-
-    </div>
-  ))}
-</div>
-</section>
-<section className="mt-8 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
-  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-    Cyber Resilience Radar
   </div>
 
   <p className="mt-3 text-slate-400">
