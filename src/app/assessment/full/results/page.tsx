@@ -293,12 +293,12 @@ const radarPoints = [
 
 return (
     <main className="min-h-screen bg-[#07111f] text-white">
-      <div className="mx-auto max-w-5xl px-6 py-16">
+<div className="mx-auto max-w-5xl px-6 py-10">
         <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
        CCR Platform
         </div>
 
-<h1 className="mt-3 text-4xl font-black">
+<h1 className="mt-2 text-4xl font-black">
 Cyber Resilience Assessment Report
 
 </h1>
@@ -316,8 +316,8 @@ Cyber Resilience Assessment Report
   assessment status, domain performance, key findings and recommended
   improvement priorities.
 </p>
-<div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-  <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-5">
+<div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+<div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-4">
     <div className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
       Overall Score
     </div>
@@ -326,7 +326,7 @@ Cyber Resilience Assessment Report
     </div>
   </div>
 
-  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
     <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
       Exposure
     </div>
@@ -335,7 +335,7 @@ Cyber Resilience Assessment Report
     </div>
   </div>
 
-  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
     <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
       Security Gaps
     </div>
@@ -344,7 +344,7 @@ Cyber Resilience Assessment Report
     </div>
   </div>
 
-  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+  <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
 <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
   High Priority Gaps
 </div>
@@ -354,24 +354,24 @@ Cyber Resilience Assessment Report
 </div>
   </div>
 </div>
-<section className="mt-8 break-inside-avoid rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/30 p-8">
-  <div className="grid gap-6 lg:grid-cols-2">
+<section className="mt-4 rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/30 p-5">
+<div className="grid gap-3 md:grid-cols-2">
     <div>
       <div className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-400">
         Executive Summary
       </div>
 
-      <h2 className="mt-4 text-3xl font-black text-white">
+   <h2 className="mt-2 text-2xl font-black text-white">
         Cyber Resilience Assessment
       </h2>
 
-      <p className="mt-3 text-slate-400">
+  <p className="mt-2 text-sm text-slate-400">
         Executive cyber resilience assessment and remediation roadmap for
         organisational security improvement.
       </p>
 
       {businessProfile && (
-        <div className="mt-6">
+  <div className="mt-2">
           <div className="text-xl font-bold text-white">
             {businessProfile.organisationName}
           </div>
@@ -382,8 +382,7 @@ Cyber Resilience Assessment Report
         </div>
       )}
     </div>
-
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+<div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
       <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
         Cyber Resilience Score
       </div>
@@ -403,10 +402,10 @@ Cyber Resilience Assessment Report
       </div>
       <div className="mt-6">
   <div className="mb-2 flex justify-between text-xs font-semibold uppercase text-slate-500">
-    <span>Low</span>
-    <span>Moderate</span>
-    <span>Elevated</span>
-    <span>High</span>
+<span className="text-emerald-400">Low</span>
+<span className="text-cyan-400">Moderate</span>
+<span className="text-amber-400">Elevated</span>
+<span className="text-red-400">High</span>
   </div>
 
   <div className="relative h-3 rounded-full bg-slate-800">
@@ -421,9 +420,15 @@ Cyber Resilience Assessment Report
     />
   </div>
 
-  <div className="mt-2 text-center text-sm font-bold text-cyan-300">
-    Score: {cyberResilienceScore}/100
+<div className="mt-4 text-center">
+  <div className="text-4xl font-black text-cyan-300">
+    {cyberResilienceScore}
   </div>
+
+  <div className="mt-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
+    Overall Cyber Resilience Score
+  </div>
+</div>
 </div>
     </div>
   </div>
@@ -433,12 +438,12 @@ Cyber Resilience Assessment Report
     Organisation Profile
   </div>
 
-  <p className="mt-3 max-w-3xl leading-7 text-slate-400">
+<p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
     Business context associated with this cyber resilience assessment.
   </p>
   {businessProfile && (
-  <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+<div className="mt-1 grid gap-1 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
       <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
         Organisation
       </div>
@@ -448,7 +453,7 @@ Cyber Resilience Assessment Report
 </div>
     </div>
 
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
       <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
         Industry
       </div>
@@ -458,7 +463,7 @@ Cyber Resilience Assessment Report
       </div>
     </div>
 
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
       <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
         Organisation Size
       </div>
@@ -468,7 +473,7 @@ Cyber Resilience Assessment Report
 </div>
     </div>
 
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
       <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
         Country / Region
       </div>
@@ -481,14 +486,14 @@ Cyber Resilience Assessment Report
 )}
 </section>
 <section className="mt-10 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
-  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-    Executive Summary
-  </div>
+<div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+  Executive Summary
+</div>
 
-  <p className="mt-3 max-w-3xl leading-7 text-slate-400">
-    A concise overview of your organisation&apos;s current cyber resilience
-    position and highest-priority assessment outcomes.
-  </p>
+<p className="mt-3 max-w-3xl leading-7 text-slate-400">
+  A concise overview of your organisation's current cyber resilience
+  position and highest-priority assessment outcomes.
+</p>
   <p className="mt-4 max-w-4xl rounded-2xl border border-white/10 bg-white/[0.04] p-5 leading-7 text-slate-300">
   Your assessment indicates{" "}
   <span className="font-bold text-white">{exposure} exposure</span> with a
@@ -510,8 +515,8 @@ Cyber Resilience Assessment Report
   </span>{" "}
   high-priority gaps.
 </p>
-    <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+<div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
 <div className="text-3xl font-black text-cyan-400">
   {cyberResilienceScore}
 </div>
@@ -525,13 +530,13 @@ Cyber Resilience Assessment Report
 </div>
 </div>
 
-<div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+<div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
   <div className="text-3xl font-black text-white">
     {exposure}
   </div>
     </div>
 
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
       <div className="text-3xl font-black text-white">
         {keyFindings.length}
       </div>
@@ -540,7 +545,7 @@ Cyber Resilience Assessment Report
       </div>
     </div>
 
-    <div className="rounded-2xl border border-red-400/20 bg-red-400/[0.06] p-5">
+    <div className="rounded-2xl border border-red-400/20 bg-red-400/[0.06] p-2">
       <div className="text-3xl font-black text-red-300">
         {highPriorityFindings.length}
       </div>
@@ -549,20 +554,23 @@ Cyber Resilience Assessment Report
       </div>
     </div>
 
-    <div className="rounded-2xl border border-amber-400/20 bg-amber-400/[0.06] p-5">
+    <div className="rounded-2xl border border-amber-400/20 bg-amber-400/[0.06] p-2">
       <div className="text-lg font-black text-amber-300">
         {weakestDomain.domain}
       </div>
       <div className="mt-1 text-2xl font-black text-white">
         {weakestDomain.score} / 100
       </div>
-      <div className="mt-1 text-sm text-slate-400">
-        Weakest Domain
-      </div>
-    </div>
-  </div>
+<div className="mt-1 text-sm text-slate-400">
+  Weakest Domain
+</div>
+</div>
+
+</div>
+
 </section>
-<section className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+
+<section className="mt-10 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
     Overall Assessment
   </div>
@@ -572,14 +580,11 @@ Cyber Resilience Assessment Report
     <div className="text-2xl font-bold text-white">
       Assessment Complete
     </div>
-
 <div className="mt-2 text-slate-400">
   30 of 30 questions completed
 </div>
 
-
-
-  </div>
+</div>
 
   <div className="text-4xl font-black text-cyan-400">
     100%
@@ -607,9 +612,9 @@ Cyber Resilience Assessment Report
 </div>
         </section>
 <section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
-  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-    Score Interpretation
-  </div>
+<div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+  Cyber Resilience Radar
+</div>
 
   <p className="mt-3 max-w-3xl leading-7 text-slate-400">
     Your overall score reflects the weighted strength of the cyber security
@@ -617,7 +622,7 @@ Cyber Resilience Assessment Report
   </p>
 
   <div className="mt-6 grid gap-4 md:grid-cols-3">
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2">
       <div className="text-sm text-slate-400">
         Overall Position
       </div>
@@ -633,7 +638,7 @@ Cyber Resilience Assessment Report
       </div>
     </div>
 
-    <div className="rounded-2xl border border-amber-400/20 bg-amber-400/[0.06] p-5">
+    <div className="rounded-2xl border border-amber-400/20 bg-amber-400/[0.06] p-2">
       <div className="text-sm text-slate-400">
         Lowest-Performing Domain
       </div>
@@ -647,7 +652,7 @@ Cyber Resilience Assessment Report
       </div>
     </div>
 
-    <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.06] p-5">
+    <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.06] p-2">
       <div className="text-sm text-slate-400">
         Highest-Performing Domain
       </div>
@@ -683,7 +688,7 @@ Cyber Resilience Assessment Report
     Comparative view of cyber resilience scores across all assessment domains.
   </p>
 
-  <div className="mt-8 space-y-5">
+<div className="mt-4 space-y-3">
     {[...domainInsights]
       .sort((a, b) => b.score - a.score)
       .map((domain) => (
@@ -698,7 +703,7 @@ Cyber Resilience Assessment Report
   </span>
 </div>
 
-<div className="h-4 overflow-hidden rounded-full bg-slate-800">
+<div className="h-3 overflow-hidden rounded-full bg-slate-800">
   <div
     className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-cyan-300"
     style={{ width: `${domain.score}%` }}
@@ -710,9 +715,9 @@ Cyber Resilience Assessment Report
   </div>
 </section>
 <section className="mt-8 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
-  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-
-  </div>
+<div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+  Cyber Resilience Radar
+</div>
 
   <p className="mt-3 text-slate-400">
     Visual overview of domain resilience across all assessment domains.
@@ -864,7 +869,7 @@ Cyber Resilience Assessment Report
     {prioritizedFindings.slice(0, 5).map((finding) => (
       <div
         key={finding.questionId}
-        className="rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+        className="rounded-2xl border border-white/10 bg-white/[0.04] p-2"
       >
         <div className="flex flex-wrap items-center gap-3">
           <div className="text-xs font-bold uppercase tracking-wider text-red-300">
@@ -905,7 +910,7 @@ Cyber Resilience Assessment Report
     {prioritizedFindings.slice(0, 5).map((finding) => (
       <div
         key={finding.questionId}
-        className="rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+        className="rounded-2xl border border-white/10 bg-white/[0.04] v"
       >
         <div className="flex flex-wrap items-center gap-3">
           <div className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-300">
@@ -944,7 +949,7 @@ Cyber Resilience Assessment Report
     {remediationRoadmap.map((stage) => (
 <div
   key={stage.timeframe}
-  className="relative pl-10 rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+  className="relative pl-10 rounded-2xl border border-white/10 bg-white/[0.04] p-2Organisation Profil"
 >
   <div className="absolute left-4 top-5 h-full w-px bg-cyan-500/30" />
 
