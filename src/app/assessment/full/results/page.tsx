@@ -391,9 +391,9 @@ Cyber Resilience Assessment Report
         {cyberResilienceScore}
       </div>
 
-      <div className="text-slate-400">
-        out of 100
-      </div>
+<div className="text-xs font-semibold tracking-wide text-slate-400">
+  CYBER RESILIENCE SCORE
+</div>
 
       <div
         className={`mt-4 inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-wider ${exposureClassName}`}
@@ -408,19 +408,21 @@ Cyber Resilience Assessment Report
 <span className="text-red-400">High</span>
   </div>
 
-  <div className="relative h-3 rounded-full bg-slate-800">
+<div className="relative h-4 rounded-full bg-slate-800 shadow-inner">
+
     <div
       className="h-3 rounded-full bg-gradient-to-r from-emerald-500 via-amber-400 to-red-500"
       style={{ width: "100%" }}
     />
 
     <div
-      className="absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full border-2 border-white bg-cyan-300 shadow-lg"
+      className="absolute top-1/2 h-6 w-6
+ -translate-y-1/2 rounded-full border-2 border-white bg-cyan-300 shadow-lg"
       style={{ left: `${cyberResilienceScore}%` }}
     />
   </div>
 
-<div className="mt-4 text-center">
+<div className="mt-6 text-center border-t border-white/10 pt-4">
   <div className="text-4xl font-black text-cyan-300">
     {cyberResilienceScore}
   </div>
