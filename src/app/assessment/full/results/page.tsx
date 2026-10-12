@@ -292,8 +292,8 @@ const radarPoints = [
 ].join(" ");
 
 return (
-    <main className="min-h-screen bg-[#07111f] text-white">
-<div className="mx-auto max-w-5xl px-6 py-10">
+    <main className="min-h-screen bg-[#07111f] text-white print:text-sm">
+<div className="mx-auto max-w-5xl px-6 py-10 print:px-3 print:py-4">
         <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
        CCR Platform
         </div>
@@ -435,7 +435,7 @@ Cyber Resilience Assessment Report
     </div>
   </div>
 </section>
-<section className="mt-10 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+<section className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8 print:p-4">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
     Organisation Profile
   </div>
@@ -487,7 +487,8 @@ Cyber Resilience Assessment Report
   </div>
 )}
 </section>
-<section className="mt-10 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+<section className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8
+">
 <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
   Executive Summary
 </div>
@@ -572,7 +573,7 @@ Cyber Resilience Assessment Report
 
 </section>
 
-<section className="mt-10 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+<section className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-6">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
     Overall Assessment
   </div>
@@ -681,7 +682,7 @@ Cyber Resilience Assessment Report
     .
   </p>
 </section>
-<section className="mt-8 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
     Cyber Resilience by Domain
   </div>
@@ -716,7 +717,7 @@ Cyber Resilience Assessment Report
       ))}
   </div>
 </section>
-<section className="mt-8 break-inside-avoid rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
 <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
   Cyber Resilience Radar
 </div>
@@ -1009,7 +1010,8 @@ Cyber Resilience Assessment Report
   </div>
 </section>
 
-<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8 break-inside-avoid">
+<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8 print:p-4
+`">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
     Framework Alignment
   </div>
