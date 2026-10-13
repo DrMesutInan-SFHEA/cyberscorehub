@@ -85,7 +85,7 @@ export default function MethodologyPage() {
                 CCR
               </div>
               <div className="text-xs text-slate-500">
-                Cyber Check Report
+                Cyber Security Assessment Platform
               </div>
             </div>
           </Link>
@@ -539,7 +539,7 @@ export default function MethodologyPage() {
         <footer className="border-t border-white/10 py-8">
           <div className="flex flex-col gap-4 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              © 2026 CCR. Cyber Check Report.
+              © 2026 CyberScoreHub. All rights reserved.
             </div>
 
             <div>

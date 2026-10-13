@@ -32,7 +32,7 @@ const steps = [
     number: "01",
     title: "Business Profile",
     description:
-      "Tell CCR about your organisation, people, technology and digital environment.",
+      "Tell us about your organisation, people, technology and digital environment.",
   },
   {
     number: "02",
@@ -48,7 +48,7 @@ const steps = [
   },
   {
     number: "04",
-    title: "CCR Analysis",
+    title: "CyberScoreHub Analysis",
     description:
       "Receive readiness, evidence-confidence and domain-level assessment results.",
   },
@@ -79,10 +79,10 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="text-xl font-bold tracking-tight">CCR</div>
-              <div className="text-xs text-slate-400">
-                Cyber Check Report
-              </div>
+<div className="text-xl font-bold tracking-tight">CyberScoreHub</div>
+<div className="text-xs text-slate-400">
+  Cyber Security Assessment & Risk Insights
+</div>
             </div>
           </div>
 
@@ -145,24 +145,24 @@ export default function Home() {
             </div>
 
             <h1 className="max-w-3xl text-5xl font-black leading-[1.05] tracking-tight sm:text-6xl">
-              How Cyber-Ready Is{" "}
-              <span className="text-cyan-400">Your Business?</span>
+Measure Your
+<span className="text-cyan-400">Cyber Security Score</span>
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-              Understand your cyber-security strengths, identify control gaps,
-              build supporting evidence and know what to improve first.
+Assess your cyber security maturity, identify critical risks,
+benchmark performance and receive prioritised improvement recommendations.
             </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <StartAssessmentButton
-  label="Start Your Free Cyber Check"
+label="Start Free Assessment"
   className="rounded-xl bg-cyan-400 px-6 py-4 font-bold text-[#07111f] transition hover:bg-cyan-300"
 />
 ``
 
               <button className="rounded-xl border border-white/15 bg-white/5 px-6 py-4 font-semibold text-white transition hover:bg-white/10">
-                See How CCR Works
+                See How It Works
               </button>
             </div>
 
@@ -287,7 +287,7 @@ export default function Home() {
             </h2>
 
             <p className="mt-5 text-lg leading-8 text-slate-400">
-              CCR is designed to help small businesses understand their
+              CyberScoreHub is designed to help small businesses understand their
               security posture, understand what they can evidence and identify
               what should be improved first.
             </p>
@@ -321,7 +321,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="text-center">
             <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-              How CCR Works
+             How CyberScoreHub Works
             </div>
 
             <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
@@ -471,7 +471,7 @@ export default function Home() {
       <section>
         <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-8">
           <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-            CCR Plans
+            CyberScoreHub Plans
           </div>
 
           <h2 className="mt-4 text-3xl font-bold">
@@ -542,7 +542,7 @@ export default function Home() {
               </div>
 
               <div className="mt-1 text-sm text-slate-500">
-                Cyber Check Report
+                Cyber Security Assessment Platform
               </div>
 
               <div className="mt-4 max-w-sm text-xs leading-5 text-slate-600">
@@ -561,7 +561,7 @@ export default function Home() {
           </div>
 
           <div className="mt-10 border-t border-white/10 pt-6 text-xs text-slate-600">
-            © 2026 CCR. Cyber Check Report.
+           © 2026 CyberScoreHub. All rights reserved.
           </div>
         </div>
       </footer>

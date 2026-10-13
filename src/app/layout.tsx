@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "CCR | Cyber Check Report",
-    template: "%s | CCR",
+default: "CyberScoreHub | Cyber Security Assessment & Risk Insights",
+template: "%s | CyberScoreHub",
   },
   description:
     "Evidence-aware cyber and connected-device security assessment designed to help small and medium-sized organisations understand their security posture, identify control gaps and prioritise improvement.",

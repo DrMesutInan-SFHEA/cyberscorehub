@@ -443,7 +443,7 @@ Cyber Resilience Assessment Report
     </div>
   </div>
 </section>
-<section className="mt-10 rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-8 print:p-4">
+<section className="mt-10 break-inside-avoid rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-8 print:p-4">
   <div className="text-sm font-semibold uppercase tracking-wider text-lime-400">
     Organisation Profile
   </div>
@@ -503,7 +503,7 @@ Cyber Resilience Assessment Report
   </div>
 )}
 </section>
-<section className="mt-10 rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-8
+<section className="mt-10 break-inside-avoid rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-8
 ">
 <div className="text-sm font-semibold uppercase tracking-wider text-lime-400">
   Executive Summary
@@ -595,7 +595,7 @@ Cyber Resilience Assessment Report
 
 </section>
 
-<section className="mt-10 rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-6">
+<section className="mt-10 break-inside-avoid rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-6">
   <div className="text-sm font-semibold uppercase tracking-wider text-lime-400">
     Overall Assessment
   </div>
@@ -636,7 +636,7 @@ Cyber Resilience Assessment Report
   ))}
 </div>
         </section>
-<section className="mt-8 rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-8">
+<section className="mt-8 break-inside-avoid rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-8">
 <div className="text-sm font-semibold uppercase tracking-wider text-lime-400">
   Cyber Resilience Radar
 </div>
