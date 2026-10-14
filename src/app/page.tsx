@@ -180,7 +180,7 @@ label="Start Free Assessment"
               <div className="flex items-center justify-between border-b border-white/10 pb-5">
                 <div>
                   <div className="text-sm text-slate-400">
-                    Example CCR Assessment
+                  Example CyberScoreHub Assessment
                   </div>
 
                   <div className="mt-1 font-semibold">ABC Ltd</div>
@@ -194,9 +194,10 @@ label="Start Free Assessment"
               {/* SCORES */}
               <div className="grid gap-4 py-6 sm:grid-cols-2">
                 <div className="rounded-2xl bg-[#0b192a] p-5">
-                  <div className="text-sm text-slate-400">
-                    CCR Readiness
-                  </div>
+<div className="text-sm text-slate-400">
+  CyberScore Rating
+</div>
+
 
                   <div className="mt-2 text-4xl font-black">
                     71
@@ -369,7 +370,7 @@ label="Start Free Assessment"
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl leading-7 text-slate-400">
-            CCR is designed to map relevant assessment controls against
+           CyberScoreHub is designed to map relevant assessment controls against
             established cybersecurity guidance while clearly separating a
             readiness assessment from formal certification.
           </p>
@@ -391,7 +392,7 @@ label="Start Free Assessment"
           </div>
 
           <p className="mx-auto mt-8 max-w-3xl text-xs leading-6 text-slate-500">
-            CCR is an independent assessment and improvement platform. Framework
+           CyberScoreHub is an independent assessment and improvement platform. Framework
             mapping does not constitute certification or endorsement by the
             referenced framework owners.
           </p>
@@ -411,7 +412,7 @@ label="Start Free Assessment"
             </h2>
 
             <p className="mt-5 max-w-xl leading-7 text-slate-400">
-              CCR is designed to consider traditional business IT alongside
+              CyberScoreHub is designed to consider traditional business IT alongside
               connected devices that may form part of your organisation's
               technology environment.
             </p>
@@ -479,7 +480,7 @@ label="Start Free Assessment"
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl leading-7 text-slate-400">
-            CCR will offer different assessment levels for organisations that
+          CyberScoreHub will offer different assessment levels for organisations that
             need greater evidence, analysis, reporting and expert review.
           </p>
 
@@ -538,7 +539,7 @@ label="Start Free Assessment"
           <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <div className="font-bold text-slate-200">
-                CCR
+                CyberScoreHub
               </div>
 
               <div className="mt-1 text-sm text-slate-500">
