@@ -295,7 +295,7 @@ return (
     <main className="min-h-screen bg-gradient-to-br from-black via-[#050505] to-[#0b0b0b] text-white print:text-sm">
 <div className="mx-auto max-w-5xl px-6 py-10 print:px-3 print:py-4">
         <div className="text-sm font-bold uppercase tracking-[0.2em] text-lime-300 drop-shadow-[0_0_12px_rgba(198,255,0,0.9)]">
-       CCR Platform
+       CyberScoreHub Platform
         </div>
 
 <h1 className="mt-2 text-4xl font-black text-white drop-shadow-[0_0_18px_rgba(198,255,0,0.45)]
@@ -1095,7 +1095,7 @@ className="mt-6 rounded-xl border border-lime-400/30 bg-[#0a0f08]/10 px-6 py-3 f
 </section>
 
 <div className="mt-12 border-t border-slate-300 pt-4 text-center text-xs text-slate-500 print:text-slate-700">
-  CCR Platform Cyber Resilience Assessment Report
+  CyberScoreHub Cyber Resilience Assessment Report
 </div>
 
       </div>
