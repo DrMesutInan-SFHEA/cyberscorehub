@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Methodology",
   description:
-    "Understand how CCR assesses cyber-security readiness, evidence confidence, exposure, security domains, findings and improvement priorities.",
+    "Understand how CyberScoreHub assesses cyber-security readiness, evidence confidence, exposure, security domains, findings and improvement priorities.",
 };
 ``
 const domains = [
@@ -146,7 +146,7 @@ export default function MethodologyPage() {
           <MetricCard
             label="CyberScore Rating"
             value="0-100"
-            text="An indicative measure of assessed control readiness across applicable CCR security domains."
+            text="An indicative measure of assessed control readiness across applicable security domains."
           />
 
           <MetricCard
@@ -193,7 +193,7 @@ export default function MethodologyPage() {
 
           <p className="mt-5 max-w-3xl leading-8 text-slate-400">
             The Quick Check currently organises assessment controls across
-            ten CCR security domains covering traditional business IT,
+            ten security domains covering traditional business IT,
             people, recovery and connected technology.
           </p>
 
@@ -225,11 +225,11 @@ export default function MethodologyPage() {
 
         <section className="mt-24 grid gap-6 lg:grid-cols-2">
           <InfoPanel
-            eyebrow="CCR Readiness"
+           eyebrow="CyberScore Rating"
             title="Control readiness and evidence are deliberately separated."
           >
             <p>
-              CCR Readiness represents assessed implementation of applicable
+              CyberScore Rating represents assessed implementation of applicable
               controls. Evidence Confidence is reported independently because
               an organisation may report strong controls while having limited
               supporting evidence available.

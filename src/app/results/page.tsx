@@ -5,7 +5,7 @@ export default function ResultsPage() {
 
         <div className="mb-10">
           <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-            CCR Quick Check
+            CyberScoreHub Quick Assessment
           </div>
 
           <h1 className="mt-3 text-4xl font-black md:text-5xl">
@@ -23,7 +23,7 @@ export default function ResultsPage() {
 
           <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-8">
             <div className="text-sm font-bold uppercase tracking-wider text-slate-400">
-              CCR Readiness
+             CyberScore Rating
             </div>
 
             <div className="mt-4 text-6xl font-black text-cyan-400">
@@ -96,7 +96,7 @@ export default function ResultsPage() {
         <div className="mt-10">
 
           <div className="text-sm font-bold uppercase tracking-wider text-cyan-400">
-            CCR Improvement Roadmap
+           Improvement Roadmap
           </div>
 
           <h2 className="mt-2 text-3xl font-bold">
