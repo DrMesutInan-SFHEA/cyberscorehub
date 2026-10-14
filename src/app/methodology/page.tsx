@@ -82,7 +82,7 @@ export default function MethodologyPage() {
 
             <div>
               <div className="text-lg font-black tracking-tight">
-                CCR
+               CyberScoreHub
               </div>
               <div className="text-xs text-slate-500">
                 Cyber Security Assessment Platform
