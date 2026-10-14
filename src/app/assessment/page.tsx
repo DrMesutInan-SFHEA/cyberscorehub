@@ -119,7 +119,7 @@ if (step === 3 && result) {
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-7">
             <div className="text-sm text-slate-400">
-              CCR Readiness
+              CyberScore Rating
             </div>
 
             <div className="mt-3 text-5xl font-black">
@@ -178,7 +178,7 @@ if (step === 3 && result) {
 
   <p className="mt-3 text-sm leading-6 text-slate-400">
     These scores are calculated from your Quick Check responses and show
-    assessed control readiness across the ten CCR security domains.
+   assessed control readiness across the ten security domains.
   </p>
 
   <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -622,7 +622,7 @@ if (step === 5 && result) {
         </div>
         <div className="mt-10">
           <div className="text-sm font-bold uppercase tracking-[0.15em] text-cyan-400">
-            CCR Improvement Roadmap
+            Improvement Roadmap
           </div>
 
           <h2 className="mt-2 text-3xl font-black">
@@ -719,7 +719,7 @@ if (step === 5 && result) {
         </div>
         <div className="mt-10 rounded-3xl border border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 to-blue-500/5 p-8 text-center">
           <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-            Go Deeper With CCR
+            Unlock Deeper Insights
           </div>
 
           <h2 className="mt-4 text-3xl font-black">
@@ -727,7 +727,7 @@ if (step === 5 && result) {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-300">
-            The full CCR assessment will add deeper control analysis,
+            The full CyberScoreHub assessment will add deeper control analysis,
             supporting evidence, framework mappings, detailed findings and a
             prioritised improvement roadmap.
           </p>
@@ -736,7 +736,7 @@ if (step === 5 && result) {
             type="button"
             className="mt-7 rounded-xl bg-cyan-400 px-7 py-3.5 font-bold text-[#07111f]"
           >
-            Full CCR Assessment Coming Next
+           Full CyberScoreHub Assessment
           </button>
         </div>
 
@@ -772,7 +772,7 @@ if (step === 5 && result) {
           <div className="flex items-center justify-between gap-6">
             <div>
               <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-                CCR Quick Check
+                CyberScoreHub Quick Assessment
               </div>
 
               <h1 className="mt-3 text-4xl font-black">
@@ -892,7 +892,7 @@ if (step === 5 && result) {
         </div>
 
         <p className="mt-5 max-w-2xl leading-7 text-slate-400">
-          Tell CCR a little about your organisation before starting the
+         Tell us a little about your organisation before starting the
           cyber-security assessment.
         </p>
 
