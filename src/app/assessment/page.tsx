@@ -99,7 +99,7 @@ if (step === 3 && result) {
         <div className="flex items-center justify-between gap-6">
           <div>
             <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-              CCR Quick Check
+             CyberScoreHub Quick Assessment
             </div>
 
             <h1 className="mt-3 text-4xl font-black">
@@ -325,7 +325,7 @@ if (step === 4 && result) {
         <div className="flex items-center justify-between gap-6">
           <div>
             <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-              CCR Quick Check
+             CyberScoreHub Quick Assessment
             </div>
 
             <h1 className="mt-3 text-4xl font-black">
@@ -456,7 +456,7 @@ if (step === 5 && result) {
         <div className="flex items-center justify-between gap-6">
           <div>
             <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-              CCR Quick Check
+              CyberScoreHub Quick Assessment
             </div>
 
             <h1 className="mt-3 text-4xl font-black">
@@ -480,7 +480,7 @@ if (step === 5 && result) {
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-7">
             <div className="text-sm text-slate-400">
-              CCR Readiness
+             CyberScore Rating
             </div>
 
             <div className="mt-3 text-5xl font-black">
@@ -878,7 +878,7 @@ if (step === 5 && result) {
         <div className="flex items-center justify-between gap-6">
           <div>
             <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-              CCR Quick Check
+              CyberScoreHub Quick Assessment
             </div>
 
             <h1 className="mt-3 text-4xl font-black">
