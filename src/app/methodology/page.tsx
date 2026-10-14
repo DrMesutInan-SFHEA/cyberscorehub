@@ -108,7 +108,7 @@ export default function MethodologyPage() {
         <section className="py-20">
           <div className="max-w-4xl">
             <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-              CCR Methodology
+             CyberScoreHub Methodology
             </div>
 
             <h1 className="mt-5 text-5xl font-black leading-tight sm:text-6xl">
@@ -116,7 +116,7 @@ export default function MethodologyPage() {
             </h1>
 
             <p className="mt-7 max-w-3xl text-lg leading-8 text-slate-300">
-              CCR combines a structured cyber-security assessment,
+             CyberScoreHub combines a structured cyber-security assessment,
               evidence awareness, connected-device considerations and
               prioritised findings to help organisations understand where
               controls appear stronger, where gaps may exist and what should
@@ -144,7 +144,7 @@ export default function MethodologyPage() {
 
         <section className="grid gap-5 md:grid-cols-3">
           <MetricCard
-            label="CCR Readiness"
+            label="CyberScore Rating"
             value="0-100"
             text="An indicative measure of assessed control readiness across applicable CCR security domains."
           />
@@ -170,7 +170,7 @@ export default function MethodologyPage() {
           </h2>
 
           <p className="mt-5 max-w-3xl leading-8 text-slate-400">
-            CCR separates assessment, evidence and remediation so that a
+            CyberScoreHub separatess assessment, evidence and remediation so that a
             reported security control is not automatically treated as
             evidence-supported assurance.
           </p>
@@ -302,7 +302,7 @@ export default function MethodologyPage() {
           </h2>
 
           <p className="mt-5 max-w-3xl leading-8 text-slate-400">
-            CCR distinguishes between reported controls and controls with
+           CyberScoreHub distinguishes between reported controls and controls with
             stronger supporting provenance. Evidence Confidence does not
             replace the Readiness Score; it provides additional context about
             the assurance supporting that assessment.
@@ -374,7 +374,7 @@ export default function MethodologyPage() {
           </h2>
 
           <p className="mt-5 max-w-3xl leading-8 text-slate-400">
-            CCR groups findings into practical suggested timeframes so that
+            CyberScoreHub groups findings into practical suggested timeframes so that
             organisations can focus on immediate priorities without losing
             sight of medium and longer-term improvements.
           </p>
@@ -411,7 +411,7 @@ export default function MethodologyPage() {
           </h2>
 
           <p className="mt-5 max-w-4xl leading-8 text-slate-300">
-            CCR is designed so that relevant assessment controls can be mapped
+            CyberScoreHub is designed so that relevant assessment controls can be mapped
             against established cyber-security guidance, including NIST CSF,
             CIS Controls and relevant Cyber Essentials control areas.
           </p>
@@ -437,7 +437,7 @@ export default function MethodologyPage() {
             </div>
 
             <p className="mt-3 text-sm leading-6 text-slate-400">
-              CCR is an independent assessment and improvement platform.
+            CyberScoreHub is an independent assessment and improvement platform.
               References or mappings to third-party frameworks do not
               constitute certification, accreditation or endorsement by the
               referenced framework owners.
@@ -447,7 +447,7 @@ export default function MethodologyPage() {
 
         <section className="mt-24 grid gap-6 lg:grid-cols-2">
           <InfoPanel
-            eyebrow="What CCR Is"
+            eyebrow="What CyberScoreHub Is"
             title="Decision support for cyber-security improvement."
           >
             <ul className="space-y-3">
@@ -470,7 +470,7 @@ export default function MethodologyPage() {
           </InfoPanel>
 
           <InfoPanel
-            eyebrow="What CCR Is Not"
+            eyebrow="What CyberScoreHub Is Not"
             title="Assessment does not equal certification or guarantee."
           >
             <ul className="space-y-3">
@@ -525,7 +525,7 @@ export default function MethodologyPage() {
             </h2>
 
             <p className="mt-6 text-lg leading-8 text-slate-400">
-              Start with the free CCR Quick Check and build a clearer picture
+              Start with the free CyberScoreHub Quick Assessment and build a clearer picture
               of your organisation&apos;s cyber-security readiness.
             </p>
 
