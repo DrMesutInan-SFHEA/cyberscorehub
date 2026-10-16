@@ -27,9 +27,13 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "31FkQSpTrL_JVbD8S-7IXCqpUF_6AJBEWIANP7irxq4",
+    other: {
+      "msvalidate.01": "EEFAF462D02B260C9B71BE1DBB2AD64D",
+    },
   },
 };
-export default function RootLayout({ children }: LayoutProps<"/">) {
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
