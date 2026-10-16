@@ -57,7 +57,7 @@ setSelectedAnswerId(
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
         <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-          CCR Full Assessment
+          CyberScoreHub Full Assessment
         </div>
 
         <h1 className="mt-3 text-4xl font-black">
