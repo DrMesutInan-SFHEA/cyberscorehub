@@ -910,9 +910,6 @@ strokeWidth="2"
             {finding.domainId}
           </div>
 
-          <div className="text-xs text-slate-500">
-            {finding.questionId}
-          </div>
         </div>
 
         <h3 className="mt-3 text-lg font-bold text-white">
@@ -1063,7 +1060,7 @@ Organisation Profil"
           </div>
 
           <div className="mt-1 text-xs text-slate-500">
-            {mapping.domainId} • {mapping.questionId}
+          {mapping.domainId}
           </div>
         </div>
 
