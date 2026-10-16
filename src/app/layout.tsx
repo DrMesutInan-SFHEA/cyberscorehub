@@ -18,13 +18,21 @@ export const metadata: Metadata = {
   },
   description:
     "CyberScoreHub helps organisations assess cyber security maturity, identify security gaps, benchmark performance, understand cyber risks and prioritise remediation with evidence-based insights.",
-  openGraph: {
-    title: "CyberScoreHub | Cyber Security Assessment & Risk Insights",
-    description:
-      "Assess cyber security maturity, identify gaps, benchmark performance and prioritise improvement with CyberScoreHub.",
-    siteName: "CyberScoreHub",
-    type: "website",
-  },
+openGraph: {
+  title: "CyberScoreHub | Cyber Security Assessment & Risk Insights",
+  description:
+    "Assess cyber security maturity, identify gaps, benchmark performance and prioritise improvement with CyberScoreHub.",
+  url: "https://cyberscorehub.com",
+  siteName: "CyberScoreHub",
+  type: "website",
+},
+
+twitter: {
+  card: "summary_large_image",
+  title: "CyberScoreHub | Cyber Security Assessment & Risk Insights",
+  description:
+    "Assess cyber security maturity, identify gaps, benchmark performance and prioritise improvement with CyberScoreHub.",
+},
   verification: {
     google: "31FkQSpTrL_JVbD8S-7IXCqpUF_6AJBEWIANP7irxq4",
     other: {
