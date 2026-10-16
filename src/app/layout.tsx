@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     siteName: "CyberScoreHub",
     type: "website",
   },
+  verification: {
+    google: "31FkQSpTrL_JVbD8S-7IXCqpUF_6AJBEWIANP7irxq4",
+  },
 };
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
