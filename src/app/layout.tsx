@@ -11,16 +11,21 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
   title: {
-default: "CyberScoreHub | Cyber Security Assessment & Risk Insights",
-template: "%s | CyberScoreHub",
+    default: "CyberScoreHub | Cyber Security Assessment & Risk Insights",
+    template: "%s | CyberScoreHub",
   },
   description:
-    "Evidence-aware cyber and connected-device security assessment designed to help small and medium-sized organisations understand their security posture, identify control gaps and prioritise improvement.",
+    "CyberScoreHub helps organisations assess cyber security maturity, identify security gaps, benchmark performance, understand cyber risks and prioritise remediation with evidence-based insights.",
+  openGraph: {
+    title: "CyberScoreHub | Cyber Security Assessment & Risk Insights",
+    description:
+      "Assess cyber security maturity, identify gaps, benchmark performance and prioritise improvement with CyberScoreHub.",
+    siteName: "CyberScoreHub",
+    type: "website",
+  },
 };
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
