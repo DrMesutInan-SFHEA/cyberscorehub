@@ -61,7 +61,7 @@ setSelectedAnswerId(
     CyberScoreHub Full Assessment
   </h1>
 
-  <h2 className="mt-4 text-3xl font-bold text-cyan-400">
+  <h2 className="mt-4 text-3xl font-bold text-lime-400">
     Cyber Security Assessment
   </h2>
 
@@ -71,23 +71,46 @@ setSelectedAnswerId(
   </p>
 </div>
 
-        <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-                Assessment Progress
-              </div>
-
-  <div className="mt-2 text-2xl font-bold">
-  {completedQuestions} of {CCR_FULL_QUESTIONS.length} questions completed
-</div>
-            </div>
-
-<div className="text-3xl font-black text-cyan-400">
-  {Math.round((completedQuestions / CCR_FULL_QUESTIONS.length) * 100)}%
+        <div className="mt-10 rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-8 shadow-[0_0_25px_rgba(34,211,238,0.15)]">
+<div className="text-center">
+  <div className="text-sm font-semibold uppercase tracking-wider text-lime-400">
+    Assessment Progress
+  </div>
 </div>
 
-          </div>
+<div className="mt-6 grid gap-4 md:grid-cols-3">
+  <div className="rounded-2xl border border-lime-400/20 bg-lime-400/5 p-5 text-center">
+    <div className="text-4xl font-black text-lime-400">
+      {Math.round(
+        (completedQuestions / CCR_FULL_QUESTIONS.length) * 100
+      )}%
+    </div>
+
+    <div className="mt-2 text-sm text-slate-300">
+      Completion Rate
+    </div>
+  </div>
+
+  <div className="rounded-2xl border border-lime-400/20 bg-lime-400/5 p-5 text-center">
+    <div className="text-4xl font-black text-lime-400">
+      {completedQuestions}/{CCR_FULL_QUESTIONS.length}
+    </div>
+
+    <div className="mt-2 text-sm text-slate-300">
+      Questions Completed
+    </div>
+  </div>
+
+  <div className="rounded-2xl border border-lime-400/20 bg-lime-400/5 p-5 text-center">
+    <div className="text-4xl font-black text-lime-400">
+      5/5
+    </div>
+
+    <div className="mt-2 text-sm text-slate-300">
+      Security Domains
+    </div>
+  </div>
+</div>
 
           <div className="mt-6 h-2 overflow-hidden rounded-full bg-white/10">
             <div className="h-full w-0 rounded-full bg-cyan-400" />
@@ -98,42 +121,35 @@ setSelectedAnswerId(
           {["GOV", "AST", "IAM", "END", "NET"].map((domain) => (
             <div
               key={domain}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center"
+              className="rounded-2xl border border-lime-400/20 bg-[#0a0f08] p-5 text-center shadow-[0_0_15px_rgba(34,211,238,0.12)]"
             >
-<div className="text-lg font-bold text-white">
+<div className="text-base font-bold text-lime-400 drop-shadow-[0_0_6px_rgba(34,211,238,0.6)]">
   {{
     GOV: "Governance",
-    AST: "Asset Management",
+   AST: "Assets",
     IAM: "Identity & Access",
     END: "Endpoints",
     NET: "Network Security",
   }[domain]}
 </div>
 
-<div className="mt-3 text-base font-semibold text-cyan-300">
-  {
-    CCR_FULL_QUESTIONS.slice(0, completedQuestions).filter(
-      (question) => question.domainId === domain
-    ).length
-  }
-  {" / "}
-  {
-    CCR_FULL_QUESTIONS.filter(
-      (question) => question.domainId === domain
-    ).length
-  }
-  {" Complete"}
+<div className="mt-3 text-4xl font-black text-lime-400">
+  ✓
+</div>
+
+<div className="mt-2 text-xs font-semibold uppercase tracking-wider text-lime-400">
+  Complete
 </div>
             </div>
           ))}
         </div>
 
-<section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
-  <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
+<section className="mt-8 rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-8 shadow-[0_0_25px_rgba(34,211,238,0.15)]">
+  <div className="text-sm font-semibold uppercase tracking-wider text-lime-400">
   
   </div>
 
-  <h2 className="mt-3 text-2xl font-bold text-white">
+  <h2 className="mt-3 text-2xl font-bold text-lime-300">
     {currentQuestion.controlNameEn}
   </h2>
 
@@ -167,7 +183,7 @@ onClick={() => {
 }}
   className={`w-full rounded-xl border px-5 py-4 text-left font-medium transition ${
 selectedAnswerId === option.id
-  ? "border-cyan-300 bg-cyan-400/20 text-white ring-2 ring-cyan-400/30"
+? "border-lime-300 bg-lime-400/15 text-lime-100 ring-2 ring-lime-400/30"
   : "border-white/10 bg-white/[0.04] text-slate-200 hover:border-cyan-400 hover:bg-cyan-400/[0.06]"
   }`}
 >
@@ -179,27 +195,27 @@ selectedAnswerId === option.id
 
 
 <div className="mt-8 flex justify-end border-t border-white/10 pt-6">
-<button
-  type="button"
-onClick={() => {
-  if (isLastQuestion) {
-    window.location.href = "/assessment/full/results";
-    return;
-  }
+  <button
+    type="button"
+    onClick={() => {
+      if (isLastQuestion) {
+        window.location.href = "/assessment/full/results";
+        return;
+      }
 
-  setCurrentQuestionIndex((index) => index + 1);
-  setCompletedQuestions((count) => count + 1);
-  setSelectedAnswerId(null);
-}}
-  disabled={!selectedAnswerId}
-  className={`rounded-xl px-6 py-3 font-bold transition ${
-    selectedAnswerId
-      ? "bg-cyan-400 text-[#07111f] hover:bg-cyan-300"
-      : "cursor-not-allowed bg-white/10 text-slate-500"
-  }`}
->
-{isLastQuestion ? "View Assessment Results" : "Next Question"}
-</button>
+      setCurrentQuestionIndex((index) => index + 1);
+      setCompletedQuestions((count) => count + 1);
+      setSelectedAnswerId(null);
+    }}
+    disabled={!selectedAnswerId}
+    className={`rounded-xl px-8 py-4 font-bold tracking-wide transition ${
+      selectedAnswerId
+        ? "border border-lime-300 bg-lime-400 text-[#07111f] hover:bg-lime-300 shadow-[0_0_30px_rgba(163,230,53,0.45)]"
+        : "cursor-not-allowed bg-white/10 text-slate-500"
+    }`}
+  >
+    {isLastQuestion ? "Generate Cyber Resilience Report" : "Next Question"}
+  </button>
 </div>
 
 </section>
