@@ -86,7 +86,6 @@ useEffect(() => {
     window.location.href = "/assessment/full/questions";
   }
 }, [answers, isLoaded, hasLoadError]);
-``
 
 const startNewAssessment = () => {
   localStorage.removeItem("ccr-full-assessment-answers");
@@ -299,7 +298,7 @@ return (
         </div>
 
 <h1 className="mt-2 text-4xl font-black text-white drop-shadow-[0_0_18px_rgba(198,255,0,0.45)]
-`">
+">
 Cyber Resilience Assessment Report
 
 </h1>
@@ -330,7 +329,7 @@ Cyber Resilience Assessment Report
 
   <div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]
 /[0.06] p-2 shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm
-``">
+">
     <div className="text-xs font-semibold uppercase tracking-wider text-lime-300">
       Exposure
     </div>
@@ -341,7 +340,7 @@ Cyber Resilience Assessment Report
 
   <div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]
 /[0.06] p-2 shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm
-``">
+">
     <div className="text-xs font-semibold uppercase tracking-wider text-lime-300">
       Security Gaps
     </div>
@@ -352,7 +351,7 @@ Cyber Resilience Assessment Report
 
   <div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]
 /[0.06] p-2 shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm
-``">
+">
 <div className="text-xs font-semibold uppercase tracking-wider text-lime-300">
   High Priority Gaps
 </div>
@@ -395,17 +394,13 @@ Cyber Resilience Assessment Report
         Cyber Resilience Score
       </div>
 
-      <div className="mt-2 text-5xl font-black text-white">
-        {cyberResilienceScore}
-      </div>
-
-<div className="text-xs font-semibold tracking-wide text-slate-400">
-  CYBER RESILIENCE SCORE
+<div className="mt-2 text-6xl font-black text-lime-300">
+  {cyberResilienceScore}
 </div>
 
       <div
-        className={`mt-4 inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-wider ${exposureClassName}`}
-      >
+  className={`mt-4 inline-flex rounded-full border px-4 py-2 text-sm font-bold uppercase tracking-wider ${exposureClassName}`}
+>
         {exposure} Exposure
       </div>
       <div className="mt-6">
@@ -534,60 +529,75 @@ Cyber Resilience Assessment Report
   </span>{" "}
   high-priority gaps.
 </p>
-<div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-    <div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]
-/[0.06] p-2 shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm
-">
-<div className="text-3xl font-black text-lime-400">
+<div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+<div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]/[0.06] p-4 min-h-[140px] flex flex-col justify-center shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm">
+<div className="text-5xl font-black text-lime-300">
   {cyberResilienceScore}
 </div>
 
-<div className="mt-1 text-sm text-slate-400">
+<div className="mt-2 text-sm font-semibold uppercase tracking-wider text-lime-300">
   Cyber Resilience Score
 </div>
 
-<div className="mt-1 text-xs text-slate-500">
+<div className="mt-1 text-xs text-lime-400">
   out of 100
 </div>
 </div>
 
-<div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]
-/[0.06] p-2 shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm
-">
-  <div className="text-3xl font-black text-white">
-    {exposure}
-  </div>
+<div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]/[0.06] p-2 shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm">
+<div className="text-5xl font-black text-lime-300">
+  {exposure}
+</div>
+
+<div className="mt-2 text-sm font-semibold uppercase tracking-wider text-lime-300">
+  Exposure
+</div>
+</div>
+
+<div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]/[0.06] p-2 shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm">
+<div className="text-5xl font-black text-lime-300">
+  {keyFindings.length}
+</div>
+<div className="mt-2 text-sm font-semibold uppercase tracking-wider text-lime-300">
+  Security Gaps
+</div>
     </div>
 
-    <div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]
-/[0.06] p-2 shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm
-">
-      <div className="text-3xl font-black text-white">
-        {keyFindings.length}
-      </div>
-      <div className="mt-1 text-sm text-slate-400">
-        Security Gaps
-      </div>
+   <div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]/[0.06] p-4 min-h-[140px] flex flex-col justify-center shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm">
+<div className="text-5xl font-black text-lime-300">
+  {highPriorityFindings.length}
+</div>
+<div className="mt-2 text-sm font-semibold uppercase tracking-wider text-lime-300">
+  High-Priority Gaps
+</div>
     </div>
 
-    <div className="rounded-2xl border border-red-400/20 bg-red-400/[0.06] p-2">
-      <div className="text-3xl font-black text-red-300">
-        {highPriorityFindings.length}
-      </div>
-      <div className="mt-1 text-sm text-slate-400">
-        High-Priority Gaps
-      </div>
-    </div>
+<div className="rounded-2xl border border-amber-400/20 bg-[#0a0f08] p-2 shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm">
+<div className="text-5xl font-black text-lime-300">
+  {weakestDomain.score}
+</div>
+<div className="mt-2 text-lg font-bold text-lime-300">
+  {{
+    GOV: "Governance",
+    AST: "Assets",
+    IAM: "Identity & Access",
+    END: "Endpoints",
+    NET: "Network Security",
+  }[weakestDomain.domain] || weakestDomain.domain}
+</div>
 
-    <div className="rounded-2xl border border-amber-400/20 bg-[#0a0f08] p-2">
-      <div className="text-lg font-black text-amber-300">
-        {weakestDomain.domain}
-      </div>
-      <div className="mt-1 text-2xl font-black text-white">
-        {weakestDomain.score} / 100
-      </div>
-<div className="mt-1 text-sm text-slate-400">
-  Weakest Domain
+<div className="mt-3 text-sm font-semibold uppercase tracking-wider text-lime-300">
+ Assets
+</div>
+
+<div className="mt-1 text-lg font-bold text-lime-300">
+  {{
+    GOV: "Governance",
+    AST: "Assets",
+    IAM: "Identity & Access",
+    END: "Endpoints",
+    NET: "Network Security",
+  }[weakestDomain.domain] || weakestDomain.domain}
 </div>
 </div>
 
@@ -602,18 +612,18 @@ Cyber Resilience Assessment Report
 
 <div className="mt-6 flex items-end justify-between gap-6">
   <div>
-    <div className="text-2xl font-bold text-white">
-      Assessment Complete
-    </div>
-<div className="mt-2 text-slate-400">
+<div className="text-3xl font-black text-lime-300">
+  Assessment Complete
+</div>
+<div className="mt-2 text-lime-300">
   30 of 30 questions completed
 </div>
 
 </div>
 
-  <div className="text-4xl font-black text-lime-400">
-    100%
-  </div>
+<div className="text-5xl font-black text-lime-300">
+  100%
+</div>
 </div>
 <div className="mt-8 grid gap-4 border-t border-lime-400/20 pt-6 sm:grid-cols-5">
   {domainInsights.map((domain) => (
@@ -621,17 +631,23 @@ Cyber Resilience Assessment Report
       key={domain.domain}
       className="rounded-2xl border border-lime-400/20 bg-[#0a0f08] px-4 py-5 text-center"
     >
-      <div className="text-lg font-bold text-white">
-        {domain.domain}
-      </div>
+<div className="text-lg font-bold text-lime-300">
+  {{
+  GOV: "Governance",
+  AST: "Assets",
+  IAM: "Identity & Access",
+  END: "Endpoints",
+  NET: "Network Security",
+}[domain.domain] || domain.domain}
+</div>
 
-      <div className="mt-2 text-sm font-semibold text-lime-400">
-        6 / 6
-      </div>
+<div className="mt-3 text-3xl font-black text-lime-400">
+  ✓
+</div>
 
-      <div className="mt-1 text-xs uppercase tracking-wider text-slate-500">
-        Complete
-      </div>
+<div className="mt-1 text-xs uppercase tracking-wider text-lime-300">
+  Complete
+</div>
     </div>
   ))}
 </div>
@@ -650,9 +666,9 @@ Cyber Resilience Assessment Report
     <div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]
 /[0.06] p-2 shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm
 ">
-      <div className="text-sm text-slate-400">
-        Overall Position
-      </div>
+<div className="text-sm text-lime-300">
+  Overall Position
+</div>
 
       <div className="mt-2 text-3xl font-black text-white drop-shadow-[0_0_10px_rgba(198,255,0,0.5)]">
         {cyberResilienceScore} / 100
@@ -664,31 +680,46 @@ Cyber Resilience Assessment Report
         {exposure} Exposure
       </div>
     </div>
+<div className="rounded-2xl border border-lime-400/20 bg-[#0a0f08]/[0.06] p-4 min-h-[140px] flex flex-col justify-center shadow-[0_0_15px_rgba(198,255,0,0.15)] backdrop-blur-sm">
+<div className="text-sm font-semibold text-lime-300">
+  Lowest-Performing Domain
+</div>
 
-    <div className="rounded-2xl border border-amber-400/20 bg-[#0a0f08] p-2">
-      <div className="text-sm text-slate-400">
-        Lowest-Performing Domain
+      <div className="mt-2 text-3xl font-black text-amber-300">
+      {{
+  GOV: "Governance",
+  AST: "Assets",
+  IAM: "Identity & Access",
+  END: "Endpoints",
+  NET: "Network Security",
+}[weakestDomain.domain] || weakestDomain.domain}
       </div>
 
-      <div className="mt-2 text-2xl font-black text-amber-300">
-        {weakestDomain.domain}
-      </div>
+<div className="mt-3 text-2xl font-black text-white">
+  {weakestDomain.score} / 100
+</div>
 
-      <div className="mt-1 text-lg font-bold text-white">
-        {weakestDomain.score} / 100
-      </div>
+
     </div>
 
     <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/[0.06] p-2">
-      <div className="text-sm text-slate-400">
-        Highest-Performing Domain
+<div className="text-sm font-semibold text-lime-300">
+  Highest-Performing Domain
+</div>
+
+
+      <div className="mt-2 text-3xl font-black text-emerald-300">
+
+      {{
+  GOV: "Governance",
+  AST: "Assets",
+  IAM: "Identity & Access",
+  END: "Endpoints",
+  NET: "Network Security",
+}[strongestDomain.domain] || strongestDomain.domain}
       </div>
 
-      <div className="mt-2 text-2xl font-black text-emerald-300">
-        {strongestDomain.domain}
-      </div>
-
-      <div className="mt-1 text-lg font-bold text-white">
+      <div className="mt-3 text-2xl font-black text-white">
         {strongestDomain.score} / 100
       </div>
     </div>
@@ -701,9 +732,14 @@ Cyber Resilience Assessment Report
     </span>{" "}
     while maintaining the comparatively stronger controls identified in{" "}
     <span className="font-semibold text-white">
-      {strongestDomain.domain}
+      {{
+  GOV: "Governance",
+  AST: "Assets",
+  IAM: "Identity & Access",
+  END: "Endpoints",
+  NET: "Network Security",
+}[strongestDomain.domain] || strongestDomain.domain}
     </span>
-    .
   </p>
 </section>
 <section className="mt-8 rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-8">
@@ -721,9 +757,15 @@ Cyber Resilience Assessment Report
       .map((domain) => (
         <div key={`chart-${domain.domain}`}>
 <div className="mb-2 flex items-center justify-between">
-  <span className="font-bold text-white">
-    {domain.domain}
-  </span>
+<span className="font-bold text-lime-300">
+  {{
+    GOV: "Governance",
+    AST: "Assets",
+    IAM: "Identity & Access",
+    END: "Endpoints",
+    NET: "Network Security",
+  }[domain.domain] || domain.domain}
+</span>
 
   <span className="font-bold text-lime-300">
     {domain.score}
@@ -731,11 +773,10 @@ Cyber Resilience Assessment Report
 </div>
 
 <div className="h-3 overflow-hidden rounded-full bg-slate-800">
-  <div
-    className="h-full rounded-full bg-gradient-to-r from-lime-500 to-lime-300
-"
-    style={{ width: `${domain.score}%` }}
-  />
+<div
+  className="h-full rounded-full bg-gradient-to-r from-lime-500 to-lime-300"
+  style={{ width: `${domain.score}%` }}
+/>
 </div>
 
         </div>
@@ -819,9 +860,16 @@ strokeWidth="2"
     {domainInsights.map((domain) => (
       <div key={`heatmap-${domain.domain}`}>
         <div className="mb-2 flex items-center justify-between">
-          <span className="font-bold text-white">
-            {domain.domain}
-          </span>
+<span className="font-bold text-lime-300">
+  {{
+    GOV: "Governance",
+    AST: "Assets",
+    IAM: "Identity & Access",
+    END: "Endpoints",
+    NET: "Network Security",
+  }[domain.domain] || domain.domain}
+</span>
+
 
           <span className="text-sm font-semibold text-slate-400">
             {domain.score}/100
@@ -859,9 +907,15 @@ strokeWidth="2"
   >
     <div className="flex items-center gap-4">
       <div>
-        <div className="font-bold text-white">
-          {domain.domain}
-        </div>
+<div className="font-bold text-lime-300">
+  {{
+    GOV: "Governance",
+    AST: "Assets",
+    IAM: "Identity & Access",
+    END: "Endpoints",
+    NET: "Network Security",
+  }[domain.domain] || domain.domain}
+</div>
 
         <div className="mt-1 text-sm text-slate-400">
           {domain.findingsCount} security gaps ·{" "}
@@ -898,9 +952,8 @@ strokeWidth="2"
     {prioritizedFindings.slice(0, 5).map((finding) => (
       <div
         key={finding.questionId}
-        className="rounded-2xl border border-lime-400/20 bg-[#0a0f08] p-5 shadow-[0_0_15px_rgba(198,255,0,0.12)] backdrop-blur-sm
-"
-      >
+className="rounded-2xl border border-lime-400/20 bg-[#0a0f08] p-5 shadow-[0_0_15px_rgba(198,255,0,0.12)] backdrop-blur-sm"
+>
         <div className="flex flex-wrap items-center gap-3">
           <div className="text-xs font-bold uppercase tracking-wider text-red-300">
             {finding.priority}
@@ -1038,7 +1091,7 @@ Organisation Profil"
 </section>
 
 <section className="mt-8 rounded-3xl border border-lime-400/20 bg-[#0a0f08] p-8 print:p-4
-`">
+">
   <div className="text-sm font-semibold uppercase tracking-wider text-lime-400">
     Framework Alignment
   </div>
