@@ -44,19 +44,42 @@ useEffect(() => {
   return (
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
-        <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-        CyberScoreHub Full Assessment
-        </div>
+<div className="text-center">
+  <h1 className="text-5xl font-black text-white">
+    CyberScoreHub Full Assessment
+  </h1>
 
-        <h1 className="mt-3 text-4xl font-black">
-          Business Profile
-        </h1>
+  <h2 className="mt-4 text-3xl font-bold text-cyan-400">
+    Business Profile
+  </h2>
 
-        <p className="mt-5 max-w-2xl leading-7 text-slate-400">
-          Tell us a little about your organisation before starting the full
-          cyber security assessment.
-        </p>
+  <p className="mx-auto mt-5 max-w-3xl leading-7 text-slate-400">
+    Tell us a little about your organisation before starting the full cyber security assessment.
+  </p>
+</div>
 
+<div className="mt-8 grid gap-4 md:grid-cols-3">
+  <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
+    <div className="text-2xl font-black text-cyan-400">30</div>
+    <div className="mt-1 text-sm text-slate-300">
+      Assessment Controls
+    </div>
+  </div>
+
+  <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
+   <div className="text-center text-2xl font-black text-cyan-400">5</div>
+   <div className="mt-1 text-center text-sm text-slate-300">
+      Security Domains
+    </div>
+  </div>
+
+  <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
+    <div className="text-2xl font-black text-cyan-400">1</div>
+    <div className="mt-1 text-sm text-slate-300">
+      Personalised Report
+    </div>
+  </div>
+</div>
         <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
           <div className="text-xl font-bold">
             Organisation Information
@@ -169,7 +192,7 @@ useEffect(() => {
 <Link
   href="/assessment/full/questions"
   onClick={saveBusinessProfile}
-  className="inline-block rounded-xl bg-cyan-400 px-6 py-3 font-bold hover:bg-cyan-300"
+className="inline-flex items-center justify-center rounded-xl bg-cyan-400 px-8 py-4 text-base font-bold text-[#07111f] transition hover:bg-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.25)]"
 >
   Start Full Assessment
               </Link>

@@ -56,18 +56,20 @@ setSelectedAnswerId(
   return (
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
-        <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
-          CyberScoreHub Full Assessment
-        </div>
+<div className="text-center">
+  <h1 className="text-5xl font-black text-white">
+    CyberScoreHub Full Assessment
+  </h1>
 
-        <h1 className="mt-3 text-4xl font-black">
-          Cyber Security Assessment
-        </h1>
+  <h2 className="mt-4 text-3xl font-bold text-cyan-400">
+    Cyber Security Assessment
+  </h2>
 
-        <p className="mt-5 max-w-2xl leading-7 text-slate-400">
-          Complete all five security domains to build your cyber resilience
-          profile.
-        </p>
+  <p className="mx-auto mt-5 max-w-3xl leading-7 text-slate-400">
+    Complete all five security domains to build your cyber resilience
+    profile.
+  </p>
+</div>
 
         <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
           <div className="flex items-center justify-between gap-4">
@@ -98,22 +100,29 @@ setSelectedAnswerId(
               key={domain}
               className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center"
             >
-              <div className="text-lg font-bold text-white">
-                {domain}
-              </div>
+<div className="text-lg font-bold text-white">
+  {{
+    GOV: "Governance",
+    AST: "Asset Management",
+    IAM: "Identity & Access",
+    END: "Endpoints",
+    NET: "Network Security",
+  }[domain]}
+</div>
 
-<div className="mt-2 text-sm text-slate-400">
+<div className="mt-3 text-base font-semibold text-cyan-300">
   {
     CCR_FULL_QUESTIONS.slice(0, completedQuestions).filter(
       (question) => question.domainId === domain
     ).length
-  }{" "}
-  /{" "}
+  }
+  {" / "}
   {
     CCR_FULL_QUESTIONS.filter(
       (question) => question.domainId === domain
     ).length
   }
+  {" Complete"}
 </div>
             </div>
           ))}
@@ -121,7 +130,7 @@ setSelectedAnswerId(
 
 <section className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8">
   <div className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-    {currentQuestion.id}
+  
   </div>
 
   <h2 className="mt-3 text-2xl font-bold text-white">
