@@ -87,18 +87,27 @@ export default function Home() {
           </div>
 
           {/* NAVIGATION */}
-          <nav className="hidden items-center gap-7 text-sm text-slate-300 lg:flex">
-            <button className="transition hover:text-cyan-300">
-              Product
-            </button>
+<nav className="hidden items-center gap-7 text-sm text-slate-300 lg:flex">
+  <a
+    href="#platform-highlights"
+    className="transition hover:text-cyan-300"
+  >
+    Product
+  </a>
 
-            <button className="transition hover:text-cyan-300">
-              Solutions
-            </button>
+  <a
+    href="#roi"
+    className="transition hover:text-cyan-300"
+  >
+    Solutions
+  </a>
 
-            <button className="transition hover:text-cyan-300">
-              How It Works
-            </button>
+  <a
+    href="#how-it-works"
+    className="transition hover:text-cyan-300"
+  >
+    How It Works
+  </a>
 
 <a
   href="/methodology"
@@ -107,9 +116,12 @@ export default function Home() {
   Methodology
 </a>
 
-            <button className="transition hover:text-cyan-300">
-              Pricing
-            </button>
+            <a
+  href="#pricing"
+  className="transition hover:text-cyan-300"
+>
+  Pricing
+</a>
           </nav>
 
           {/* HEADER ACTIONS */}
@@ -118,9 +130,12 @@ export default function Home() {
               EN | TR
             </button>
 
-            <button className="hidden px-3 py-2 text-sm font-medium text-white transition hover:text-cyan-300 sm:block">
-              Sign In
-            </button>
+            <a
+  href="/login"
+  className="hidden px-3 py-2 text-sm font-medium text-white transition hover:text-cyan-300 sm:block"
+>
+  Sign In
+</a>
             <button
   onClick={() => {
     window.location.href = "/assessment";
@@ -161,9 +176,12 @@ label="Start Free Assessment"
 />
 ``
 
-              <button className="rounded-xl border border-white/15 bg-white/5 px-6 py-4 font-semibold text-white transition hover:bg-white/10">
-                See How It Works
-              </button>
+              <a
+  href="#how-it-works"
+  className="rounded-xl border border-white/15 bg-white/5 px-6 py-4 font-semibold text-white transition hover:bg-white/10 text-center"
+>
+  See How It Works
+</a>
             </div>
 
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-400">
@@ -276,7 +294,10 @@ label="Start Free Assessment"
       </section>
 
       {/* THREE PILLARS */}
-      <section className="border-y border-white/10 bg-[#091625]">
+      <section
+  id="roi"
+  className="border-y border-white/10 bg-[#091625]"
+>
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="max-w-3xl">
             <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
@@ -316,8 +337,129 @@ label="Start Free Assessment"
           </div>
         </div>
       </section>
+{/* TRUST BAR */}
+<section className="border-y border-white/10 bg-[#07111f]">
+  <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
 
-      {/* HOW IT WORKS */}
+    <div className="text-center text-sm uppercase tracking-[0.25em] text-slate-500">
+      Framework Inspired
+    </div>
+
+    <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+
+      {[
+        "NIST CSF 2.0",
+        "CIS Controls",
+        "Cyber Essentials",
+        "ISO 27001",
+        "OWASP",
+        "Zero Trust"
+      ].map((item) => (
+        <div
+          key={item}
+          className="rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3 text-sm font-semibold text-slate-300"
+        >
+          {item}
+        </div>
+      ))}
+
+    </div>
+
+  </div>
+</section>
+{/* STATS */}
+<section className="bg-[#050505]">
+  <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+
+    <div className="grid gap-6 text-center md:grid-cols-4">
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-4xl font-black text-cyan-400">
+          30+
+        </div>
+        <div className="mt-2 text-slate-400">
+          Security Controls
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-4xl font-black text-cyan-400">
+          6
+        </div>
+        <div className="mt-2 text-slate-400">
+          Assessment Domains
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-4xl font-black text-cyan-400">
+          NIST
+        </div>
+        <div className="mt-2 text-slate-400">
+          Framework Alignment
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-4xl font-black text-cyan-400">
+          PDF
+        </div>
+        <div className="mt-2 text-slate-400">
+          Executive Reports
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{/* STATS */}
+<section className="bg-[#050505]">
+  <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+
+    <div className="grid gap-6 text-center md:grid-cols-4">
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-4xl font-black text-cyan-400">
+          30+
+        </div>
+        <div className="mt-2 text-slate-400">
+          Security Controls
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-4xl font-black text-cyan-400">
+          6
+        </div>
+        <div className="mt-2 text-slate-400">
+          Assessment Domains
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-4xl font-black text-cyan-400">
+          NIST
+        </div>
+        <div className="mt-2 text-slate-400">
+          Framework Alignment
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-4xl font-black text-cyan-400">
+          PDF
+        </div>
+        <div className="mt-2 text-slate-400">
+          Executive Reports
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+     <section id="how-it-works"></section>
       <section>
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="text-center">
@@ -440,7 +582,61 @@ label="Start Free Assessment"
           </div>
         </div>
       </section>
+{/* ROI */}
+<section className="border-y border-white/10 bg-[#091625]">
+  <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
 
+    <div className="text-center">
+      <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+        Why Act Now
+      </div>
+
+      <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+        Small security gaps can become costly business problems.
+      </h2>
+
+      <p className="mx-auto mt-6 max-w-3xl text-slate-400">
+        Identify weaknesses early, prioritise improvements and build cyber resilience
+        before incidents disrupt your operations.
+      </p>
+    </div>
+
+    <div className="mt-14 grid gap-6 md:grid-cols-3">
+
+      <div className="rounded-2xl border border-red-500/20 bg-red-500/5 p-8">
+        <div className="text-4xl">⚠️</div>
+        <h3 className="mt-4 text-xl font-bold">
+          Unknown Risks
+        </h3>
+        <p className="mt-3 text-slate-400">
+          Critical security gaps often remain hidden until an incident occurs.
+        </p>
+      </div>
+
+      <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-8">
+        <div className="text-4xl">🎯</div>
+        <h3 className="mt-4 text-xl font-bold">
+          Clear Priorities
+        </h3>
+        <p className="mt-3 text-slate-400">
+          Focus first on the controls that reduce the most risk.
+        </p>
+      </div>
+
+      <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-8">
+        <div className="text-4xl">📈</div>
+        <h3 className="mt-4 text-xl font-bold">
+          Continuous Improvement
+        </h3>
+        <p className="mt-3 text-slate-400">
+          Track improvements and strengthen your security posture over time.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
       {/* CALL TO ACTION */}
       <section className="border-t border-white/10 bg-[#091625]">
         <div className="mx-auto max-w-5xl px-6 py-24 text-center">
@@ -532,6 +728,230 @@ label="Start Free Assessment"
           </div>
         </div>
       </section>
+{/* PRICING */}
+<section
+  id="pricing"
+  className="border-t border-white/10 bg-[#050c16]"
+>
+  <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+    <div className="text-center">
+      <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+        Pricing
+      </div>
+
+      <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+        Choose Your CyberScoreHub Plan
+      </h2>
+
+      <p className="mx-auto mt-5 max-w-2xl text-slate-400">
+        Start free and upgrade when you need deeper insights.
+      </p>
+    </div>
+
+    <div className="mt-12 grid gap-6 md:grid-cols-3">
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-cyan-400 font-bold">FREE</div>
+        <div className="mt-4 text-5xl font-black">£0</div>
+
+        <ul className="mt-6 space-y-3 text-slate-300">
+          <li>✓ Quick Assessment</li>
+          <li>✓ CyberScore</li>
+          <li>✓ Risk Overview</li>
+        </ul>
+        <button
+  className="mt-8 w-full rounded-xl border border-cyan-400 px-4 py-3 font-bold text-cyan-300"
+>
+  Coming Soon
+</button>
+        <button
+  onClick={() => {
+    window.location.href = "/assessment";
+  }}
+  className="mt-8 w-full rounded-xl border border-white/20 px-4 py-3 font-bold text-white"
+>
+  Start Free
+</button>
+      </div>
+
+      <div className="rounded-2xl border border-cyan-400 bg-cyan-400/10 p-8">
+        <div className="text-cyan-300 font-bold">
+          PROFESSIONAL
+        </div>
+
+        <div className="mt-4 text-5xl font-black">£29</div>
+
+        <ul className="mt-6 space-y-3 text-slate-200">
+          <li>✓ Full Assessment</li>
+          <li>✓ PDF Report</li>
+          <li>✓ Domain Scores</li>
+          <li>✓ Roadmap</li>
+          <li>✓ Framework Mapping</li>
+        </ul>
+        <button
+  onClick={() => {
+    window.location.href = "/assessment";
+  }}
+  className="mt-8 w-full rounded-xl bg-[#C6FF00] px-4 py-3 font-bold text-[#07111f] transition hover:bg-cyan-300"
+>
+  Get Started
+</button>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-cyan-400 font-bold">BUSINESS</div>
+
+        <div className="mt-4 text-5xl font-black">£99</div>
+
+        <ul className="mt-6 space-y-3 text-slate-300">
+          <li>✓ Unlimited Assessments</li>
+          <li>✓ Team Access</li>
+          <li>✓ Trend Tracking</li>
+          <li>✓ Historical Reports</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+{/* TESTIMONIALS */}
+<section className="border-t border-white/10">
+  <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+    <div className="text-center">
+      <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+        Success Stories
+      </div>
+
+      <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+        Helping Businesses Improve Security
+      </h2>
+    </div>
+
+    <div className="mt-12 grid gap-6 md:grid-cols-3">
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-yellow-400">★★★★★</div>
+        <p className="mt-4 text-slate-300">
+          CyberScoreHub helped us identify security gaps we didn't know existed.
+        </p>
+        <div className="mt-6 text-sm text-slate-500">
+          Manufacturing SME
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-yellow-400">★★★★★</div>
+        <p className="mt-4 text-slate-300">
+          The roadmap made it very clear what actions should be prioritised.
+        </p>
+        <div className="mt-6 text-sm text-slate-500">
+          IT Manager
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+        <div className="text-yellow-400">★★★★★</div>
+        <p className="mt-4 text-slate-300">
+          A professional assessment experience without enterprise-level costs.
+        </p>
+        <div className="mt-6 text-sm text-slate-500">
+          Business Owner
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{/* FAQ */}
+<section className="border-t border-white/10 bg-[#091625]">
+  <div className="mx-auto max-w-5xl px-6 py-24">
+
+    <div className="text-center">
+      <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+        FAQ
+      </div>
+
+      <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+        Frequently Asked Questions
+      </h2>
+    </div>
+
+    <div className="mt-12 space-y-6">
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+        <h3 className="font-bold">
+          Is CyberScoreHub a certification?
+        </h3>
+        <p className="mt-3 text-slate-400">
+          No. CyberScoreHub provides an independent assessment and improvement roadmap.
+        </p>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+        <h3 className="font-bold">
+          How long does the assessment take?
+        </h3>
+        <p className="mt-3 text-slate-400">
+          Most organisations complete the assessment in 15 to 30 minutes.
+        </p>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+        <h3 className="font-bold">
+          Can I improve my score over time?
+        </h3>
+        <p className="mt-3 text-slate-400">
+          Yes. You can reassess periodically and track improvement.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{/* PLATFORM HIGHLIGHTS */}
+<section
+  id="platform-highlights"
+  className="border-t border-white/10 bg-[#050505]"
+>
+  <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+
+    <div className="text-center">
+      <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+        Platform Highlights
+      </div>
+
+      <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+        Everything You Need In One Place
+      </h2>
+    </div>
+
+    <div className="mt-14 grid gap-6 md:grid-cols-4">
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+        <div className="text-3xl">🛡️</div>
+        <h3 className="mt-4 font-bold">Cyber Assessment</h3>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+        <div className="text-3xl">📊</div>
+        <h3 className="mt-4 font-bold">Risk Scoring</h3>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+        <div className="text-3xl">📄</div>
+        <h3 className="mt-4 font-bold">PDF Reports</h3>
+      </div>
+
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+        <div className="text-3xl">🚀</div>
+        <h3 className="mt-4 font-bold">Improvement Roadmap</h3>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
       {/* FOOTER */}
       <footer className="border-t border-white/10 bg-[#050c16]">
@@ -552,13 +972,29 @@ label="Start Free Assessment"
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-6 text-sm text-slate-500">
-              <span>Privacy</span>
-              <span>Terms</span>
-              <span>Methodology</span>
-              <span>Security</span>
-              <span>Contact</span>
-            </div>
+        <div className="flex flex-wrap gap-6 text-sm text-slate-500">
+
+  <a href="/privacy" className="hover:text-cyan-300">
+    Privacy
+  </a>
+
+  <a href="/terms" className="hover:text-cyan-300">
+    Terms
+  </a>
+
+  <a href="/methodology" className="hover:text-cyan-300">
+    Methodology
+  </a>
+
+  <a href="/security" className="hover:text-cyan-300">
+    Security
+  </a>
+
+  <a href="/contact" className="hover:text-cyan-300">
+    Contact
+  </a>
+
+</div>
           </div>
 
           <div className="mt-10 border-t border-white/10 pt-6 text-xs text-slate-600">

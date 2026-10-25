@@ -1,10 +1,15 @@
+"use client";
+
 export default function ResultsPage() {
+  const isPremium =
+  typeof window !== "undefined" &&
+  window.location.search.includes("premium=true");
   return (
     <main className="min-h-screen bg-[#07111f] text-white">
       <div className="mx-auto max-w-7xl px-6 py-16">
 
         <div className="mb-10">
-          <div className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-400">
+          <div className="text-sm font-bold uppercase tracking-[0.2em] text-[#C6FF00]">
             CyberScoreHub Quick Assessment
           </div>
 
@@ -26,7 +31,7 @@ export default function ResultsPage() {
              CyberScore Rating
             </div>
 
-            <div className="mt-4 text-6xl font-black text-cyan-400">
+            <div className="mt-4 text-6xl font-black text-[#C6FF00]">
               71
               <span className="text-2xl text-slate-400">/100</span>
             </div>
@@ -55,7 +60,7 @@ export default function ResultsPage() {
 
         <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.04] p-8">
 
-          <div className="text-sm font-bold uppercase tracking-wider text-cyan-400">
+          <div className="text-sm font-bold uppercase tracking-wider text-[#C6FF00]">
             Security Domains
           </div>
 
@@ -95,37 +100,84 @@ export default function ResultsPage() {
 
         <div className="mt-10">
 
-          <div className="text-sm font-bold uppercase tracking-wider text-cyan-400">
+          <div className="text-sm font-bold uppercase tracking-wider text-[#C6FF00]">
            Improvement Roadmap
           </div>
 
           <h2 className="mt-2 text-3xl font-bold">
             What to improve first
           </h2>
+<div className="mt-6 rounded-2xl border border-[#C6FF00]/20 bg-[#C6FF00]/5 p-6">
 
+  <div className="text-sm font-bold uppercase tracking-wider text-[#C6FF00]">
+    Premium Upgrade
+  </div>
+
+  <div className="mt-2 text-2xl font-black">
+    Unlock Professional Report - £29
+  </div>
+
+  <p className="mt-3 text-slate-400">
+    Unlock Executive Summary, PDF Report, Framework Mapping and Detailed Improvement Roadmap.
+  </p>
+<div className="mt-5 flex flex-wrap gap-3 print:hidden">
+
+  <button
+    onClick={() => {
+      window.location.href = "/pricing";
+    }}
+    className="rounded-xl bg-[#C6FF00] px-6 py-3 font-bold text-[#07111f]"
+  >
+    Upgrade Now
+  </button>
+
+  <button
+    onClick={() => {
+      window.print();
+    }}
+    className="rounded-xl border border-[#C6FF00] px-6 py-3 font-bold text-[#C6FF00]"
+  >
+    Download PDF
+  </button>
+
+</div>
+
+
+{isPremium && (
+  <div className="mt-6 rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-4">
+
+    <div className="font-bold text-emerald-400">
+      Premium Access Active
+    </div>
+
+  </div>
+)}
+
+</div>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
 
-            <RoadmapCard
-              title="Now"
-              text="Address high-priority security gaps and review exposed connected devices."
-            />
+<RoadmapCard
+  title="Now"
+  text="Address high-priority security gaps and review exposed connected devices."
+/>
 
-            <RoadmapCard
-              title="Within 30 Days"
-              text="Improve incident-response procedures and strengthen access controls."
-            />
+<RoadmapCard
+  title="Next 30 Days"
+  text="Strengthen access controls, backups and security processes."
+/>
 
-            <RoadmapCard
-              title="Within 90 Days"
-              text="Improve evidence coverage, staff awareness and security monitoring."
-            />
+<RoadmapCard
+  title="Within 90 Days"
+  text="Improve evidence coverage, staff awareness and security monitoring."
+/>
 
-          </div>
+</div>
 
-        </div>
+</div>
 
-      </div>
-    </main>
+</div>
+
+</main>
   );
 }
 
@@ -145,14 +197,14 @@ function DomainScore({
           {name}
         </span>
 
-        <span className="font-bold text-cyan-400">
+        <span className="font-bold text-[#C6FF00]">
           {score}
         </span>
       </div>
 
       <div className="h-2 overflow-hidden rounded-full bg-white/10">
         <div
-          className="h-full rounded-full bg-cyan-400"
+          className="h-full rounded-full bg-[#C6FF00]"
           style={{ width: `${score}%` }}
         />
       </div>
@@ -172,7 +224,7 @@ function RoadmapCard({
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
 
-      <div className="text-lg font-bold text-cyan-400">
+      <div className="text-lg font-bold text-[#C6FF00]">
         {title}
       </div>
 
