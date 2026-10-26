@@ -1,4 +1,23 @@
+"use client";
+import { useState } from "react";
 export default function PricingPage() {
+  const [loading, setLoading] = useState(false);
+  const handlePayPal = async (plan: "professional" | "business") => {
+  setLoading(true);
+
+  const response = await fetch("/api/create-paypal-order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ plan }),
+  });
+
+  const data = await response.json();
+
+  alert(`PayPal Order Created: ${data.paypalOrderId}`);
+  setLoading(false);
+};
   return (
     <main className="min-h-screen bg-[#050505] text-white">
 
@@ -68,7 +87,7 @@ export default function PricingPage() {
             </ul>
 <button
   onClick={() => {
-    window.location.href = "/checkout";
+    handlePayPal("professional");
   }}
   className="mt-8 w-full rounded-xl bg-[#C6FF00] px-4 py-3 font-bold text-black"
 >
@@ -95,7 +114,7 @@ export default function PricingPage() {
 
 <button
   onClick={() => {
-    window.location.href = "/checkout-business";
+  handlePayPal("business");
   }}
   className="mt-8 w-full rounded-xl border border-cyan-400 px-4 py-3 font-bold text-cyan-300"
 >
@@ -107,7 +126,7 @@ export default function PricingPage() {
         </div>
 
       </div>
-
+f
     </main>
   );
 }
