@@ -1,6 +1,30 @@
 "use client";
-
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 export default function AssessmentHistoryPage() {
+  const [plan, setPlan] = useState("free");
+
+useEffect(() => {
+  const loadUser = async () => {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session) return;
+
+    const { data } = await supabase
+      .from("profiles")
+      .select("plan")
+      .eq("email", session.user.email)
+      .single();
+
+    if (data?.plan) {
+      setPlan(data.plan);
+    }
+  };
+
+  loadUser();
+}, []);
   return (
     <main className="min-h-screen bg-[#050505] text-white">
 
@@ -36,32 +60,27 @@ export default function AssessmentHistoryPage() {
 
         <div className="mt-10 space-y-4">
 
-         <div className="rounded-2xl bg-[#07111f] p-6 border border-transparent transition-all duration-300 hover:border-[#C6FF00] hover:shadow-[0_0_20px_rgba(198,255,0,0.15)]">
-            <div className="text-slate-400">
-              October 2026
-            </div>
-            <div className="mt-2 text-3xl font-black text-[#C6FF00]">
-              Score 71
-            </div>
-          </div>
+<div className="rounded-2xl bg-[#07111f] p-6">
+  <div className="text-slate-400">
+    Current Subscription
+  </div>
 
-         <div className="rounded-2xl bg-[#07111f] p-6 border border-transparent transition-all duration-300 hover:border-[#C6FF00] hover:shadow-[0_0_20px_rgba(198,255,0,0.15)]">
-            <div className="text-slate-400">
-              September 2026
-            </div>
-            <div className="mt-2 text-3xl font-black text-[#C6FF00]">
-              Score 65
-            </div>
-          </div>
+  <div className="mt-2 text-3xl font-black text-[#C6FF00]">
+    {plan.toUpperCase()}
+  </div>
+</div>
 
-          <div className="rounded-2xl bg-[#07111f] p-6 border border-transparent transition-all duration-300 hover:border-[#C6FF00] hover:shadow-[0_0_20px_rgba(198,255,0,0.15)]">
-            <div className="text-slate-400">
-              August 2026
-            </div>
-            <div className="mt-2 text-3xl font-black text-[#C6FF00]">
-              Score 58
-            </div>
-          </div>
+<div className="rounded-2xl bg-[#07111f] p-6">
+  <div className="text-slate-400">
+    Access Level
+  </div>
+
+  <div className="mt-2 text-3xl font-black text-[#C6FF00]">
+    {plan === "business" ? "BUSINESS" : "PROFESSIONAL"}
+  </div>
+</div>
+
+
 
         </div>
 
