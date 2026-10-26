@@ -305,10 +305,15 @@ Cyber Resilience Assessment Report
 <div className="mt-6 print:hidden">
   <button
     type="button"
-    onClick={() => window.print()}
+    onClick={() => {
+  const element = document.documentElement;
+  element.classList.add("printing");
+  window.print();
+  element.classList.remove("printing");
+}}
     className="rounded-xl bg-[#0a0f08] px-5 py-3 font-bold text-white shadow-[0_0_20px_rgba(198,255,0,0.6)] transition hover:bg-lime-300 hover:shadow-[0_0_30px_rgba(198,255,0,0.8)]"
   >
-    Print / Save as PDF
+    Download PDF Report
   </button>
 </div>
 <p className="mt-5 max-w-3xl leading-7 text-slate-400">
