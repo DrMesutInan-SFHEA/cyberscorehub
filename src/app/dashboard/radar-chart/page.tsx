@@ -1,5 +1,6 @@
 "use client";
-
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import {
   ResponsiveContainer,
   BarChart,
@@ -11,13 +12,22 @@ import {
 } from "recharts";
 
 export default function RadarChartPage() {
-  const data = [
-    { domain: "GOV", score: 48 },
-    { domain: "AST", score: 35 },
-    { domain: "IAM", score: 32 },
-    { domain: "END", score: 34 },
-    { domain: "NET", score: 56 },
-  ];
+  const [results, setResults] = useState<any[]>([]);
+useEffect(() => {
+  const loadResults = async () => {
+    const { data } = await supabase
+      .from("assessment_results")
+      .select("*")
+      .order("id", { ascending: false })
+      .limit(1);
+
+    setResults(data || []);
+  };
+
+  loadResults();
+}, []);
+
+const data = results[0]?.domain_scores || [];
 
   return (
     <main className="min-h-screen bg-[#050505] text-white">
@@ -54,9 +64,9 @@ export default function RadarChartPage() {
       Overall Score
     </div>
 
-    <div className="mt-3 text-5xl font-black text-[#C6FF00]">
-      41
-    </div>
+<div className="mt-3 text-5xl font-black text-[#C6FF00]">
+  {results[0]?.overall_score ?? 0}
+</div>
   </div>
 
   <div className="flex-1 min-w-[220px] rounded-3xl border border-white/10 bg-[#07111f] p-6">
@@ -64,13 +74,27 @@ export default function RadarChartPage() {
       Top Domain
     </div>
 
-    <div className="mt-3 text-4xl font-black text-[#C6FF00]">
-      NET
-    </div>
+<div className="mt-3 text-4xl font-black text-[#C6FF00]">
+  {
+  data.length > 0
+    ? data.reduce(
+        (a: any, b: any) => (a.score > b.score ? a : b),
+        data[0]
+      )?.domain
+    : "-"
+}
+</div>
 
-    <div className="mt-1 text-slate-500">
-      Score 56
-    </div>
+<div className="mt-1 text-slate-500">
+Score {
+  data.length > 0
+    ? data.reduce(
+        (a: any, b: any) => (a.score > b.score ? a : b),
+        data[0]
+      )?.score
+    : 0
+}
+</div>
   </div>
 
   <div className="flex-1 min-w-[220px] rounded-3xl border border-white/10 bg-[#07111f] p-6">
@@ -79,11 +103,25 @@ export default function RadarChartPage() {
     </div>
 
     <div className="mt-3 text-4xl font-black text-orange-400">
-      IAM
+   {
+  data.length > 0
+    ? data.reduce(
+        (a: any, b: any) => (a.score < b.score ? a : b),
+        data[0]
+      )?.domain
+    : "-"
+}
     </div>
 
     <div className="mt-1 text-slate-500">
-      Score 32
+      Score {
+  data.length > 0
+    ? data.reduce(
+        (a: any, b: any) => (a.score < b.score ? a : b),
+        data[0]
+      )?.score
+    : 0
+}
     </div>
   </div>
 
@@ -92,9 +130,9 @@ export default function RadarChartPage() {
       Risk Level
     </div>
 
-    <div className="mt-3 text-4xl font-black text-red-400">
-      HIGH
-    </div>
+<div className="mt-3 text-4xl font-black text-red-400">
+  {results[0]?.risk_level ?? "-"}
+</div>
   </div>
 
 </div>

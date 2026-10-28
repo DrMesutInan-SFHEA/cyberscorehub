@@ -89,12 +89,23 @@ useEffect(() => {
   }
 }, [answers, isLoaded, hasLoadError]);
 useEffect(() => {
-  if (!isLoaded || resultSaved) {
-    return;
-  }
 
-  setResultSaved(true);
-  (async () => {
+
+if (!isLoaded || resultSaved) {
+  return;
+}
+
+const saveKey = `assessment-${cyberResilienceScore}`;
+
+if (sessionStorage.getItem(saveKey)) {
+  return;
+}
+
+sessionStorage.setItem(saveKey, "saving");
+
+setResultSaved(true);
+
+(async () => {
   const {
     data: { session },
   } = await supabase.auth.getSession();

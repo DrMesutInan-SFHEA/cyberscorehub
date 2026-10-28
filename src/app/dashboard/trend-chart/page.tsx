@@ -1,5 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
+
 import {
   ResponsiveContainer,
   LineChart,
@@ -11,11 +14,26 @@ import {
 } from "recharts";
 
 export default function TrendChartPage() {
-    const data = [
-  { month: "Aug", score: 58 },
-  { month: "Sep", score: 65 },
-  { month: "Oct", score: 71 },
-];
+  const [data, setData] = useState<any[]>([]);
+
+useEffect(() => {
+  const loadTrend = async () => {
+    const { data: results } = await supabase
+      .from("assessment_results")
+      .select("overall_score, created_at")
+      .order("created_at", { ascending: true });
+
+    setData(
+      (results || []).map((item: any, index: number) => ({
+        month: `${index + 1}`,
+        score: item.overall_score,
+      }))
+    );
+  };
+
+  loadTrend();
+}, []);
+
   return (
     <main className="min-h-screen bg-[#050505] text-white">
 
