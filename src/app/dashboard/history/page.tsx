@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 export default function AssessmentHistoryPage() {
   const [plan, setPlan] = useState("free");
-
+const [results, setResults] = useState<any[]>([]);
 useEffect(() => {
   const loadUser = async () => {
     const {
@@ -22,8 +22,27 @@ useEffect(() => {
       setPlan(data.plan);
     }
   };
-
   loadUser();
+
+  const loadResults = async () => {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session) return;
+
+const { data, error } = await supabase
+  .from("assessment_results")
+  .select("*")
+  .order("id", { ascending: false });
+
+console.log("HISTORY_DATA", data);
+console.log("HISTORY_ERROR", error);
+
+setResults(data || []);
+  };
+
+  loadResults();
 }, []);
   return (
     <main className="min-h-screen bg-[#050505] text-white">
@@ -79,7 +98,32 @@ useEffect(() => {
     {plan === "business" ? "BUSINESS" : "PROFESSIONAL"}
   </div>
 </div>
+{results.length === 0 && (
+  <div className="rounded-2xl bg-[#07111f] p-6 text-slate-400">
+    No assessment history found.
+  </div>
+)}
+{results.map((result) => (
+  <div
+    key={result.id}
+    className="rounded-2xl bg-[#07111f] p-6"
+  >
+<div className="text-slate-400">
+  Assessment #{result.id.slice(0, 8)}
+</div>
 
+    <div className="mt-2 text-3xl font-black text-[#C6FF00]">
+      {result.overall_score}
+    </div>
+
+    <div className="mt-2 text-sm text-slate-400">
+      {result.risk_level}
+    </div>
+    <div className="mt-2 text-xs text-slate-500">
+  {new Date(result.created_at).toLocaleString()}
+</div>
+  </div>
+))}
 
 
         </div>

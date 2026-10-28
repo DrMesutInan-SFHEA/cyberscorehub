@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import { CCR_FULL_QUESTIONS } from "@/lib/assessment/full-questions";
 import { classifyExposure } from "@/lib/assessment/scoring";
 
@@ -15,6 +16,7 @@ const [businessProfile, setBusinessProfile] = useState<{
 } | null>(null);
 const [isLoaded, setIsLoaded] = useState(false);
 const [hasLoadError, setHasLoadError] = useState(false);
+const [resultSaved, setResultSaved] = useState(false);
   const formatIndustry = (value: string) => {
     const labels: Record<string, string> = {
       technology: "Technology",
@@ -86,7 +88,40 @@ useEffect(() => {
     window.location.href = "/assessment/full/questions";
   }
 }, [answers, isLoaded, hasLoadError]);
+useEffect(() => {
+  if (!isLoaded || resultSaved) {
+    return;
+  }
 
+  setResultSaved(true);
+  (async () => {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session?.user) {
+    return;
+  }
+const { data: existingResult } = await supabase
+  .from("assessment_results")
+  .select("id")
+  .eq("user_id", session.user.id)
+  .eq("overall_score", cyberResilienceScore)
+  .limit(1)
+  .maybeSingle();
+
+if (!existingResult) {
+  await supabase.from("assessment_results").insert({
+    user_id: session.user.id,
+    overall_score: cyberResilienceScore,
+    risk_level: exposure,
+    domain_scores: domainScores,
+  });
+}
+
+
+})();
+}, [isLoaded, resultSaved]);
 const startNewAssessment = () => {
   localStorage.removeItem("ccr-full-assessment-answers");
   window.location.href = "/assessment/full/business-profile";

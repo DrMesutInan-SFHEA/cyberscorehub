@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 
 export default function DashboardPage() {
 const [plan, setPlan] = useState("free");
+const [results, setResults] = useState<any[]>([]);
   useEffect(() => {
     const checkUser = async () => {
       const {
@@ -25,13 +26,37 @@ if (session) {
   if (data?.plan) {
     setPlan(data.plan);
   }
+  const { data: assessmentData } = await supabase
+  .from("assessment_results")
+  .select("*")
+  .order("id", { ascending: false });
+
+setResults(assessmentData || []);
 }
 
 };
 
 checkUser();
 }, []);
+const latestScore = results[0]?.overall_score ?? 0;
 
+const highestScore =
+  results.length > 0
+    ? Math.max(...results.map((r) => r.overall_score || 0))
+    : 0;
+
+const assessmentCount = results.length;
+
+const averageScore =
+  results.length > 0
+    ? Math.round(
+        results.reduce(
+          (sum, r) => sum + (r.overall_score || 0),
+          0
+        ) / results.length
+      )
+    : 0;
+const latestRisk = results[0]?.risk_level ?? "-";
   return (
     <main className="min-h-screen bg-[#050505] text-white">
 
@@ -52,13 +77,13 @@ checkUser();
     <polyline points="12 12 16 8"></polyline>
     <circle cx="12" cy="12" r="1"></circle>
   </svg>
-
-  <h1 className="text-5xl font-black text-white">
-    Dashboard
-  </h1>
+<h1 className="text-5xl font-black text-white">
+  Dashboard
+</h1>
 </div>
 
-        <p className="mt-4 text-slate-400">
+<p className="mt-4 text-slate-400">
+
           Monitor your cyber resilience performance.
         </p>
 <div className="mt-8 flex flex-wrap gap-3">
@@ -164,7 +189,7 @@ checkUser();
               CyberScore
             </div>
             <div className="mt-2 text-5xl font-black text-[#C6FF00]">
-              71
+             {latestScore}
             </div>
           </div>
 
@@ -173,7 +198,7 @@ checkUser();
               Risk Level
             </div>
             <div className="mt-2 text-3xl font-black text-[#C6FF00]">
-              Elevated
+              {latestRisk}
             </div>
           </div>
 
@@ -182,7 +207,7 @@ checkUser();
               Assessments
             </div>
             <div className="mt-2 text-5xl font-black text-[#C6FF00]">
-              3
+              {assessmentCount}
             </div>
           </div>
 
