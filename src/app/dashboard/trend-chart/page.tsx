@@ -23,12 +23,18 @@ useEffect(() => {
       .select("overall_score, created_at")
       .order("created_at", { ascending: true });
 
-    setData(
-      (results || []).map((item: any, index: number) => ({
-        month: `${index + 1}`,
-        score: item.overall_score,
-      }))
-    );
+   setData(
+  (results || []).map((item: any) => ({
+    date: new Date(item.created_at).toLocaleDateString(
+      "en-GB",
+      {
+        day: "2-digit",
+        month: "short",
+      }
+    ),
+    score: item.overall_score,
+  }))
+);
   };
 
   loadTrend();
@@ -77,10 +83,10 @@ useEffect(() => {
           stroke="#94a3b8"
         />
 
-        <YAxis
-          stroke="#94a3b8"
-          domain={[0, 100]}
-        />
+       <XAxis
+  dataKey="date"
+  stroke="#94a3b8"
+/>
 
         <Tooltip />
 

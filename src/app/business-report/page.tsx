@@ -4,6 +4,34 @@ import { supabase } from "@/lib/supabase";
 export default function BusinessReportPage() {
 const [allowed, setAllowed] = useState(false);
   const [score, setScore] = useState(71);
+  const [riskLevel, setRiskLevel] = useState("-");
+const [topDomain, setTopDomain] = useState("-");
+const [latestResult, setLatestResult] = useState<any>(null);
+useEffect(() => {
+  const loadLatestAssessment = async () => {
+    const { data } = await supabase
+      .from("assessment_results")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(1);
+
+   if (data?.[0]) {
+  setLatestResult(data[0]);
+  setScore(data[0].overall_score || 0);
+  setRiskLevel(data[0].risk_level || "-");
+
+  const top =
+    data[0].domain_scores?.reduce(
+      (a: any, b: any) => (a.score > b.score ? a : b),
+      data[0].domain_scores?.[0]
+    )?.domain ?? "-";
+
+  setTopDomain(top);
+}
+  };
+
+  loadLatestAssessment();
+}, []);
 useEffect(() => {
   const checkAccess = async () => {
     const {
@@ -81,13 +109,9 @@ if (!allowed) {
                 Risk Level
               </div>
 
-              <div className="mt-2 text-3xl font-black text-amber-400">
-                {score >= 80
-  ? "Low"
-  : score >= 60
-  ? "Elevated"
-  : "High"}
-              </div>
+<div className="mt-2 text-3xl font-black text-amber-400">
+  {riskLevel}
+</div>
             </div>
 
             <div className="rounded-2xl bg-[#07111f] p-6">
@@ -95,12 +119,8 @@ if (!allowed) {
                 Priority Areas
               </div>
 
-              <div className="mt-2 text-xl font-bold">
-  {score < 60
-    ? "Identity & Access"
-    : score < 80
-    ? "Incident Response"
-    : "Continuous Improvement"}
+<div className="mt-2 text-xl font-bold">
+  {topDomain}
 </div>
             </div>
 
@@ -112,12 +132,13 @@ if (!allowed) {
   </div>
 
 <p className="mt-4 text-slate-300">
-  {score >= 80
-    ? "The organisation demonstrates a strong cyber resilience posture with mature security controls and continuous improvement practices."
-    : score >= 60
-    ? "The organisation demonstrates a developing cyber resilience posture with several opportunities for improvement across key security domains."
-    : "The organisation has significant cyber resilience gaps and should prioritise remediation activities to reduce overall cyber risk."}
+  Your latest assessment identified a <strong>{riskLevel}</strong> cyber
+  risk posture with a CyberScore of <strong>{score}</strong>. The strongest
+  performing security domain is <strong>{topDomain}</strong>. Priority
+  remediation activities should focus on reducing overall cyber risk and
+  improving resilience across weaker domains.
 </p>
+
 
 </div>
 
@@ -149,16 +170,17 @@ className="rounded-xl bg-black px-6 py-3 font-bold text-white shadow-[0_0_30px_r
 
   <div className="mt-6 space-y-3">
 
-    <div>
-  NIST CSF 2.0 Alignment {score >= 80 ? "95%" : score >= 60 ? "78%" : "52%"}
+ <div>
+  NIST CSF 2.0 Alignment {score < 40 ? "52%" : score < 60 ? "78%" : "95%"}
 </div>
 
-   <div>
-  CIS Controls Alignment {score >= 80 ? "92%" : score >= 60 ? "72%" : "48%"}
+<div>
+  CIS Controls Alignment {score < 40 ? "48%" : score < 60 ? "72%" : "92%"}
 </div>
 
-    <div>
-  Cyber Essentials Alignment {score >= 80 ? "90%" : score >= 60 ? "70%" : "45%"}
+
+<div>
+  Cyber Essentials Alignment {score < 40 ? "45%" : score < 60 ? "70%" : "90%"}
 </div>
 
 
@@ -174,23 +196,13 @@ className="rounded-xl bg-black px-6 py-3 font-bold text-white shadow-[0_0_30px_r
 
   <div className="mt-6 space-y-3">
 
-    <div>✅ {score < 60
-  ? "Strengthen Identity & Access Controls"
-  : score < 80
-  ? "Improve Incident Response"
-  : "Maintain Continuous Improvement Programme"}</div>
+    <div>✅ {topDomain === "END"
+  ? "Maintain Endpoint Security Controls"
+  : "Improve Highest Performing Security Domain"}</div>
 
-    <div>✅ {score < 60
-  ? "Reduce Critical Risk Exposure"
-  : score < 80
-  ? "Strengthen Network Security"
-  : "Enhance Monitoring Capabilities"}</div>
+    <div>✅ Reduce Critical Risk Exposure</div>
 
-    <div>✅ {score < 60
-  ? "Implement Foundational Security Controls"
-  : score < 80
-  ? "Improve Connected Device Controls"
-  : "Optimize Security Operations"}
+    <div>✅ Prioritise High-Risk Domain Remediation
 </div>
 
   </div>
@@ -205,27 +217,15 @@ className="rounded-xl bg-black px-6 py-3 font-bold text-white shadow-[0_0_30px_r
   <div className="mt-6 space-y-4">
 
     <div className="rounded-xl bg-[#07111f] p-4">
-      🔴 Do Now - {score < 60
-  ? "Implement foundational security controls"
-  : score < 80
-  ? "Secure connected devices"
-  : "Maintain continuous governance"}
+ 🔴 Do Now - Address critical security gaps and improve weakest domains
     </div>
 
     <div className="rounded-xl bg-[#07111f] p-4">
-      🟠 Next 30 Days - {score < 60
-  ? "Establish incident response capability"
-  : score < 80
-  ? "Strengthen identity controls"
-  : "Improve visibility and monitoring"}
+ 🟠 Next 30 Days - Strengthen identity, access and asset management controls
     </div>
 
     <div className="rounded-xl bg-[#07111f] p-4">
-      🟢 Next 90 Days - {score < 60
-  ? "Develop long-term resilience programme"
-  : score < 80
-  ? "Improve monitoring and awareness"
-  : "Optimize security performance"}
+🟢 Next 90 Days - Establish continuous improvement and cyber resilience reviews
     </div>
 
   </div>
@@ -239,11 +239,7 @@ className="rounded-xl bg-black px-6 py-3 font-bold text-white shadow-[0_0_30px_r
   </div>
 
   <p className="mt-4 text-slate-300">
-{score >= 80
-  ? "Cyber resilience maturity is strong. Continue continuous improvement activities and periodic assessments."
-  : score >= 60
-  ? "Several improvement opportunities remain. Focus on remediation activities to strengthen cyber resilience."
-  : "Immediate remediation activities are recommended to address priority security weaknesses and reduce cyber risk exposure."}
+Your latest assessment recorded a CyberScore of {score} with a {riskLevel} risk posture. Priority improvement efforts should focus on strengthening weaker security domains while maintaining resilience within {topDomain}.
   </p>
 </div>
 <div className="mt-10 rounded-3xl bg-white/[0.04] p-8">
@@ -255,15 +251,17 @@ className="rounded-xl bg-black px-6 py-3 font-bold text-white shadow-[0_0_30px_r
   <div className="mt-6 space-y-4">
 
     <div className="rounded-xl bg-[#07111f] p-4">
-    Critical Risks: {score < 60 ? 5 : score < 80 ? 2 : 0}
+    Critical Risks: {score < 40 ? 5 : 2}
     </div>
 
     <div className="rounded-xl bg-[#07111f] p-4">
-      Medium Risks: {score < 60 ? 8 : score < 80 ? 5 : 2}
+      Medium Risks: {score < 40 ? 8 : 4}
+
     </div>
 
     <div className="rounded-xl bg-[#07111f] p-4">
-      Low Risks: {score < 60 ? 4 : score < 80 ? 11 : 18}
+      Low Risks: {score < 40 ? 3 : 8}
+
     </div>
 
   </div>
@@ -277,11 +275,11 @@ className="rounded-xl bg-black px-6 py-3 font-bold text-white shadow-[0_0_30px_r
   </div>
 
 <div className="mt-4 text-3xl font-black">
-  {score >= 80
-    ? "180 Days Recommended"
-    : score >= 60
-    ? "90 Days Recommended"
-    : "30 Days Recommended"}
+{riskLevel === "HIGH"
+  ? "30 Days Recommended"
+  : riskLevel === "MEDIUM"
+  ? "90 Days Recommended"
+  : "180 Days Recommended"}
 </div>
 
   <p className="mt-4 text-slate-300">

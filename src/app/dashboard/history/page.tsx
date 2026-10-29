@@ -35,7 +35,7 @@ const { data, error } = await supabase
   .from("assessment_results")
   .select("*")
 .order("created_at", { ascending: false })
-
+.limit(10)
 console.log("HISTORY_DATA", data);
 console.log("HISTORY_ERROR", error);
 
@@ -105,9 +105,13 @@ setResults(data || []);
 )}
 {results.map((result) => (
   <div
-    key={result.id}
-    className="rounded-2xl bg-[#07111f] p-6"
-  >
+  key={result.id}
+  onClick={() =>
+    window.location.href = `/dashboard/history/${result.id}`
+  }
+  className="cursor-pointer rounded-2xl bg-[#07111f] p-6 transition hover:bg-[#0d1b2f]"
+>
+
 <div className="text-slate-400">
   Assessment #{result.id.slice(0, 8)}
 </div>
