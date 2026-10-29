@@ -29,7 +29,7 @@ if (session) {
   const { data: assessmentData } = await supabase
   .from("assessment_results")
   .select("*")
-  .order("id", { ascending: false });
+  .order("created_at", { ascending: false });
 
 setResults(assessmentData || []);
 }
@@ -57,6 +57,11 @@ const averageScore =
       )
     : 0;
 const latestRisk = results[0]?.risk_level ?? "-";
+const topDomain =
+  results[0]?.domain_scores?.reduce(
+    (a: any, b: any) => (a.score > b.score ? a : b),
+    results[0]?.domain_scores?.[0]
+  )?.domain ?? "-";
   return (
     <main className="min-h-screen bg-[#050505] text-white">
 
@@ -139,10 +144,8 @@ const latestRisk = results[0]?.risk_level ?? "-";
 <button
   onClick={() => {
     if (plan !== "business") {
-      alert(
-        "Business Plan Required (£99)"
-      );
-      return;
+  window.location.href = "/pricing";
+return;
     }
 
     window.location.href = "/dashboard/heatmap";
@@ -157,10 +160,8 @@ const latestRisk = results[0]?.risk_level ?? "-";
 <button
   onClick={() => {
     if (plan !== "business") {
-      alert(
-        "Business Plan Required.\n\nUpgrade to Business (£99) to access Executive Reports, Trend Analytics and Historical Reporting."
-      );
-      return;
+     window.location.href = "/pricing";
+return;
     }
 
     window.location.href = "/business-report";
@@ -212,12 +213,14 @@ const latestRisk = results[0]?.risk_level ?? "-";
           </div>
 
           <div className="rounded-3xl bg-[#07111f] p-6">
-            <div className="text-slate-400">
-              Reports
-            </div>
-  <div className="mt-2 text-5xl font-black text-[#C6FF00]">
-  3
+<div className="text-slate-400">
+  Top Domain
 </div>
+
+<div className="mt-2 text-5xl font-black text-[#C6FF00]">
+  {topDomain}
+</div>
+
           </div>
 
         </div>

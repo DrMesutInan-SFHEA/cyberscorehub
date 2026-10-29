@@ -1,4 +1,6 @@
 "use client";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import {
   PieChart,
   Pie,
@@ -9,11 +11,33 @@ import {
 import { Trophy, AlertTriangle, Shield } from "lucide-react";
 
 export default function HeatMapPage() {
-    const data = [
-  { name: "High", value: 2, color: "#ef4444" },
-  { name: "Medium", value: 1, color: "#f59e0b" },
-  { name: "Low", value: 2, color: "#C6FF00" },
-];
+  const [results, setResults] = useState<any[]>([]);
+
+useEffect(() => {
+  const loadResults = async () => {
+    const { data } = await supabase
+      .from("assessment_results")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(1);
+
+    setResults(data || []);
+  };
+
+  loadResults();
+}, []);
+  const data = results[0]?.domain_scores || [];
+  const highRiskCount = data.filter(
+  (d: any) => d.score < 35
+).length;
+
+const mediumRiskCount = data.filter(
+  (d: any) => d.score >= 35 && d.score < 70
+).length;
+
+const lowRiskCount = data.filter(
+  (d: any) => d.score >= 70
+).length;
   return (
     <main className="min-h-screen bg-[#050505] text-white">
 
@@ -59,17 +83,23 @@ export default function HeatMapPage() {
 
       <div className="rounded-2xl border border-red-500/20 bg-red-500/10 p-4">
         <div className="text-red-400 text-sm">HIGH RISK</div>
-        <div className="mt-2 text-5xl font-black text-red-400">2</div>
+        <div className="mt-2 text-5xl font-black text-red-400">
+  {highRiskCount}
+</div>
       </div>
 
       <div className="rounded-2xl border border-amber-500/20 bg-amber-500/10 p-4">
         <div className="text-amber-400 text-sm">MEDIUM RISK</div>
-        <div className="mt-2 text-5xl font-black text-amber-400">1</div>
+       <div className="mt-2 text-5xl font-black text-amber-400">
+  {mediumRiskCount}
+</div>
       </div>
 
       <div className="rounded-2xl border border-[#C6FF00]/20 bg-[#C6FF00]/10 p-4">
         <div className="text-[#C6FF00] text-sm">LOW RISK</div>
-        <div className="mt-2 text-5xl font-black text-[#C6FF00]">2</div>
+        <div className="mt-2 text-5xl font-black text-[#C6FF00]">
+  {lowRiskCount}
+</div>
       </div>
 
     </div>
@@ -92,22 +122,27 @@ export default function HeatMapPage() {
   fontSize="42"
   fontWeight="bold"
 >
-  5
+  {data.length}
 </text>
-    <Pie
+<Pie
   data={data}
-  dataKey="value"
-  nameKey="name"
+  dataKey="score"
+  nameKey="domain"
   cx="50%"
   cy="50%"
   innerRadius={70}
   outerRadius={120}
   paddingAngle={5}
->
-            {data.map((entry, index) => (
+>{data.map((entry: any, index: number) => (
               <Cell
                 key={index}
-                fill={entry.color}
+        fill={
+  entry.score < 35
+    ? "#ef4444"
+    : entry.score < 70
+    ? "#f59e0b"
+    : "#C6FF00"
+}
               />
             ))}
           </Pie>

@@ -18,7 +18,7 @@ useEffect(() => {
     const { data } = await supabase
       .from("assessment_results")
       .select("*")
-      .order("id", { ascending: false })
+      .order("created_at", { ascending: false })
       .limit(1);
 
     setResults(data || []);
