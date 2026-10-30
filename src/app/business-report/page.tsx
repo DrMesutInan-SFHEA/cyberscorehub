@@ -50,7 +50,7 @@ useEffect(() => {
       .single();
 
     if (data?.plan !== "business") {
-      alert("Business Plan Required (£99)");
+      alert("Business Plan Required (€69)");
       window.location.href = "/dashboard";
       return;
     }

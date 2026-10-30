@@ -8,7 +8,7 @@ export default function CheckoutPage() {
       </h1>
 
       <div className="mt-8 text-6xl font-black text-cyan-400">
-        £29
+        €29
       </div>
 
       <button

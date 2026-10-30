@@ -10,7 +10,7 @@ export default function BusinessCheckoutPage() {
           </h1>
 
           <div className="mt-4 text-6xl font-black text-cyan-400">
-            £99
+           €69
           </div>
 
           <p className="mt-4 text-slate-400">

@@ -11,7 +11,7 @@ export default function PaymentBusinessPage() {
         </h1>
 
         <div className="mt-6 text-center text-6xl font-black text-cyan-400">
-         £99
+         €69
         </div>
 
         <p className="mt-6 text-center text-slate-400">
@@ -58,7 +58,7 @@ export default function PaymentBusinessPage() {
   marginRight: "auto",
 }}
         >
-         Pay £99
+         Pay €69
         </button>
 
       </div>

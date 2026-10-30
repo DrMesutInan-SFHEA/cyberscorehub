@@ -154,7 +154,7 @@ return;
 >
 {plan === "business"
   ? "Heat Map"
-  : "🔒 Heat Map (£99)"}
+  : "🔒 Heat Map (€69)"}
 </button>
 
 <button
@@ -170,7 +170,7 @@ return;
 >
   {plan === "business"
     ? "Business Report"
-    : "🔒 Business Report (£99)"}
+    : "🔒 Business Report (€69)"}
 </button>
 
 </div>

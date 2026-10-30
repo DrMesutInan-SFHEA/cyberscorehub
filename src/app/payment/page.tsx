@@ -22,7 +22,7 @@ export default function PaymentPage() {
         </h1>
 
         <div className="mt-6 text-center text-6xl font-black text-cyan-400">
-          £29
+          €29
         </div>
 
         <p className="mt-6 text-center text-slate-400">
@@ -71,7 +71,7 @@ export default function PaymentPage() {
             marginRight: "auto",
           }}
         >
-          Pay £29
+          Pay €29
         </button>
 
       </div>

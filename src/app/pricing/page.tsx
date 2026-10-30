@@ -75,7 +75,7 @@ export default function PricingPage() {
             </div>
 
             <div className="mt-4 text-5xl font-black">
-              £29
+              €29
             </div>
 
             <ul className="mt-6 space-y-3 text-slate-200">
@@ -102,7 +102,7 @@ export default function PricingPage() {
             </div>
 
             <div className="mt-4 text-5xl font-black">
-              £99
+              €69
             </div>
 
             <ul className="mt-6 space-y-3 text-slate-300">
