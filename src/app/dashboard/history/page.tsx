@@ -21,6 +21,7 @@ useEffect(() => {
     if (data?.plan) {
       setPlan(data.plan);
     }
+    console.log("PLAN_FROM_DB", data?.plan);
   };
   loadUser();
 

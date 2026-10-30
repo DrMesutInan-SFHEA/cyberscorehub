@@ -19,6 +19,7 @@ export default function SuccessBusinessPage() {
           plan: "business",
         })
         .eq("email", email);
+        console.log("UPDATING PLAN", email);
     }
   };
 

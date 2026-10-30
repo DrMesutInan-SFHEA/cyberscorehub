@@ -122,12 +122,16 @@ const { data: existingResult } = await supabase
   .maybeSingle();
 
 if (!existingResult) {
-  await supabase.from("assessment_results").insert({
-    user_id: session.user.id,
-    overall_score: cyberResilienceScore,
-    risk_level: exposure,
-    domain_scores: domainScores,
-  });
+await supabase.from("assessment_results").insert({
+  user_id: session.user.id,
+  overall_score: cyberResilienceScore,
+  risk_level: exposure,
+  domain_scores: domainScores,
+  organisation_name: businessProfile?.organisationName,
+  industry: businessProfile?.industry,
+  organisation_size: businessProfile?.organisationSize,
+country: businessProfile?.country,
+});
 }
 
 
