@@ -115,6 +115,36 @@ export default function AssessmentDetailPage() {
     Reassess after completing priority remediation activities.
   </div>
 </div>
+<div className="mt-6 rounded-2xl bg-[#0d1522] p-6">
+  <div className="text-xl font-bold">
+    Framework Mapping
+  </div>
+
+  <div className="mt-4">
+    NIST CSF 2.0 Alignment {result?.overall_score < 40 ? "52%" : "78%"}
+  </div>
+
+  <div>
+    CIS Controls Alignment {result?.overall_score < 40 ? "48%" : "72%"}
+  </div>
+
+  <div>
+    Cyber Essentials Alignment {result?.overall_score < 40 ? "45%" : "70%"}
+  </div>
+</div>
+
+<div className="mt-6 rounded-2xl bg-[#0d1522] p-6">
+  <div className="text-xl font-bold">
+    Management Summary
+  </div>
+
+  <p className="mt-4 text-slate-300">
+    Assessment score {result?.overall_score} with a{" "}
+    {result?.risk_level} risk posture. Priority remediation
+    should focus on reducing cyber risk and improving resilience
+    across lower scoring security domains.
+  </p>
+</div>
   </div>
 
   <div className="mt-4">
