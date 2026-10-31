@@ -11,9 +11,39 @@ const [topDomain, setTopDomain] = useState("-");
 const [latestResult, setLatestResult] = useState<any>(null);
 const downloadExecutivePDF = () => {
   const pdf = new jsPDF();
+pdf.setFillColor(7, 17, 31);
+pdf.rect(0, 0, 210, 297, "F");
 
-  pdf.setFillColor(7, 17, 31);
-  pdf.rect(0, 0, 210, 45, "F");
+pdf.setTextColor(255, 255, 255);
+
+pdf.setFontSize(28);
+pdf.text("CyberScoreHub", 20, 60);
+
+pdf.setFontSize(18);
+pdf.text("Executive Cyber Resilience Report", 20, 80);
+
+pdf.setFontSize(12);
+pdf.text(
+  `Organisation: ${latestResult?.organisation_name || "-"}`,
+  20,
+  110
+);
+
+pdf.text(
+  `Generated: ${new Date().toLocaleDateString()}`,
+  20,
+  125
+);
+
+pdf.text(
+  "Confidential Business Report",
+  20,
+  140
+);
+
+pdf.addPage();
+pdf.setFillColor(7, 17, 31);
+pdf.rect(0, 0, 210, 25, "F");
 
   pdf.setTextColor(255, 255, 255);
 

@@ -132,6 +132,17 @@ await supabase.from("assessment_results").insert({
   organisation_size: businessProfile?.organisationSize,
 country: businessProfile?.country,
 });
+await fetch("/api/send-assessment-email", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    email: session.user.email,
+    score: cyberResilienceScore,
+    riskLevel: exposure,
+  }),
+});
 }
 
 

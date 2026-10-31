@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
+
 export default function RegisterPage() {
 
   const [email, setEmail] = useState("");
@@ -27,6 +28,15 @@ await supabase.from("profiles").insert([
   },
 ]);
 
+await fetch("/api/send-welcome-email", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    email,
+  }),
+});
 alert("Verification email sent.");
 };
 

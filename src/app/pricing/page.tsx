@@ -1,21 +1,43 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 export default function PricingPage() {
   const [loading, setLoading] = useState(false);
-  const handlePayPal = async (plan: "professional" | "business") => {
+  const [email, setEmail] = useState("");
+  useEffect(() => {
+  const loadUser = async () => {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    setEmail(session?.user?.email || "");
+  };
+
+  loadUser();
+}, []);
+const handlePayPal = async (
+  plan: "professional" | "business"
+) => {
   setLoading(true);
 
-  const response = await fetch("/api/create-paypal-order", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ plan }),
-  });
+  const response = await fetch(
+    "/api/create-stripe-checkout",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+body: JSON.stringify({
+  plan,
+  email,
+}),
+    }
+  );
 
   const data = await response.json();
 
-  alert(`PayPal Order Created: ${data.paypalOrderId}`);
+  window.location.href = data.url;
+
   setLoading(false);
 };
   return (

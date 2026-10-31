@@ -172,7 +172,14 @@ return;
     ? "Business Report"
     : "🔒 Business Report (€69)"}
 </button>
-
+<button
+  onClick={() => {
+    window.location.href = "/admin";
+  }}
+  className="rounded-xl border border-cyan-400/20 bg-cyan-400/10 px-5 py-3 font-bold text-cyan-300"
+>
+  Admin Dashboard
+</button>
 </div>
 <div className="mt-10 rounded-3xl bg-[#07111f] p-6">
   <div className="text-slate-400">
