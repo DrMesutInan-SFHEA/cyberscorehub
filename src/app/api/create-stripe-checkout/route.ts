@@ -30,8 +30,11 @@ const session = await stripe.checkout.sessions.create({
       quantity: 1,
     },
   ],
-  success_url: "http://localhost:3000/dashboard",
-  cancel_url: "http://localhost:3000/pricing",
+success_url:
+  "https://ccr-platform-uhgg.vercel.app/dashboard",
+
+cancel_url:
+  "https://ccr-platform-uhgg.vercel.app/pricing",
 });
 
   return NextResponse.json({
