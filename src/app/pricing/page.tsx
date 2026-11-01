@@ -9,7 +9,7 @@ export default function PricingPage() {
     const {
       data: { session },
     } = await supabase.auth.getSession();
-
+console.log("SESSION:", session);
    const userEmail = session?.user?.email || "";
 
 console.log("SESSION EMAIL:", userEmail);
