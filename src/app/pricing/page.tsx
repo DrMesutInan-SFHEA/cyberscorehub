@@ -10,7 +10,11 @@ export default function PricingPage() {
       data: { session },
     } = await supabase.auth.getSession();
 
-    setEmail(session?.user?.email || "");
+   const userEmail = session?.user?.email || "";
+
+console.log("SESSION EMAIL:", userEmail);
+
+setEmail(userEmail);
   };
 
   loadUser();
@@ -20,6 +24,8 @@ const handlePayPal = async (
 ) => {
   setLoading(true);
 
+  console.log("EMAIL:", email);
+
   const response = await fetch(
     "/api/create-stripe-checkout",
     {
@@ -27,10 +33,10 @@ const handlePayPal = async (
       headers: {
         "Content-Type": "application/json",
       },
-body: JSON.stringify({
-  plan,
-  email,
-}),
+      body: JSON.stringify({
+        plan,
+        email,
+      }),
     }
   );
 
