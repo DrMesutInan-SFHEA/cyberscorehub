@@ -25,7 +25,6 @@ const handlePayPal = async (
   setLoading(true);
 
   console.log("EMAIL:", email);
-
   const response = await fetch(
     "/api/create-stripe-checkout",
     {
@@ -154,7 +153,7 @@ const handlePayPal = async (
         </div>
 
       </div>
-f
+
     </main>
   );
 }
