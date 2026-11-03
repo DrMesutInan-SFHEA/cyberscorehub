@@ -23,7 +23,20 @@ export async function POST(req: Request) {
           plan,
         })
         .eq("email", email);
-
+if (plan === "business") {
+  await fetch(
+    "https://ccr-platform-uhgg.vercel.app/api/send-business-upgrade-email",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    }
+  );
+}
       console.log(`Plan updated: ${email} -> ${plan}`);
     }
   }
