@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     process.env.RESEND_API_KEY || ""
   );
   const { email } = await req.json();
-
+console.log("BUSINESS EMAIL SENT TO:", email);
   await resend.emails.send({
     from: "support@cyberscorehub.com",
     to: email,
