@@ -15,11 +15,18 @@ export default function HeatMapPage() {
 
 useEffect(() => {
   const loadResults = async () => {
-    const { data } = await supabase
-      .from("assessment_results")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(1);
+const {
+  data: { session },
+} = await supabase.auth.getSession();
+
+if (!session) return;
+
+const { data } = await supabase
+  .from("assessment_results")
+  .select("*")
+  .eq("user_id", session.user.id)
+  .order("created_at", { ascending: false })
+  .limit(1);
 
     setResults(data || []);
   };
