@@ -8,15 +8,33 @@ export default function AdminPage() {
 const [businessUsers, setBusinessUsers] = useState(0);
 const [professionalUsers, setProfessionalUsers] = useState(0);
 const [averageScore, setAverageScore] = useState(0);
-  useEffect(() => {
-    const loadData = async () => {
-      const { count: userCount } = await supabase
-        .from("profiles")
-        .select("*", { count: "exact", head: true });
+const [allowed, setAllowed] = useState(false);
 
-      const { count: assessmentCount } = await supabase
-        .from("assessment_results")
-        .select("*", { count: "exact", head: true });
+useEffect(() => {
+  const loadData = async () => {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (!session?.user?.email) {
+      window.location.href = "/login";
+      return;
+    }
+
+    if (session.user.email !== "massoudsalehi88@gmail.com") {
+      window.location.href = "/dashboard";
+      return;
+    }
+
+setAllowed(true);
+
+const { count: userCount } = await supabase
+  .from("profiles")
+  .select("*", { count: "exact", head: true });
+
+const { count: assessmentCount } = await supabase
+  .from("assessment_results")
+  .select("*", { count: "exact", head: true });
 
       setTotalUsers(userCount || 0);
       setTotalAssessments(assessmentCount || 0);
@@ -49,7 +67,9 @@ if (scores && scores.length > 0) {
 
     loadData();
   }, []);
-
+if (!allowed) {
+  return null;
+}
   return (
     <main className="min-h-screen bg-[#050505] text-white">
       <div className="mx-auto max-w-7xl px-6 py-20">
