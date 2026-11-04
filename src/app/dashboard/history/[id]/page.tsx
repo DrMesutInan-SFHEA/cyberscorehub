@@ -9,15 +9,22 @@ export default function AssessmentDetailPage() {
   useEffect(() => {
     const id = window.location.pathname.split("/").pop();
 
-    const loadAssessment = async () => {
-      const { data } = await supabase
-        .from("assessment_results")
-        .select("*")
-        .eq("id", id)
-        .single();
+ const loadAssessment = async () => {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-      setResult(data);
-    };
+  if (!session) return;
+
+  const { data } = await supabase
+    .from("assessment_results")
+    .select("*")
+    .eq("id", id)
+    .eq("user_id", session.user.id)
+    .single();
+
+  setResult(data);
+};
 
     loadAssessment();
   }, []);
