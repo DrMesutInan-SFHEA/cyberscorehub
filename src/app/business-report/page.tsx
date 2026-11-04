@@ -211,11 +211,18 @@ pdf.text(
 };
 useEffect(() => {
   const loadLatestAssessment = async () => {
-    const { data } = await supabase
-      .from("assessment_results")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(1);
+const {
+  data: { session },
+} = await supabase.auth.getSession();
+
+if (!session) return;
+
+const { data } = await supabase
+  .from("assessment_results")
+  .select("*")
+  .eq("user_id", session.user.id)
+  .order("created_at", { ascending: false })
+  .limit(1);
 
    if (data?.[0]) {
   setLatestResult(data[0]);
