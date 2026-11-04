@@ -35,8 +35,9 @@ useEffect(() => {
 const { data, error } = await supabase
   .from("assessment_results")
   .select("*")
-.order("created_at", { ascending: false })
-.limit(10)
+  .eq("user_id", session.user.id)
+  .order("created_at", { ascending: false })
+  .limit(10);
 console.log("HISTORY_DATA", data);
 console.log("HISTORY_ERROR", error);
 
