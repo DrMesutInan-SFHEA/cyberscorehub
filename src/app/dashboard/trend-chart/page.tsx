@@ -18,10 +18,17 @@ export default function TrendChartPage() {
 
 useEffect(() => {
   const loadTrend = async () => {
-    const { data: results } = await supabase
-      .from("assessment_results")
-      .select("overall_score, created_at")
-      .order("created_at", { ascending: true });
+  const {
+  data: { session },
+} = await supabase.auth.getSession();
+
+if (!session) return;
+
+const { data: results } = await supabase
+  .from("assessment_results")
+  .select("overall_score, created_at")
+  .eq("user_id", session.user.id)
+  .order("created_at", { ascending: true });
 
    setData(
   (results || []).map((item: any) => ({
